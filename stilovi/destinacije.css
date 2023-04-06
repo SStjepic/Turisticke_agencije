@@ -2,9 +2,20 @@ main .kontejner>div{
     margin: 4vmin 4vmin 4vmin 4vmin;
 }
 main>h1{
-    padding-top: 13vmin;
+    padding-top: 11vmin;
     text-align: center;
 }
 .kontejner{
     margin-top: 4vmin;
+}
+.opis{
+    margin-top: 4vmin;
+    justify-content: left;
+    align-items: center;
+}
+.opis p{
+    text-align: left;
+}
+.opis>img{
+    max-width: 15vw;
 }
