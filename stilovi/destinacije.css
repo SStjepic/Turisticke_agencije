@@ -1,0 +1,10 @@
+main .kontejner>div{
+    margin: 4vmin 4vmin 4vmin 4vmin;
+}
+main>h1{
+    padding-top: 13vmin;
+    text-align: center;
+}
+.kontejner{
+    margin-top: 4vmin;
+}

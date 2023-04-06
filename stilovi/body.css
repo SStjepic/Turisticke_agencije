@@ -1,0 +1,37 @@
+
+.kontejner{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+
+}
+main .kontejner>div{
+    padding: 1vmin;
+    margin: 10vmax 1vmax 1vmax 1vmax;
+}
+.kontejner>div{
+    text-align: center;
+    border: none;
+    box-shadow: 0px 0px 8px 10px rgb(143, 209, 43);
+}
+.kontejner>div:hover{
+    box-shadow: 0px 0px 10px 12px rgb(143, 209, 43);
+    transition: 0.4s;
+}
+img{
+    padding-top: 0.5vmin;
+    max-width: 20vw;
+    padding: 10px;
+}
+.kontejner .tekst{
+    padding-top: 0.5vmin;
+    min-width: 20vw;
+}
+p{
+    
+    text-align: center;
+    font-size: 1.5em;
+}
+h2{
+    font-size: 2em;
+}
