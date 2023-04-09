@@ -1,0 +1,30 @@
+table{
+    padding-top: 15vh;
+    font-size: 1.5em;
+    width: 100vw;
+    border-collapse: collapse;
+}
+th{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+td{
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-right-style: dashed;
+    border-left-style: dashed;
+    text-align: center;
+}
+button{
+    width: 40%;
+}
+tbody>tr:hover {background-color: #D6EEEE;}
+main>div{
+    padding-top: 5vh;
+}
+main>h1{
+    padding-top: 10vh;
+    text-align: center;
+}

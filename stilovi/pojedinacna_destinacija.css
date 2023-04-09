@@ -1,0 +1,16 @@
+img{
+    width: 100vmin;
+    height: 40vmin;
+    max-width: none;
+}
+main>p{
+    padding: 4vh 4vh 4vh 4vh;
+    text-align: justify;
+}
+button{
+    background-color: rgb(143, 209, 43);
+    height: fit-content;
+    width: fit-content;
+    font-size: 1.5em;
+    margin: 4vh;
+}

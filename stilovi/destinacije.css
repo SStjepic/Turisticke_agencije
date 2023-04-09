@@ -9,13 +9,17 @@ main>h1{
     margin-top: 4vmin;
 }
 .opis{
-    margin-top: 4vmin;
-    justify-content: left;
-    align-items: center;
+    box-shadow: 4px 4px 5px 5px rgb(143, 209, 43);
+    margin: 4vmin;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 4vh;
+
 }
 .opis p{
     text-align: left;
 }
-.opis>img{
-    max-width: 15vw;
+.opis .tekst{
+    line-height: 3vw;
+    font-size: 1vw;
 }
