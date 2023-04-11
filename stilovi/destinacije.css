@@ -1,25 +1,51 @@
 main .kontejner>div{
     margin: 4vmin 4vmin 4vmin 4vmin;
+
+}
+.static{
+    position: static;
+}
+#turagen{
+    padding-top: 7vh;
 }
 main>h1{
-    padding-top: 11vmin;
+    padding-top: 1vmin;
     text-align: center;
+    font-size: 2vmax;
 }
 .kontejner{
     margin-top: 4vmin;
 }
 .opis{
-    box-shadow: 4px 4px 5px 5px rgb(143, 209, 43);
+    box-shadow: 4px 4px 5px 5px #E39D45;
     margin: 4vmin;
-    justify-content: space-around;
+    justify-content: left;
     align-items: flex-start;
-    padding: 4vh;
-
+    padding: 4vmin 4vmin 4vmin 10vw;
+    margin-left: 4vmin;
+    margin-right: 4vmin;
+    background-color: white;
+    position: static;
 }
 .opis p{
     text-align: left;
 }
 .opis .tekst{
-    line-height: 3vw;
-    font-size: 1vw;
+    line-height: 3vmax;
+    font-size: 1.5vmax;
+    width: fit-content;
+}
+@media(max-width: 1140px){
+    main .kontejner{
+        grid-template-columns: auto auto;
+    }
+    img{
+        width: 23vmax;
+        height: 15vmax;
+    }
+}
+@media(max-width: 570px){
+    main .kontejner{
+        grid-template-columns: auto;
+    }
 }

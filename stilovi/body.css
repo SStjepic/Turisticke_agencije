@@ -1,37 +1,58 @@
-
+body{
+    background:#fff0e2;
+}
 .kontejner, .opis{
     flex-wrap: wrap;
     display: flex;
     justify-content: space-around; /* opcija ce biti pregazena sa justify-content:center za .opis */
 
 }
+a{
+    max-width: 40vmax;
+}
+.kontejner{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
 main .kontejner>div{
     padding: 1vmin;
-    margin: 10vmax 1vmax 1vmax 1vmax;
+    margin-top: 7vh;
+    background-color: white;
 }
 .kontejner>div{
     text-align: center;
     border: none;
-    box-shadow: 10px 10px 2px 2px  rgb(143, 209, 43);
+    box-shadow: 10px 10px 2px 2px  #E39D45;
 }
 .kontejner>div:hover{
-    box-shadow: 0px 0px 10px 12px rgb(143, 209, 43);
+    box-shadow: 0px 0px 10px 12px #E39D45;
     transition: 0.4s;
 }
 img{
     padding-top: 0.5vmin;
-    max-width: 20vw;
+    width: 20vmax;
+    height: 13vmax;
     padding: 10px;
 }
 .tekst{
     padding-top: 0.5vmin;
-    min-width: 20vw;
+    width: 100%;
 }
 p{
     
     text-align: center;
-    font-size: 1.5em;
+    font-size: 2vh;
 }
 h2{
-    font-size: 2em;
+    font-size: 3vh;
+}
+@media(max-width: 1140px){
+    main .kontejner{
+        grid-template-columns: auto auto;
+    }
+}
+@media(max-width: 570px){
+    main .kontejner{
+        grid-template-columns: auto;
+    }
 }
