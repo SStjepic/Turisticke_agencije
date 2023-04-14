@@ -2,9 +2,6 @@ main .kontejner>div{
     margin: 4vmin 4vmin 4vmin 4vmin;
 
 }
-.static{
-    position: static;
-}
 #turagen{
     padding-top: 7vh;
 }
@@ -21,18 +18,19 @@ main>h1{
     margin: 4vmin;
     justify-content: left;
     align-items: flex-start;
-    padding: 4vmin 4vmin 4vmin 10vw;
     margin-left: 4vmin;
     margin-right: 4vmin;
+    padding: 4vmin 4vmin 4vmin 10vw;
     background-color: white;
     position: static;
 }
 .opis p{
     text-align: left;
 }
-.opis .tekst{
-    line-height: 3vmax;
-    font-size: 1.5vmax;
+.tekst{
+    line-height: 2.5vmax;
+}
+.wid{
     width: fit-content;
 }
 @media(max-width: 1140px){
@@ -42,10 +40,21 @@ main>h1{
     img{
         width: 23vmax;
         height: 15vmax;
-    }
+    }   
 }
-@media(max-width: 570px){
+@media(max-width: 530px){
     main .kontejner{
         grid-template-columns: auto;
+    }
+}
+@media(max-width: 884px){
+    .opis{
+        padding: 4vmin 1vmin 4vmin 1vw;
+        justify-content: center;
+    }
+}
+@media(max-width: 700px){
+    .tekst>p{
+        text-align: center;
     }
 }

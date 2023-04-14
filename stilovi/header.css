@@ -3,7 +3,9 @@
     padding: 0;
     margin: 0;
 }
-
+.boja{
+    background: #E39D45;
+}
 header{
     display: flex;
     background: #E39D45;
@@ -13,13 +15,11 @@ header{
     position: fixed;
     justify-content: space-around;
     align-items: center;
+    z-index: 10000;
 
 }
 /* podesavanje za nav bar */
-header h1{
-    color: rgb(0, 0, 0);
-    font-size: 3vh;
-}
+
 .meni{
     text-align: right;
     
@@ -43,7 +43,7 @@ a{
     display: none;
   }
 /* dogadjaj kada se smanji dostupan ekran */
-  @media (max-width: 1550px) {
+  @media (max-width: 1250px) {
     nav{
         display: none;
     }
