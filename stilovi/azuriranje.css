@@ -1,8 +1,13 @@
 table{
     padding-top: 15vh;
-    font-size: 1.5em;
+    font-size: 2vh;
     width: 100vw;
     border-collapse: collapse;
+    background-color: wheat;
+    
+}
+.responsive-tabel{
+    overflow-x: auto;
 }
 th{
     border-top: 1px solid black;
@@ -18,13 +23,23 @@ td{
     text-align: center;
 }
 button{
-    width: 40%;
+    width: 49%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+
 }
-tbody>tr:hover {background-color: #D6EEEE;}
+tbody>tr:hover {background-color: #E39D45;}
 main>div{
     padding-top: 5vh;
 }
 main>h1{
     padding-top: 10vh;
     text-align: center;
+}
+.red{
+    background: rgb(255, 26, 26);
+}
+.green{
+    background: rgb(32, 201, 32);
 }

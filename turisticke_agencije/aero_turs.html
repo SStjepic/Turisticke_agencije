@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aero Turs</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css" />
+    <script src="../bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.js"></script>
+    
     <link rel="stylesheet" href="../stilovi/header.css" />
     <link rel="stylesheet" href="../stilovi/body.css" />
     <link rel="stylesheet" href="../stilovi/destinacije.css" />
+    <link rel="stylesheet" href="../stilovi/font.css" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../stilovi/font.css" />
+    
     
 </head>
 <body>
@@ -20,13 +25,31 @@
         <nav class="meni">
             <ul>
                 <li><a href="../stranice_glavne/pocetna.html">TURISTIČKE AGENCIJE</a></li>
-                <li><a href="../stranice_glavne/azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
-                <li><a href="../stranice_glavne/azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      ADMINISTRATOR
+                    </a>
+                    <ul class="dropdown-menu boja">
+                      <li><a class="dropdown-item text-dark" href="../stranice_glavne/azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
+                      <li><a class="dropdown-item text-dark" href="../stranice_glavne/azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
+                    </ul>
+                </li>
                 <li><a href="../stranice_glavne/registracija.html">REGISTRUJ SE</a></li>    
                 <li><a href="../stranice_glavne/prijava.html">PRIJAVI SE</a></li>
             </ul>
         </nav>
-        <div class="meni-icon">&#9776;</div>
+        <div class="meni-icon dropdown">
+            <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                &#9776;
+              </a>
+            <ul class="dropdown-menu boja">
+                <li><a class="dropdown-item text-dark" href="../stranice_glavne/pocetna.html">TURISTIČKE AGENCIJE</a></li>
+                <li><a class="dropdown-item text-dark" href="../stranice_glavne/azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
+                      <li><a class="dropdown-item text-dark" href="../stranice_glavne/azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
+                <li><a class="dropdown-item text-dark" href="../stranice_glavne/registracija.html">REGISTRUJ SE</a></li> 
+                <li><a class="dropdown-item text-dark" href="../stranice_glavne/prijava.html">PRIJAVI SE</a></li>
+              </ul>
+        </div>
     </header>
     <main>
         <h1 id="turagen">Turistička agencija Aero Turs</h1>
@@ -48,8 +71,8 @@
                 <h2>Zanzibar</h2>
                 <img src="https://i.imgur.com/CAx5RSt.jpeg" />
                 <div class="tekst">
-                    <p>Tip: Letovanje</p>
-                    <p>Cena: 111256 dinara</p>
+                    <p><b>Tip</b>: Letovanje</p>
+                    <p><b>Cena</b>: 111256 dinara</p>
                 </div>
                 </a>
             </div>
@@ -58,8 +81,8 @@
                 <h2>Maldivi</h2>
                 <img src="https://i.imgur.com/E6JJwO2.jpeg" />
                 <div class="tekst">
-                    <p>Tip: Letovanje</p>
-                    <p>Cena: 103254 dinara</p>
+                    <p><b>Tip</b>: Letovanje</p>
+                    <p><b>Cena</b>: 103254 dinara</p>
                 </div>
                 </a>
             </div>
@@ -68,8 +91,8 @@
                 <h2>Kopaonik</h2>
                 <img src="https://i.imgur.com/Yw9hmxE.jpeg" />
                 <div class="tekst">
-                    <p>Tip: Zimovanje</p>
-                    <p>Cena: 77898 dinara</p>
+                    <p><b>Tip</b>: Zimovanje</p>
+                    <p><b>Cena</b>: 77898 dinara</p>
                 </div>
                 </a>
             </div>
@@ -79,8 +102,8 @@
                 <h2>Zanzibar</h2>
                 <img src="https://i.imgur.com/CAx5RSt.jpeg" />
                 <div class="tekst">
-                    <p>Tip: Letovanje</p>
-                    <p>Cena: 111256 dinara</p>
+                    <p><b>Tip</b>: Letovanje</p>
+                    <p><b>Cena</b>: 111256 dinara</p>
                 </div>
                 </a>
             </div>
@@ -89,8 +112,8 @@
                 <h2>Maldivi</h2>
                 <img src="https://i.imgur.com/E6JJwO2.jpeg" />
                 <div class="tekst">
-                    <p>Tip: Letovanje</p>
-                    <p>Cena: 103254 dinara</p>
+                    <p><b>Tip</b>: Letovanje</p>
+                    <p><b>Cena</b>: 103254 dinara</p>
                 </div>
                 </a>
             </div>
@@ -99,8 +122,8 @@
                 <h2>Kopaonik</h2>
                 <img src="https://i.imgur.com/Yw9hmxE.jpeg" />
                 <div class="tekst">
-                    <p>Tip: Zimovanje</p>
-                    <p>Cena: 77898 dinara</p>
+                    <p><b>Tip</b>: Zimovanje</p>
+                    <p><b>Cena</b>: 77898 dinara</p>
                 </div>
                 </a>
             </div>
@@ -110,8 +133,8 @@
                 <h2>Zanzibar</h2>
                 <img src="https://i.imgur.com/CAx5RSt.jpeg" />
                 <div class="tekst">
-                    <p>Tip: Letovanje</p>
-                    <p>Cena: 111256 dinara</p>
+                    <p><b>Tip</b>: Letovanje</p>
+                    <p><b>Cena</b>: 111256 dinara</p>
                 </div>
                 </a>
             </div>
@@ -120,8 +143,8 @@
                 <h2>Maldivi</h2>
                 <img src="https://i.imgur.com/E6JJwO2.jpeg" />
                 <div class="tekst">
-                    <p>Tip: Letovanje</p>
-                    <p>Cena: 103254 dinara</p>
+                    <p><b>Tip</b>: Letovanje</p>
+                    <p><b>Cena</b>: 103254 dinara</p>
                 </div>
                 </a>
             </div>
@@ -130,8 +153,8 @@
                 <h2>Kopaonik</h2>
                 <img src="https://i.imgur.com/Yw9hmxE.jpeg" />
                 <div class="tekst">
-                    <p>Tip: Zimovanje</p>
-                    <p>Cena: 77898 dinara</p>
+                    <p><b>Tip</b>: Zimovanje</p>
+                    <p><b>Cena</b>: 77898 dinara</p>
                 </div>
                 </a>
             </div>

@@ -27,12 +27,14 @@ main>h1{
 .opis p{
     text-align: left;
 }
-.tekst{
+.opis .tekst{
     line-height: 2.5vmax;
 }
 .wid{
     width: fit-content;
 }
+
+
 @media(max-width: 1140px){
     main .kontejner{
         grid-template-columns: auto auto;

@@ -1,7 +1,5 @@
 img{
-    width: 50vw;
-    height: 20vmax;  
-    position: static;
+    height: 18vmax;  
 }
 .opis>p{
     padding: 2vh;
@@ -32,4 +30,9 @@ h1, h2{
 }
 .opis{
     width: auto;
+}
+@media(max-width:768px){
+    .tekst>p{
+        text-align: center;
+    }
 }

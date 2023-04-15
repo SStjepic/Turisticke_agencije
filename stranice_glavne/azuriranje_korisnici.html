@@ -5,12 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maestro Travel</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css" />
+    <script src="../bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.js"></script>
+    
     <link rel="stylesheet" href="../stilovi/header.css" />
     <link rel="stylesheet" href="../stilovi/body.css" />
+    <link rel="stylesheet" href="../stilovi/font.css" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../stilovi/font.css" />
+    
 </head>
 <body>
     <header>
@@ -18,13 +23,31 @@
         <nav class="meni">
             <ul>
                 <li><a href="pocetna.html">TURISTIČKE AGENCIJE</a></li>
-                <li><a href="azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
-                <li><a href="azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      ADMINISTRATOR
+                    </a>
+                    <ul class="dropdown-menu boja">
+                      <li><a class="dropdown-item text-dark" href="azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
+                      <li><a class="dropdown-item text-dark" href="azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
+                    </ul>
+                </li>
                 <li><a href="registracija.html">REGISTRUJ SE</a></li>    
                 <li><a href="prijava.html">PRIJAVI SE</a></li>
             </ul>
         </nav>
-        <div class="meni-icon">&#9776;</div>
+        <div class="meni-icon dropdown">
+            <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                &#9776;
+              </a>
+            <ul class="dropdown-menu boja">
+                <li><a class="dropdown-item text-dark" href="pocetna.html">TURISTIČKE AGENCIJE</a></li>
+                <li><a class="dropdown-item text-dark" href="azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
+                      <li><a class="dropdown-item text-dark" href="azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
+                <li><a class="dropdown-item text-dark" href="registracija.html">REGISTRUJ SE</a></li> 
+                <li><a class="dropdown-item text-dark" href="prijava.html">PRIJAVI SE</a></li>
+              </ul>
+        </div>
     </header>
     <main>
 
