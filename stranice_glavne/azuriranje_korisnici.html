@@ -11,10 +11,13 @@
     <link rel="stylesheet" href="../stilovi/header.css" />
     <link rel="stylesheet" href="../stilovi/body.css" />
     <link rel="stylesheet" href="../stilovi/font.css" />
+    <link rel="stylesheet" href="../stilovi/azuriranje.css" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     
 </head>
 <body>
@@ -50,6 +53,45 @@
         </div>
     </header>
     <main>
+        <h1>Ažuriranje podataka o korisnicima</h1>
+        <label for="Dugme_dodaj">Dodaj novog korisnika</label>
+        <button id="dodaj"><i class="bi bi-person-fill-add"></i></button>
+        <div class="responsive-tabel">
+            <table>
+                <thead>
+                    <th>Naziv</th>
+                    <th>Adresa</th>
+                    <th>Broj telefona</th>
+                    <th>Email adresa</th>
+                    <th>Godina osnivanja</th>
+                    <th>Opcije</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aero Turs</td>
+                        <td>Obrenovićeva bb T.C. Gorča,Beograd,11000</td>
+                        <td>011/7872-78423</td>
+                        <td>aero@mail.com</td>
+                        <td>2011</td>
+                        <td>
+                            <button type="button" class="green"><i class="bi bi-person-fill-gear"></i></button>
+                            <button type="button" class="red"><i class="bi bi-person-fill-x"></i></button>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Air Serbia</td>
+                        <td>Bulevar umetnosti 16, Beograd, 11000</td>
+                        <td>011/3232-784323</td>
+                        <td>airserbia381@mail.com</td>
+                        <td>2005</td>
+                        <td><button type="button" class="green"><i class="bi bi-person-fill-gear"></i></i></button>
+                            <button type="button" class="red"><i class="bi bi-person-fill-x"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>  
+        </div>
 
         
     </main>
