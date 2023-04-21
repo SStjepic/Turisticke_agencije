@@ -7,7 +7,7 @@ img{
     line-height: 2.4vmax;
     margin: 0;
 }
-button{
+a>button{
     background-color: #E39D45;
     height: fit-content;
     width: fit-content;

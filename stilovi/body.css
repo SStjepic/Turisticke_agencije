@@ -1,6 +1,9 @@
 body{
     background:#fff0e2;
 }
+.sakri{
+    visibility: hidden;
+}
 .kontejner, .opis{
     flex-wrap: wrap;
     display: flex;

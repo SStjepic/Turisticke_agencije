@@ -42,6 +42,11 @@ a{
 .meni-icon {
     display: none;
   }
+h1>img{
+    height: 4vh;
+    width: 6vh;
+    padding: 0;
+}
 /* dogadjaj kada se smanji dostupan ekran */
   @media (max-width: 1250px) {
     nav{

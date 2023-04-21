@@ -1,3 +1,4 @@
+
 table{
     margin-top: 1vh;
     font-size: 2vh;
@@ -22,7 +23,7 @@ td{
     border-left-style: dashed;
     text-align: center;
 }
-button{
+main button{
     width: 4.5vh;
     height: 4.5vh;
     border: 0;
