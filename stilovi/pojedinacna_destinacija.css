@@ -9,9 +9,8 @@ img{
 }
 a>button{
     background-color: #E39D45;
-    height: fit-content;
-    width: fit-content;
-    font-size: 1.5vmin;
+    width: 26vmin;
+    font-size: 2vmin;
     margin: 4vh;
 }
 .tekst p{
@@ -34,5 +33,11 @@ h1, h2{
 @media(max-width:768px){
     .tekst>p{
         text-align: center;
+    }
+    a>button{
+        background-color: #E39D45;
+        width: 40vmin;
+        font-size: 2.5vmin;
+        margin: 4vh;
     }
 }

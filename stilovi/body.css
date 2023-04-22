@@ -1,5 +1,9 @@
 body{
     background:#fff0e2;
+
+}
+main{
+    min-height: 95vh;
 }
 .sakri{
     visibility: hidden;
@@ -16,6 +20,7 @@ a{
 .kontejner{
     display: grid;
     grid-template-columns: auto auto auto;
+    padding-top: 3vh;
 }
 main .kontejner>div{
     padding: 1vmin;
@@ -48,6 +53,14 @@ p{
 }
 h2{
     font-size: 3vh;
+}
+footer{
+    height: 5vh;
+    background-color: wheat;
+    display: block;
+    color: black;
+    text-align: left;
+    align-items: center;
 }
 @media(max-width: 1140px){
     main .kontejner{
