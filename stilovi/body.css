@@ -55,12 +55,14 @@ h2{
     font-size: 3vh;
 }
 footer{
-    height: 5vh;
+    min-height: 5vh;
     background-color: wheat;
     display: block;
     color: black;
     text-align: left;
-    align-items: center;
+}
+footer>p{
+    padding: 1vh;
 }
 @media(max-width: 1140px){
     main .kontejner{
