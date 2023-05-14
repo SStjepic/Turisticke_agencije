@@ -2,8 +2,19 @@ body{
     background:#fff0e2;
 
 }
+form{
+    font-weight: bold;
+}
+.boja_body{
+    background:#fff0e2;
+}
+.boja_footer{
+    background-color: wheat;
+}
 main{
     min-height: 95vh;
+    margin-left: 3vw;
+    margin-right: 5vw;
 }
 .sakri{
     visibility: hidden;
@@ -11,7 +22,7 @@ main{
 .kontejner, .opis{
     flex-wrap: wrap;
     display: flex;
-    justify-content: space-around; /* opcija ce biti pregazena sa justify-content:center za .opis */
+    justify-content: space-evenly; /* opcija ce biti pregazena sa justify-content:center za .opis */
 
 }
 a{
@@ -67,6 +78,14 @@ footer>p{
 @media(max-width: 1140px){
     main .kontejner{
         grid-template-columns: auto auto;
+    }
+    main{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .kontejner, .opis{
+        justify-content: space-around;
+    
     }
 }
 @media(max-width: 570px){
