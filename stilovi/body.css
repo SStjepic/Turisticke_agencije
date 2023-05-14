@@ -11,10 +11,16 @@ form{
 .boja_footer{
     background-color: wheat;
 }
-main{
-    min-height: 95vh;
+.margine{
     margin-left: 3vw;
     margin-right: 5vw;
+}
+.margine_azuriranje{
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+main{
+    min-height: 95vh;
 }
 .sakri{
     visibility: hidden;
@@ -79,7 +85,7 @@ footer>p{
     main .kontejner{
         grid-template-columns: auto auto;
     }
-    main{
+    .margine{
         margin-left: 0;
         margin-right: 0;
     }

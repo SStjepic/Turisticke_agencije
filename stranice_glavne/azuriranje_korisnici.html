@@ -55,20 +55,95 @@
                 &#9776;
               </a>
             <ul class="dropdown-menu boja">
-                <li><a class="dropdown-item text-dark" href="index.html">TURISTIČKE AGENCIJE</a></li>
-                <li><a class="dropdown-item text-dark" href="azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
-                <li><a class="dropdown-item text-dark" href="azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
-                <li><a class="dropdown-item text-dark" href="azuriranje_destinacija.html">AŽURIRAJ DESTINACIJE</a></li>
-                <li><a class="dropdown-item text-dark" href="#">REGISTRUJ SE</a></li> 
-                <li><a class="dropdown-item text-dark" href="#">PRIJAVI SE</a></li>
+                <li><a class="dropdown-item text-dark fw-bold" href="index.html">TURISTIČKE AGENCIJE</a></li>
+                <li><a class="dropdown-item text-dark fw-bold" href="azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
+                <li><a class="dropdown-item text-dark fw-bold" href="azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
+                <li><a class="dropdown-item text-dark fw-bold" href="azuriranje_destinacija.html">AŽURIRAJ DESTINACIJE</a></li>
+                <li><a class="dropdown-item text-dark fw-bold" href="#">REGISTRUJ SE</a></li> 
+                <li><a class="dropdown-item text-dark fw-bold" href="#">PRIJAVI SE</a></li>
                 
             </ul>
         </div>
     </header>
+
+     <!-- forma za dodavanje korisnika, koristice se i za izmenu istih -->
+     <div class="modal fade" id="registracija" tabindex="-1" aria-labelledby="registracijaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header boja">
+              <h1 class="modal-title fs-5" id="registracijaLabel">Registruj se</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body boja_body text-center">
+              <form name="login" >
+                <label for="ime" >Ime: </label>
+                <br/>
+                <input type="text" name="ime"/>
+                <br/>
+                <label for="prezime" >Prezime: </label>
+                <br/>
+                <input type="text" name="prezime"/>
+                <br/>
+                <label for="korisnicko_ime" >Korisnicko ime: </label>
+                <br/>
+                <input type="text" name="korisnicko_ime"  />
+                <br/>
+                <label for="lozinka" >Lozinka:</label>
+                <br/>
+                <input type="password" name="lozinka"  />
+                <br/>
+                <label for="mejl" >Email:</label>
+                <br/>
+                <input type="email" name="mejl"  />
+                <br/>
+                <label for="adresa" >Adresa stanovanja:</label>
+                <br/>
+                <input type="text" name="adresa"  />
+                <br/>
+                <label for="grad" >Grad:</label>
+                <br/>
+                <input type="text" name="grad"  />
+                <br/>
+                <label for="telefon" >Broj telefona:</label>
+                <br/>
+                <input type="text" name="telefon"  />
+                <br/>
+                <label for="rodjendan" >Datum rodjenja:</label>
+                <br/>
+                <input type="date" name="rodjendan"  />
+              </form>
+            </div>
+            <div class="modal-footer boja_footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
+              <button type="button" class="btn btn-primary">Potvrdi</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Forma za potvrdu brisanja -->
+    <div class="modal fade" id="potvrda" tabindex="-1" aria-labelledby="potvrdaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header boja">
+              <h1 class="modal-title fs-5" id="potvrdaLabel">Dodaj turističku destinaciju</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body boja_body text-center">
+              <p>Da li ste sigurni da želite da obrišete korisnika iz baze?</p>
+            </div>
+            <div class="modal-footer boja_footer">
+              <button type="button " class="btn btn-secondary" data-bs-dismiss="modal" >Ne</button>
+              <button type="button" class="btn btn-primary">Da</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
     <main>
         <h1>Ažuriranje podataka o korisnicima</h1>
         <label for="Dugme_dodaj">Dodaj novog korisnika</label>
-        <button id="dodaj"><i class="bi bi-person-fill-add"></i></button>
+        <button id="dodaj" data-bs-target="#registracija" data-bs-toggle="modal"><i class="bi bi-person-fill-add"></i></button>
         <div class="responsive-tabel">
             <table>
                 <thead>
@@ -93,8 +168,8 @@
                         <td>Gogoljeva 39, Novi Sad,21000</td>
                         <td>061456456</td>
                         <td>
-                            <button type="button" class="green"><i class="bi bi-person-fill-gear"></i></button>
-                            <button type="button" class="red"><i class="bi bi-person-fill-x"></i></button>
+                            <button type="button" class="green" data-bs-target="#registracija" data-bs-toggle="modal"><i class="bi bi-person-fill-gear"></i></button>
+                            <button type="button" class="red" data-bs-target="#potvrda" data-bs-toggle="modal"><i class="bi bi-person-fill-x"></i></button>
                         </td>
                     </tr>
 

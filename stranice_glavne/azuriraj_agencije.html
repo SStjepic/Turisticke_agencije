@@ -55,20 +55,87 @@
                 &#9776;
               </a>
             <ul class="dropdown-menu boja">
-                <li><a class="dropdown-item text-dark" href="index.html">TURISTIČKE AGENCIJE</a></li>
-                <li><a class="dropdown-item text-dark" href="azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
-                <li><a class="dropdown-item text-dark" href="azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
-                <li><a class="dropdown-item text-dark" href="azuriranje_destinacija.html">AŽURIRAJ DESTINACIJE</a></li>
-                <li><a class="dropdown-item text-dark" href="#">REGISTRUJ SE</a></li> 
-                <li><a class="dropdown-item text-dark" href="#">PRIJAVI SE</a></li>
+              <li><a class="dropdown-item text-dark fw-bold" href="index.html">TURISTIČKE AGENCIJE</a></li>
+              <li><a class="dropdown-item text-dark fw-bold" href="azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
+              <li><a class="dropdown-item text-dark fw-bold" href="azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
+              <li><a class="dropdown-item text-dark fw-bold" href="azuriranje_destinacija.html">AŽURIRAJ DESTINACIJE</a></li>
+              <li><a class="dropdown-item text-dark fw-bold" href="#">REGISTRUJ SE</a></li> 
+              <li><a class="dropdown-item text-dark fw-bold" href="#">PRIJAVI SE</a></li>
                 
             </ul>
         </div>
     </header>
+
+    <!-- forma za dodavanje agencija, koristice se i za izmenu istih -->
+    <div class="modal fade" id="prikaz_agencija" tabindex="-1" aria-labelledby="prikaz_agencijaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header boja">
+              <h1 class="modal-title fs-5" id="prikaz_agencijaLabel">Dodaj turističku agenciju</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body boja_body text-center">
+              <form name="prikaz_agencija" >
+                <label for="naziv" >Naziv turističke agencije: </label>
+                <br/>
+                <input type="text" name="naziv"  />
+                <br/>
+                <label for="adresa" >Ulica i broj:</label>
+                <br/>
+                <input type="text" name="adresa"  />
+                <br/>
+                <label for="grad" >Grad i poštanski broj:</label>
+                <br/>
+                <input type="text" name="godina"  />
+                <br/>
+                <label for="godina" >Godina osnivanja:</label>
+                <br/>
+                <input type="text" name="godina"  />
+                <br/>
+                <label for="brojTelefona" >Broj telefona: </label>
+                <br/>
+                <input type="number" name="brojTelefona"  placeholder="xxx/xxx-xxxx"/>
+                <br/>
+                <label for="email" >Email adresa:</label>
+                <br/>
+                <input type="email" name="email"  />
+                <br/>
+                <label for="logo" >Logo:</label>
+                <br/>
+                <input type="url" name="logo"  placeholder="url fotografije"/>
+              </form>
+            </div>
+            <div class="modal-footer boja_footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
+              <button type="button" class="btn btn-primary">Potvrdi</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Forma za potvrdu brisanja -->
+    <div class="modal fade" id="potvrda" tabindex="-1" aria-labelledby="potvrdaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header boja">
+              <h1 class="modal-title fs-5" id="potvrdaLabel">Dodaj turisticku agenciju</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body boja_body text-center">
+              <p>Da li ste sigurni da želite da obrišete agenciju iz baze?</p>
+            </div>
+            <div class="modal-footer boja_footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ne</button>
+              <button type="button" class="btn btn-primary">Da</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
     <main>
         <h1>Ažuriranje podataka o agencijama</h1>
         <label for="Dugme_dodaj">Dodaj novu agenciju</label>
-        <button id="dodaj"><i class="bi bi-database-fill-add"></i></button>
+        <button id="dodaj" data-bs-target="#prikaz_agencija" data-bs-toggle="modal"><i class="bi bi-database-fill-add" ></i></button>
         <div class="responsive-tabel">
             <table>
                 <thead>
@@ -87,8 +154,8 @@
                         <td>aero@mail.com</td>
                         <td>2011</td>
                         <td>
-                            <button type="button" class="green"><i class="bi bi-database-fill-gear"></i></button>
-                            <button type="button" class="red"><i class="bi bi-database-fill-x"></i></button>
+                            <button type="button" class="green" data-bs-target="#prikaz_agencija" data-bs-toggle="modal"><i class="bi bi-database-fill-gear" ></i></button>
+                            <button type="button" class="red" data-bs-target="#potvrda" data-bs-toggle="modal"><i class="bi bi-database-fill-x"></i></button>
                         </td>
                     </tr>
                     
