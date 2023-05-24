@@ -30,13 +30,13 @@
                       ADMINISTRATOR
                     </a>
                     <ul class="dropdown-menu boja">
-                      <li><a class="dropdown-item text-dark" href="../stranice_glavne/azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
-                      <li><a class="dropdown-item text-dark" href="../stranice_glavne/azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
-                      <li><a class="dropdown-item text-dark" href="../stranice_glavne/azuriranje_destinacija.html">AŽURIRAJ DESTINACIJE</a></li>
+                      <li><a class="dropdown-item text-dark fw-bold" href="../stranice_glavne/azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
+                      <li><a class="dropdown-item text-dark fw-bold" href="../stranice_glavne/azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
+                      <li><a class="dropdown-item text-dark fw-bold" href="../stranice_glavne/azuriranje_destinacija.html">AŽURIRAJ DESTINACIJE</a></li>
                     </ul>
                 </li>
-                <li><a href="#">REGISTRUJ SE</a></li>    
-                <li><a href="#">PRIJAVI SE</a></li>
+                <li><a href="#" data-bs-target="#registracija" data-bs-toggle="modal">REGISTRUJ SE</a></li>    
+                <li><a href="#" data-bs-target="#login" data-bs-toggle="modal">PRIJAVI SE</a></li>
                 <li><div class="input-group">
                     <div class="form-outline">
                       <input type="search" id="form1" class="form-control" placeholder="Naziv/Tip/Vrsta prevoza"/>
@@ -52,12 +52,12 @@
                 &#9776;
               </a>
             <ul class="dropdown-menu boja">
-                <li><a class="dropdown-item text-dark" href="../stranice_glavne/index.html">TURISTIČKE AGENCIJE</a></li>
-                <li><a class="dropdown-item text-dark" href="../stranice_glavne/azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
-                <li><a class="dropdown-item text-dark" href="../stranice_glavne/azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
-                <li><a class="dropdown-item text-dark" href="../stranice_glavne/azuriranje_destinacija.html">AŽURIRAJ DESTINACIJE</a></li>
-                <li><a class="dropdown-item text-dark" href="#">REGISTRUJ SE</a></li> 
-                <li><a class="dropdown-item text-dark" href="#">PRIJAVI SE</a></li>
+                <li><a class="dropdown-item text-dark fw-bold" href="../stranice_glavne/index.html">TURISTIČKE AGENCIJE</a></li>
+                <li><a class="dropdown-item text-dark fw-bold" href="../stranice_glavne/azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
+                <li><a class="dropdown-item text-dark fw-bold" href="../stranice_glavne/azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
+                <li><a class="dropdown-item text-dark fw-bold" href="../stranice_glavne/azuriranje_destinacija.html">AŽURIRAJ DESTINACIJE</a></li>
+                <li><a class="dropdown-item text-dark fw-bold" href="#" data-bs-target="#registracija" data-bs-toggle="modal">REGISTRUJ SE</a></li> 
+                <li><a class="dropdown-item text-dark fw-bold" href="#" data-bs-target="#login" data-bs-toggle="modal">PRIJAVI SE</a></li>
                 <li>
                     <div class="input-group">
                     <div class="form-outline">
@@ -71,6 +71,89 @@
               </ul>
         </div>
     </header>
+
+
+    <!-- Forma za login -->
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header boja">
+              <h1 class="modal-title fs-5" id="loginLabel">Prijavi se</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body boja_body text-center">
+              <form name="login" >
+                <label for="korisnicko_ime" >Korisnicko ime: </label>
+                <br/>
+                <input type="text" name="korisnicko_ime"  />
+                <br/>
+                <label for="lozinka" >Lozinka:</label>
+                <br/>
+                <input type="password" name="lozinka"  />
+              </form>
+            </div>
+            <div class="modal-footer boja_footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
+              <button type="button" class="btn btn-primary">Potvrdi</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Forma za registraciju -->
+    <div class="modal fade" id="registracija" tabindex="-1" aria-labelledby="registracijaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header boja">
+              <h1 class="modal-title fs-5" id="registracijaLabel">Registruj se</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body boja_body text-center">
+              <form name="login" >
+                <label for="ime" >Ime: </label>
+                <br/>
+                <input type="text" name="ime"/>
+                <br/>
+                <label for="prezime" >Prezime: </label>
+                <br/>
+                <input type="text" name="prezime"/>
+                <br/>
+                <label for="korisnicko_ime" >Korisnicko ime: </label>
+                <br/>
+                <input type="text" name="korisnicko_ime"  />
+                <br/>
+                <label for="lozinka" >Lozinka:</label>
+                <br/>
+                <input type="password" name="lozinka"  />
+                <br/>
+                <label for="mejl" >Email:</label>
+                <br/>
+                <input type="email" name="mejl"  />
+                <br/>
+                <label for="adresa" >Adresa stanovanja:</label>
+                <br/>
+                <input type="text" name="adresa"  />
+                <br/>
+                <label for="grad" >Grad:</label>
+                <br/>
+                <input type="text" name="grad"  />
+                <br/>
+                <label for="telefon" >Broj telefona:</label>
+                <br/>
+                <input type="text" name="telefon"  />
+                <br/>
+                <label for="rodjendan" >Datum rodjenja:</label>
+                <br/>
+                <input type="date" name="rodjendan"  />
+              </form>
+            </div>
+            <div class="modal-footer boja_footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
+              <button type="button" class="btn btn-primary">Potvrdi</button>
+            </div>
+          </div>
+        </div>
+    </div>
     <main>
 
     </main>

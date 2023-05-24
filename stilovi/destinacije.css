@@ -12,6 +12,7 @@ main>h1{
 }
 .kontejner{
     margin-top: 4vmin;
+    justify-content: center;
 }
 .opis{
     box-shadow: 4px 4px 5px 5px #E39D45;
