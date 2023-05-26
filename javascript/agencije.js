@@ -1,5 +1,5 @@
 var url = "https://web-dizajn-d1716-default-rtdb.europe-west1.firebasedatabase.app";
-var agencijeId = [];
+var sveAgencijeId = [];
 var sveAgencije = [];
 var agencije = {};
 
@@ -16,9 +16,9 @@ function ucitajIzBazeAgencije() {
                 for (var id in agencije) {
                     var agencija = agencije[id];
                     sveAgencije.push(agencija);
-                    agencijeId.push(id);
+                    sveAgencijeId.push(id);
                 }
-                popuniStranicuAgencijama(sveAgencije);
+                popuniStranicuAgencijama(sveAgencije, sveAgencijeId);
             } else {
                 window.open("../stranice_glavne/greska.html", "_self");
             }
@@ -29,7 +29,7 @@ function ucitajIzBazeAgencije() {
     zahtev.send();
 }
 
-function popuniStranicuAgencijama(sveAgencije){
+function popuniStranicuAgencijama(sveAgencije, agencijeId){
     var main = document.getElementsByTagName("main")[0];
     main.innerHTML = " ";
     var div = document.createElement("div");
@@ -60,7 +60,9 @@ function popuniStranicuAgencijama(sveAgencije){
     main.appendChild(div)
     
 }
-
+/*
+    Funkcija koja nalazi agenciju po nazivu
+ */
 function nadjiAgenciju(naziv) {
     for(var id in sveAgencije){
         if(sveAgencije[id] === naziv){
@@ -68,7 +70,9 @@ function nadjiAgenciju(naziv) {
         }
     }
 }
-
+/*
+    Funkcija koja nalazi id agencije iz URL-a
+ */
 function dobaviIdAgencije(name) {
     let location = decodeURI(window.location.toString());
     let index = location.indexOf("?") + 1;
@@ -84,82 +88,136 @@ function dobaviIdAgencije(name) {
       }
     }
   }
+var pretraga_agencije = [];
 var pretraga = [];
-var jeste = [false];
+var agencijeId = [];
+var agencijeIdDestinacije = [];
+/*
+    Pretraga
+ */
 document.addEventListener("input", function () {
     pretraga = [];
+    pretraga_agencije = [];
+    agencijeId = [];
+    agencijeIdDestinacije = [];
     let unos_a1 = document.getElementById("agencija_1");
     let unos_d1 = document.getElementById("destinacija_1");
-    if(unos_a1.value != "" || unos_d1 != ""){
-        pretraziPoAgenciji("agencija_1");
-        // pretraziPoDestinacijama("destinacija_1");
+    if(unos_a1.value == "" && unos_d1.value == ""){
+        popuniStranicuAgencijama(sveAgencije, sveAgencijeId);
     }
+    if(unos_a1.value != "" || unos_d1 != ""){
+        if(unos_a1.value != ""){
+            
+            pretraziPoAgenciji("agencija_1", agencijeId);
+            if(unos_d1.value == ""){
+                popuniStranicuAgencijama(pretraga_agencije, agencijeId);
+            }
+        }
+        if(unos_d1.value != ""){
+            pretraziPoDestinacijama("destinacija_1", sveAgencije, agencijeIdDestinacije);
+        }
+        
+    }
+
 })
-var pAgencija = {}
-function pretraziPoAgenciji(id_inputa) {
+/*
+    Funkcija koja pretrazuje agencije po nazivu
+ */
+function pretraziPoAgenciji(id_inputa, agencijeId) {
     let unos = document.getElementById(id_inputa);
     var string = unos.value;
     for(let id in sveAgencije){
         let naziv = sveAgencije[id].naziv;
         if(naziv.toUpperCase().includes(string.toUpperCase())){
-            pretraga.push(sveAgencije[id]);
+            pretraga_agencije.push(sveAgencije[id]);
+            agencijeId.push(sveAgencijeId[id]);
+
         }
     }
-    popuniStranicuAgencijama(pretraga);
+    
 }
-
-
-
-
-function pretraziPoDestinacijama(id_inputa) {
+/*
+    Funkcija koja vraca presek dve pretrage
+ */
+function proveriPoklapanje(pretraga, agencijeIdDestinacije) {
+    console.log(pretraga.length);
+    console.log(pretraga_agencije.length);
+    if(pretraga.length != 0 && pretraga_agencije.length != 0){
+        var konacna = [];
+        var konacniId = [];
+        for(var i in pretraga){
+            if(pretraga_agencije.indexOf(pretraga[i]) != -1){
+                
+                konacna.push(pretraga[i]);
+                konacniId.push(nadjiIdAgencije(pretraga[i]))
+            }
+            popuniStranicuAgencijama(konacna, konacniId);
+        }
+    }
+    else if(pretraga.length != 0){
+        popuniStranicuAgencijama(pretraga, agencijeIdDestinacije);
+    }
+}
+/*
+    Funkcija koja nalazi agenciju po nazivu destinacije
+ */
+function pretraziPoDestinacijama(id_inputa, sveAgencije, agencijeIdDestinacije) {
     let unos = document.getElementById(id_inputa);
     var string = unos.value.toUpperCase();
-    if(string === ""){
-        popuniStranicuAgencijama(pretraga);
+    if (string === "") {
+      popuniStranicuAgencijama(sveAgencije);
+    } else {
+      var requests = sveAgencije.map(function (agencija) {
+        return ucitajIzBazeDestinaciju(agencija.destinacije, string, pretraga, agencija, agencijeIdDestinacije);
+      });
+  
+      Promise.all(requests)
+        .then(function () {
+          console.log(pretraga);
+          proveriPoklapanje(pretraga,agencijeIdDestinacije)
+        })
+        .catch(function (error) {
+          console.error(error);
+          window.open("../stranice_glavne/greska.html", "_self");
+        });
     }
-    else{
-        for(var id in sveAgencije){
-            ucitajIzBazeDestinaciju(sveAgencije[id].destinacije, string);
-            console.log(sveAgencije[id].destinacije)
-            console.log(jeste[0]);
-            if(jeste[0] === true){
-                pretraga.push(sveAgencije[id].naziv);
-                jeste[0] = false;
-
-            }
-            
+  }
+  
+function nadjiIdAgencije(taAgencija) {
+    for(var id in sveAgencije){
+        if(sveAgencije[id] == taAgencija){
+            return sveAgencijeId[id];
         }
-        popuniStranicuAgencijama(pretraga);
     }
 }
-
-function ucitajIzBazeDestinaciju(grupaDestinacija, string) {
-    
-    let destinacijeTrenutne = {};
+/*
+    Funkcija koja ucitava destinacije agencije iz baze
+ */
+function ucitajIzBazeDestinaciju(grupaDestinacija, string, pretraga, taAgencija, agencijeIdDestinacije) {
+return new Promise(function (resolve, reject) {
     var zahtev = new XMLHttpRequest();
-    
     zahtev.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-                destinacijeTrenutne = JSON.parse(zahtev.responseText);
-                for (var id in destinacijeTrenutne) {
-                    var destinacija = destinacijeTrenutne[id];
-                    if(destinacija.naziv.toUpperCase().includes(string)){
-                        jeste[0] = true;
-                        console.log(destinacija.naziv.toUpperCase());
-                        break;
-                    }
-                    
-                }
-            } else {
-                window.open("../stranice_glavne/greska.html", "_self");
+    if (this.readyState == 4) {
+        if (this.status == 200) {
+        var destinacijeTrenutne = JSON.parse(zahtev.responseText);
+        for (var id in destinacijeTrenutne) {
+            var destinacija = destinacijeTrenutne[id];
+            if (destinacija.naziv.toUpperCase().includes(string)) {
+            console.log(destinacija.naziv.toUpperCase());
+            agencijeIdDestinacije.push(nadjiIdAgencije(taAgencija));
+            pretraga.push(taAgencija);
+            break;
             }
         }
-        
+        resolve();
+        } else {
+        reject(new Error("Request failed"));
+        }
     }
-    zahtev.open('GET', url + '/destinacije/'+grupaDestinacija  + '.json');
-    zahtev.send();  
+    };
+        zahtev.open('GET', url + '/destinacije/' + grupaDestinacija + '.json');
+        zahtev.send();
+    });
 }
-
 
 
