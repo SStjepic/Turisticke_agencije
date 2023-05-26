@@ -111,56 +111,55 @@ function pretraziPoAgenciji(id_inputa) {
 
 
 
-// function pretraziPoDestinacijama(id_inputa) {
-//     let unos = document.getElementById(id_inputa);
-//     var string = unos.value.toUpperCase();
-//     if(string === ""){
-//         popuniStranicuAgencijama(pretraga);
-//     }
-//     else{
-//         for(var id in sveAgencije){
-//             ucitajIzBazeDestinaciju(sveAgencije[id].destinacije, string);
-//             console.log(sveAgencije[id].destinacije)
-//             console.log(jeste[0]);
-//             if(jeste[0] === true){
-//                 pretraga.push(sveAgencije[id].naziv);
-//                 jeste[0] = false;
+function pretraziPoDestinacijama(id_inputa) {
+    let unos = document.getElementById(id_inputa);
+    var string = unos.value.toUpperCase();
+    if(string === ""){
+        popuniStranicuAgencijama(pretraga);
+    }
+    else{
+        for(var id in sveAgencije){
+            ucitajIzBazeDestinaciju(sveAgencije[id].destinacije, string);
+            console.log(sveAgencije[id].destinacije)
+            console.log(jeste[0]);
+            if(jeste[0] === true){
+                pretraga.push(sveAgencije[id].naziv);
+                jeste[0] = false;
 
-//             }
+            }
             
-//         }
-//         popuniStranicuAgencijama(pretraga);
-//     }
-// }
+        }
+        popuniStranicuAgencijama(pretraga);
+    }
+}
 
-// function ucitajIzBazeDestinaciju(grupaDestinacija, string) {
+function ucitajIzBazeDestinaciju(grupaDestinacija, string) {
     
-//     let destinacijeTrenutne = {};
-//     var zahtev = new XMLHttpRequest();
+    let destinacijeTrenutne = {};
+    var zahtev = new XMLHttpRequest();
     
-//     zahtev.onreadystatechange = function () {
-//         if (this.readyState == 4) {
-//             if (this.status == 200) {
-//                 destinacijeAgencije = [];
-//                 destinacijeTrenutne = JSON.parse(zahtev.responseText);
-//                 for (var id in destinacijeTrenutne) {
-//                     var destinacija = destinacijeTrenutne[id];
-//                     if(destinacija.naziv.toUpperCase().includes(string)){
-//                         jeste[0] = true;
-//                         console.log(destinacija.naziv.toUpperCase());
-//                         break;
-//                     }
+    zahtev.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                destinacijeTrenutne = JSON.parse(zahtev.responseText);
+                for (var id in destinacijeTrenutne) {
+                    var destinacija = destinacijeTrenutne[id];
+                    if(destinacija.naziv.toUpperCase().includes(string)){
+                        jeste[0] = true;
+                        console.log(destinacija.naziv.toUpperCase());
+                        break;
+                    }
                     
-//                 }
-//             } else {
-//                 window.open("../stranice_glavne/greska.html", "_self");
-//             }
-//         }
+                }
+            } else {
+                window.open("../stranice_glavne/greska.html", "_self");
+            }
+        }
         
-//     }
-//     zahtev.open('GET', url + '/destinacije/'+grupaDestinacija  + '.json');
-//     zahtev.send();  
-// }
+    }
+    zahtev.open('GET', url + '/destinacije/'+grupaDestinacija  + '.json');
+    zahtev.send();  
+}
 
 
 

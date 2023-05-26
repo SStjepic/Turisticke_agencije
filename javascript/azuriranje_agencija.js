@@ -65,8 +65,8 @@ function popuniTabeluAgencijama(){
         var godina = document.createElement("td");
         godina.innerHTML = sveAgencije[id].godina;
         var opcije = document.createElement("td");
-        var dugme1 = napraviDugmeZaIzmenu(sveAgencije[id].naziv);
-        var dugme2 = napraviDugmeZaBrisanje(sveAgencije[id].naziv);
+        var dugme1 = napraviDugmeZaIzmenu();
+        var dugme2 = napraviDugmeZaBrisanje();
         opcije.appendChild(dugme1);
         opcije.appendChild(dugme2);
         red.appendChild(naziv);
@@ -81,29 +81,26 @@ function popuniTabeluAgencijama(){
     tabela.appendChild(telo);
     div.appendChild(tabela);
 }
-function napraviDugmeZaIzmenu(naziv) {
+function napraviDugmeZaIzmenu() {
     let dugme = document.createElement("button");
     dugme.type = "button";
     dugme.className = "green";
     dugme.setAttribute("data-bs-toggle","modal");
     dugme.setAttribute("data-bs-target","#prikaz_agencija");
     let i = document.createElement("i");
-    i.classList = "bi bi-database-fill-gear";
+    i.className = "bi bi-database-fill-gear";
     dugme.append(i);
     return dugme;
 }
-function napraviDugmeZaBrisanje(naziv) {
+function napraviDugmeZaBrisanje() {
     let dugme = document.createElement("button");
     dugme.type = "button";
     dugme.className = "red";
     dugme.setAttribute("data-bs-toggle","modal");
     dugme.setAttribute("data-bs-target","#potvrda");
     let i = document.createElement("i");
-    i.classList = "bi bi-database-fill-x";
+    i.className = "bi bi-database-fill-x";
     dugme.append(i);
     return dugme;
-}
-function napraviDugmeZaDodavanje(params) {
-    
 }
 

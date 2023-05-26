@@ -78,8 +78,8 @@ function popuniTabeluAgencijama(){
         var rodjendan = document.createElement("td");
         rodjendan.innerHTML = sviKorisnici[id].datumRodjenja;
         var opcije = document.createElement("td");
-        var dugme1 = napraviDugmeZaIzmenu(sviKorisnici[id].korisnickoIme);
-        var dugme2 = napraviDugmeZaBrisanje(sviKorisnici[id].korisnickoIme);
+        var dugme1 = napraviDugmeZaIzmenu();
+        var dugme2 = napraviDugmeZaBrisanje();
         opcije.appendChild(dugme1);
         opcije.appendChild(dugme2);
         red.appendChild(ime);
@@ -96,28 +96,25 @@ function popuniTabeluAgencijama(){
     tabela.appendChild(telo);
     div.appendChild(tabela);
 }
-function napraviDugmeZaIzmenu(naziv) {
+function napraviDugmeZaIzmenu() {
     let dugme = document.createElement("button");
     dugme.type = "button";
     dugme.className = "green";
     dugme.setAttribute("data-bs-toggle","modal");
     dugme.setAttribute("data-bs-target","#registracija");
     let i = document.createElement("i");
-    i.classList = "bi bi-person-fill-gear";
+    i.className = "bi bi-person-fill-gear";
     dugme.append(i);
     return dugme;
 }
-function napraviDugmeZaBrisanje(naziv) {
+function napraviDugmeZaBrisanje() {
     let dugme = document.createElement("button");
     dugme.type = "button";
     dugme.className = "red";
     dugme.setAttribute("data-bs-toggle","modal");
     dugme.setAttribute("data-bs-target","#potvrda");
     let i = document.createElement("i");
-    i.classList = "bi bi-person-fill-x";
+    i.className = "bi bi-person-fill-x";
     dugme.append(i);
     return dugme;
-}
-function napraviDugmeZaDodavanje(params) {
-    
 }
