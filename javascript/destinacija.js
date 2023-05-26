@@ -14,7 +14,7 @@ function ucitajIzBazeDestinaciju() {
                 console.log(trenutnaDestinacija)
                 prikaziDestinaciju()
             } else {
-                window.open("stranice_glavne/greska.html", "_self");
+                window.open("../stranice_glavne/greska.html", "_self");
             }
         }
     }
@@ -43,7 +43,7 @@ function prikaziDestinaciju() {
     p.innerHTML = "Prevoz: ".bold() + trenutnaDestinacija.prevoz;
     div.appendChild(p);
     p = document.createElement("p");
-    p.innerHTML = "Cena: ".bold() + trenutnaDestinacija.cena;
+    p.innerHTML = "Cena: ".bold() + trenutnaDestinacija.cena + " dinara";
     div.appendChild(p);
     p = document.createElement("p");
     p.innerHTML = "Maksimalan broj osoba: ".bold() + trenutnaDestinacija.maxOsoba;

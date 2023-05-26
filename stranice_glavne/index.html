@@ -40,14 +40,18 @@
                 <li><a href="#" data-bs-target="#registracija" data-bs-toggle="modal">REGISTRUJ SE</a></li>    
                 <li><a href="#" data-bs-target="#login" data-bs-toggle="modal">PRIJAVI SE</a></li>
                 <li>
-                    <div class="input-group">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-search"></i>
+                  </a>
+                  <ul class="dropdown-menu boja">
                     <div class="form-outline">
-                      <input type="search" id="form1" class="form-control" placeholder="Agencija/destinacije"/>
+                      <input type="search" id="agencija_1" class="form-control" placeholder="Agencija"/>
                     </div>
-                    <button type="button" class="btn btn-dark">
-                        <i class="bi bi-search"></i>
-                    </button>
+                    <br/>
+                    <div class="form-outline">
+                      <input type="search" id="destinacija_1" class="form-control" placeholder="Destinacije"/>
                     </div>
+                  </ul>
                 </li>
             </ul>
             
@@ -56,7 +60,7 @@
         <div class="meni-icon dropdown">
             <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 &#9776;
-              </a>
+            </a>
             <ul class="dropdown-menu boja">
                 <li><a class="dropdown-item text-dark fw-bold" href="index.html">TURISTIČKE AGENCIJE</a></li>
                 <li><a class="dropdown-item text-dark fw-bold" href="azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
@@ -65,14 +69,13 @@
                 <li><a class="dropdown-item text-dark fw-bold" href="#" data-bs-target="#registracija" data-bs-toggle="modal">REGISTRUJ SE</a></li> 
                 <li><a class="dropdown-item text-dark fw-bold" href="#" data-bs-target="#login" data-bs-toggle="modal">PRIJAVI SE</a></li>
                 <li>
-                    <div class="input-group">
-                    <div class="form-outline">
-                      <input type="search" id="form1" class="form-control" placeholder="Agencija/destinacije"/>
-                    </div>
-                    <button type="button" class="btn btn-dark">
-                        <i class="bi bi-search"></i>
-                    </button>
-                    </div>
+                  <div class="form-outline">
+                    <input type="search" id="agencija_2" class="form-control" placeholder="Agencija"/>
+                  </div>
+                  <br/>
+                  <div class="form-outline">
+                    <input type="search" id="destinacija_2" class="form-control" placeholder="Destinacije"/>
+                  </div>
                 </li>
               </ul>
         </div>

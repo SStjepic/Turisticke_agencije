@@ -7,6 +7,9 @@ table{
     margin-bottom: 2vh;
     
 }
+.sakri{
+    visibility: hidden;
+}
 main{
     margin: 0;
 }

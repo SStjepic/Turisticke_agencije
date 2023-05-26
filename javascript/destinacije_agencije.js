@@ -17,7 +17,7 @@ function ucitajIzBazeAgenciju() {
                 grupaDestinacija = trenutnaAgencija.destinacije;
                 ucitajIzBazeDestinaciju()
             } else {
-                window.open("stranice_glavne/greska.html", "_self");
+                window.open("../stranice_glavne/greska.html", "_self");
             }
         }
     }
@@ -40,11 +40,10 @@ function ucitajIzBazeDestinaciju() {
                 destinacije = JSON.parse(zahtev.responseText);
                 for (var id in destinacije) {
                     var destinacija = destinacije[id];
-                    console.log(destinacija);
                     sveDestinacije.push(destinacija);
                     destinacijeId.push(id);
                 }
-                prikaziDestinacije();
+                prikaziDestinacije(sveDestinacije);
             } else {
                 window.open("stranice_glavne/greska.html", "_self");
             }
@@ -54,10 +53,13 @@ function ucitajIzBazeDestinaciju() {
     zahtev.open('GET', url + '/destinacije/'+grupaDestinacija  + '.json');
     zahtev.send();  
 }
-
-function prikaziDestinacije() {
+/*
+    Funkcija koja kreira izgled stranice jedne agencije
+*/
+function prikaziDestinacije(sveDestinacije) {
     var naziv = trenutnaAgencija.naziv;
     var main = document.getElementsByTagName("main")[0];
+    main.innerHTML = " ";
     var h1 = document.createElement("h1");
     h1.innerText = naziv;
     h1.id = "turagen";
@@ -91,34 +93,33 @@ function prikaziDestinacije() {
 
     for(var id in sveDestinacije){
         var div_manji = document.createElement("div");
-        div_manji.id = trenutnaAgencija.destinacije +"/"+ destinacijeId[id];
-        div_manji.onclick = prikaziPojedinacnuDestinaciju;
+        let a = document.createElement("a");
+        a.href = "../destinacije/templejt_destinacija.html?id=" + trenutnaAgencija.destinacije +"/"+ destinacijeId[id] + "&agencija=" + trenutnaAgencija.naziv;
         var h2 = document.createElement("h2");
         h2.innerText = sveDestinacije[id].naziv;
-        div_manji.appendChild(h2);
+        a.appendChild(h2);
         var slika = document.createElement("img");
         slika.src = sveDestinacije[id].slike[0];
-        div_manji.appendChild(slika);
+        a.appendChild(slika);
         var div_tekst = document.createElement("div");
         div_tekst.className = "tekst";
         p_tag = document.createElement("p");
         p_tag.innerHTML ="Tip: ".bold() + sveDestinacije[id].prevoz;
         div_tekst.appendChild(p_tag);
         var p_tag_2 = document.createElement("p");
-        p_tag_2.innerHTML = "Cena: ".bold()+sveDestinacije[id].cena;
+        p_tag_2.innerHTML = "Cena: ".bold()+sveDestinacije[id].cena + " dinara";
         div_tekst.appendChild(p_tag_2);
-        div_manji.appendChild(div_tekst)
+        a.appendChild(div_tekst)
+        div_manji.appendChild(a);
         div_veliki.appendChild(div_manji)
     }
 
     main.appendChild(div_veliki)
     document.title = naziv;
 }
-function prikaziPojedinacnuDestinaciju() {
-    let objekat = this;
-    window.location.href = "../destinacije/templejt_destinacija.html?id=" + objekat.id + "&agencija=" + trenutnaAgencija.naziv;
-}
-
+/*
+    Funkcija koja dobavlja bilo koji paramtar iz URL-a
+ */
 function dobaviParametar(nazivParametra) {
     let location = decodeURI(window.location.toString());
     let index = location.indexOf("?") + 1;
@@ -130,8 +131,25 @@ function dobaviParametar(nazivParametra) {
       let pName = s[0];
       let pValue = s[1];
       if (pName == nazivParametra) {
-        console.log(pValue)
         return pValue;
       }
     }
-  }
+}
+var pretraga = []
+document.addEventListener("input", function(){
+    var unos_naziv = document.getElementById("naziv_1").value;
+    var unos_tip = document.getElementById("tip_1").value;
+    var unos_prevoz = document.getElementById("prevoz_1").value;
+    pretraga = [];
+    if(unos_naziv =="" && unos_tip =="" && unos_prevoz==""){
+        prikaziDestinacije(sveDestinacije);
+    }
+    else if(unos_naziv !="" || unos_tip !="" || unos_prevoz!=""){
+        for(var indeks in sveDestinacije){
+            if(((sveDestinacije[indeks].naziv.toUpperCase().includes(unos_naziv.toUpperCase()) && unos_naziv!="")||(unos_naziv ==""))&&((sveDestinacije[indeks].prevoz.toUpperCase().includes(unos_prevoz.toUpperCase()) && unos_prevoz!="")||(unos_prevoz==""))&&((sveDestinacije[indeks].tip.toUpperCase().includes(unos_tip.toUpperCase())&& unos_tip!="")||(unos_tip ==""))){
+                pretraga.push(sveDestinacije[indeks]);
+            }
+        }
+        prikaziDestinacije(pretraga);
+    }
+})

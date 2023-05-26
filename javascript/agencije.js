@@ -2,6 +2,9 @@ var url = "https://web-dizajn-d1716-default-rtdb.europe-west1.firebasedatabase.a
 var agencijeId = [];
 var sveAgencije = [];
 var agencije = {};
+
+
+
 document.addEventListener("DOMContentLoaded", ucitajIzBazeAgencije);
 function ucitajIzBazeAgencije() {
     var zahtev = new XMLHttpRequest();
@@ -15,9 +18,9 @@ function ucitajIzBazeAgencije() {
                     sveAgencije.push(agencija);
                     agencijeId.push(id);
                 }
-                popuniStranicuAgencijama();
+                popuniStranicuAgencijama(sveAgencije);
             } else {
-                window.open("stranice_glavne/greska.html", "_self");
+                window.open("../stranice_glavne/greska.html", "_self");
             }
         }
     }
@@ -26,36 +29,38 @@ function ucitajIzBazeAgencije() {
     zahtev.send();
 }
 
-function popuniStranicuAgencijama(){
+function popuniStranicuAgencijama(sveAgencije){
     var main = document.getElementsByTagName("main")[0];
+    main.innerHTML = " ";
     var div = document.createElement("div");
     div.className = "kontejner";
     for(var id in sveAgencije){
         var div_manji = document.createElement("div");
-        div_manji.setAttribute("id", agencijeId[id]);
         
         var h2 = document.createElement("h2");
-        h2.innerText = sveAgencije[id].naziv;
-        div_manji.appendChild(h2);
+        h2.innerHTML = sveAgencije[id].naziv;
+        let a = document.createElement("a");
+        a.href = "../turisticke_agencije/templejt_agencije.html?id="+agencijeId[id];
+        a.appendChild(h2);
         var slika = document.createElement("img");
         slika.src = sveAgencije[id].logo;
-        div_manji.appendChild(slika);
+        a.appendChild(slika);
+        let div_tekst = document.createElement("div");
+        div_tekst.className = "tekst";
         var p_tag = document.createElement("p");
         p_tag.innerHTML ="Broj telefona: ".bold() + sveAgencije[id].brojTelefona;
-        div_manji.appendChild(p_tag);
+        div_tekst.appendChild(p_tag);
         var p_tag_2 = document.createElement("p");
         p_tag_2.innerHTML = "Email adresa: ".bold()+sveAgencije[id].email;
-        div_manji.appendChild(p_tag_2);
-        div_manji.onclick = posaljiPodatke;
+        div_tekst.appendChild(p_tag_2);
+        a.appendChild(div_tekst);
+        div_manji.appendChild(a);
         div.appendChild(div_manji)
     }
     main.appendChild(div)
     
 }
-function posaljiPodatke() {
-    let objekat = this;
-    window.location.href = "../turisticke_agencije/templejt_agencije.html?id="+objekat.id;
-}
+
 function nadjiAgenciju(naziv) {
     for(var id in sveAgencije){
         if(sveAgencije[id] === naziv){
@@ -79,3 +84,83 @@ function dobaviIdAgencije(name) {
       }
     }
   }
+var pretraga = [];
+var jeste = [false];
+document.addEventListener("input", function () {
+    pretraga = [];
+    let unos_a1 = document.getElementById("agencija_1");
+    let unos_d1 = document.getElementById("destinacija_1");
+    if(unos_a1.value != "" || unos_d1 != ""){
+        pretraziPoAgenciji("agencija_1");
+        // pretraziPoDestinacijama("destinacija_1");
+    }
+})
+var pAgencija = {}
+function pretraziPoAgenciji(id_inputa) {
+    let unos = document.getElementById(id_inputa);
+    var string = unos.value;
+    for(let id in sveAgencije){
+        let naziv = sveAgencije[id].naziv;
+        if(naziv.toUpperCase().includes(string.toUpperCase())){
+            pretraga.push(sveAgencije[id]);
+        }
+    }
+    popuniStranicuAgencijama(pretraga);
+}
+
+
+
+
+// function pretraziPoDestinacijama(id_inputa) {
+//     let unos = document.getElementById(id_inputa);
+//     var string = unos.value.toUpperCase();
+//     if(string === ""){
+//         popuniStranicuAgencijama(pretraga);
+//     }
+//     else{
+//         for(var id in sveAgencije){
+//             ucitajIzBazeDestinaciju(sveAgencije[id].destinacije, string);
+//             console.log(sveAgencije[id].destinacije)
+//             console.log(jeste[0]);
+//             if(jeste[0] === true){
+//                 pretraga.push(sveAgencije[id].naziv);
+//                 jeste[0] = false;
+
+//             }
+            
+//         }
+//         popuniStranicuAgencijama(pretraga);
+//     }
+// }
+
+// function ucitajIzBazeDestinaciju(grupaDestinacija, string) {
+    
+//     let destinacijeTrenutne = {};
+//     var zahtev = new XMLHttpRequest();
+    
+//     zahtev.onreadystatechange = function () {
+//         if (this.readyState == 4) {
+//             if (this.status == 200) {
+//                 destinacijeAgencije = [];
+//                 destinacijeTrenutne = JSON.parse(zahtev.responseText);
+//                 for (var id in destinacijeTrenutne) {
+//                     var destinacija = destinacijeTrenutne[id];
+//                     if(destinacija.naziv.toUpperCase().includes(string)){
+//                         jeste[0] = true;
+//                         console.log(destinacija.naziv.toUpperCase());
+//                         break;
+//                     }
+                    
+//                 }
+//             } else {
+//                 window.open("../stranice_glavne/greska.html", "_self");
+//             }
+//         }
+        
+//     }
+//     zahtev.open('GET', url + '/destinacije/'+grupaDestinacija  + '.json');
+//     zahtev.send();  
+// }
+
+
+

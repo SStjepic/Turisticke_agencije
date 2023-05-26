@@ -16,7 +16,7 @@ function ucitajIzBazeKorisnike() {
                 }
                 popuniTabeluAgencijama();
             } else {
-                window.open("stranice_glavne/greska.html", "_self");
+                window.open("../stranice_glavne/greska.html", "_self");
             }
         }
     }
