@@ -9,10 +9,10 @@ function ucitajIzBazeAgencije() {
     zahtev.onreadystatechange = function () {
         if (this.readyState == 4) {
             if (this.status == 200) {
+                obrisiTabelu();
                 agencije = JSON.parse(zahtev.responseText);
                 for (var id in agencije) {
                     var agencija = agencije[id];
-                    console.log(agencija);
                     sveAgencije.push(agencija);
                     agencijeId.push(id);
                 }
@@ -27,7 +27,9 @@ function ucitajIzBazeAgencije() {
     zahtev.send();
 }
 function popuniTabeluAgencijama(){
-    var div = document.getElementsByClassName("responsive-tabel")[0];
+    var main = document.getElementsByTagName("main")[0];
+    var div = document.createElement("div");
+    div.className = "responsive-tabel";
     var tabela = document.createElement("table");
     var red = document.createElement("tr");
     var naziv = document.createElement("th");
@@ -66,7 +68,7 @@ function popuniTabeluAgencijama(){
         godina.innerHTML = sveAgencije[id].godina;
         var opcije = document.createElement("td");
         var dugme1 = napraviDugmeZaIzmenu();
-        var dugme2 = napraviDugmeZaBrisanje();
+        var dugme2 = napraviDugmeZaBrisanje(agencijeId[id]);
         opcije.appendChild(dugme1);
         opcije.appendChild(dugme2);
         red.appendChild(naziv);
@@ -80,8 +82,9 @@ function popuniTabeluAgencijama(){
     }
     tabela.appendChild(telo);
     div.appendChild(tabela);
+    main.appendChild(div);
 }
-function napraviDugmeZaIzmenu() {
+function napraviDugmeZaIzmenu(id) {
     let dugme = document.createElement("button");
     dugme.type = "button";
     dugme.className = "green";
@@ -92,7 +95,7 @@ function napraviDugmeZaIzmenu() {
     dugme.append(i);
     return dugme;
 }
-function napraviDugmeZaBrisanje() {
+function napraviDugmeZaBrisanje(id) {
     let dugme = document.createElement("button");
     dugme.type = "button";
     dugme.className = "red";
@@ -101,6 +104,40 @@ function napraviDugmeZaBrisanje() {
     let i = document.createElement("i");
     i.className = "bi bi-database-fill-x";
     dugme.append(i);
+    dugme.addEventListener("click", function(){
+        postaviParametar(id);
+    })
     return dugme;
+}
+
+function obrisiTabelu() {
+    let tabela = document.getElementsByClassName("responsive-tabel")[0];
+    if(tabela!= undefined){
+        tabela.parentNode.removeChild(tabela);
+    }
+}
+
+function postaviParametar(agencijaId) {
+    console.log(agencijaId);
+    let potvrda = document.getElementById("potvrda");
+    potvrda.addEventListener("click", function(){
+        obrisiAgenciju(agencijaId);
+    });
+}
+function obrisiAgenciju(id) {
+    let zahtev = new XMLHttpRequest();
+
+    zahtev.onreadystatechange = function () {
+        if (this.readyState == 4) {
+        if (this.status == 200) {
+            window.open("../stranice_glavne/azuriraj_agencije.html", "_self");
+        } else {
+            window.open("../stranice_glavne/greska.html", "_self");
+        }
+        }
+    };
+
+    zahtev.open("DELETE", url + "/agencije/" + id + ".json");
+    zahtev.send();
 }
 

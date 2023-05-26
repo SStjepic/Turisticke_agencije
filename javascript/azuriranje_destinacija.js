@@ -9,6 +9,7 @@ function ucitajIzBazeAgencije() {
     zahtev.onreadystatechange = function () {
         if (this.readyState == 4) {
             if (this.status == 200) {
+                obrisiTabelu();
                 agencije = JSON.parse(zahtev.responseText);
                 for (var id in agencije) {
                     var agencija = agencije[id];
@@ -39,11 +40,13 @@ function ucitajIzBazeDestinacije(naziv, naziv_agencije) {
         if (this.readyState == 4) {
             if (this.status == 200) {
                 var destinacijeAgencije = [];
+                var destinacijeAgencijeId = [];
                 trenutnaDestinacija = JSON.parse(zahtev.responseText);
                 for(var id in trenutnaDestinacija){
                     destinacijeAgencije.push(trenutnaDestinacija[id]);
+                    destinacijeAgencijeId.push(id);
                 }
-                popuniTabeluDestinacijama(naziv_agencije,destinacijeAgencije)
+                popuniTabeluDestinacijama(naziv_agencije,destinacijeAgencije, naziv,destinacijeAgencijeId)
             } else {
                 window.open("../stranice_glavne/greska.html", "_self");
             }
@@ -53,7 +56,7 @@ function ucitajIzBazeDestinacije(naziv, naziv_agencije) {
     zahtev.open('GET', url + '/destinacije/'+naziv+ '.json');
     zahtev.send();
 }
-function popuniTabeluDestinacijama(agencija_naziv,destinacijeAgencije){
+function popuniTabeluDestinacijama(agencija_naziv,destinacijeAgencije, grupa,destinacijeAgencijeId){
     var main = document.getElementsByTagName("main")[0];
     var div = document.createElement("div");
     div.className = "responsive-tabel";
@@ -62,7 +65,7 @@ function popuniTabeluDestinacijama(agencija_naziv,destinacijeAgencije){
     main.appendChild(h2);
     var lab = document.createElement("label");
     lab.innerHTML = "Dodaj novu destinaciju"
-    var dugme_dodaj  = napraviDugmeZaDodavanje();
+    var dugme_dodaj  = napraviDugmeZaDodavanje(naziv);
     main.appendChild(lab);
     main.appendChild(dugme_dodaj);
 
@@ -120,8 +123,8 @@ function popuniTabeluDestinacijama(agencija_naziv,destinacijeAgencije){
         }
         slike.appendChild(lista);
         var opcije = document.createElement("td");
-        var dugme1 = napraviDugmeZaIzmenu();
-        var dugme2 = napraviDugmeZaBrisanje();
+        var dugme1 = napraviDugmeZaIzmenu(grupa+"/"+destinacijeAgencijeId[id]);
+        var dugme2 = napraviDugmeZaBrisanje(grupa+"/"+destinacijeAgencijeId[id]);
         opcije.appendChild(dugme1);
         opcije.appendChild(dugme2);
         red.appendChild(naziv);
@@ -140,7 +143,7 @@ function popuniTabeluDestinacijama(agencija_naziv,destinacijeAgencije){
     main.appendChild(div);
 }
 
-function napraviDugmeZaIzmenu() {
+function napraviDugmeZaIzmenu(grupa) {
     let dugme = document.createElement("button");
     dugme.type = "button";
     dugme.className = "green";
@@ -151,7 +154,7 @@ function napraviDugmeZaIzmenu() {
     dugme.append(i);
     return dugme;
 }
-function napraviDugmeZaBrisanje() {
+function napraviDugmeZaBrisanje(grupa) {
     let dugme = document.createElement("button");
     dugme.type = "button";
     dugme.className = "red";
@@ -160,10 +163,13 @@ function napraviDugmeZaBrisanje() {
     let i = document.createElement("i");
     i.className = "bi bi-database-fill-x";
     dugme.append(i);
+    dugme.addEventListener("click", function(){
+        postaviParametar(grupa);
+    });
     return dugme;
 }
 
-function napraviDugmeZaDodavanje() {
+function napraviDugmeZaDodavanje(grupa) {
     let dugme = document.createElement("button");
     dugme.type = "button";
     dugme.className = "dodaj";
@@ -173,4 +179,34 @@ function napraviDugmeZaDodavanje() {
     i.className = "bi bi-database-fill-add";
     dugme.append(i);
     return dugme;
+}
+
+function obrisiTabelu() {
+    let tabela = document.getElementsByClassName("responsive-tabel")[0];
+    if(tabela!= undefined){
+        tabela.parentNode.removeChild(tabela);
+    }
+}
+
+function postaviParametar(destinacijaId) {
+    let potvrda = document.getElementById("potvrda");
+    potvrda.addEventListener("click", function(){
+        obrisiDestinaciju(destinacijaId);
+    });
+}
+function obrisiDestinaciju(id) {
+    let zahtev = new XMLHttpRequest();
+
+    zahtev.onreadystatechange = function () {
+        if (this.readyState == 4) {
+        if (this.status == 200) {
+            window.open("../stranice_glavne/azuriranje_destinacija.html", "_self");
+        } else {
+            window.open("../stranice_glavne/greska.html", "_self");
+        }
+        }
+    };
+
+    zahtev.open("DELETE", url + "/destinacije/" + id + ".json");
+    zahtev.send();
 }

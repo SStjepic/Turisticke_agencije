@@ -1,5 +1,6 @@
 var url = "https://web-dizajn-d1716-default-rtdb.europe-west1.firebasedatabase.app";
 var sviKorisnici = [];
+var korisniciId = [];
 var korisnici = {};
 document.addEventListener("DOMContentLoaded", ucitajIzBazeKorisnike);
 function ucitajIzBazeKorisnike() {
@@ -8,10 +9,11 @@ function ucitajIzBazeKorisnike() {
     zahtev.onreadystatechange = function () {
         if (this.readyState == 4) {
             if (this.status == 200) {
+                obrisiTabelu();
                 korisnici = JSON.parse(zahtev.responseText);
                 for (var id in korisnici) {
                     var korisnik = korisnici[id];
-                    console.log(korisnik);
+                    korisniciId.push(id);
                     sviKorisnici.push(korisnik);
                 }
                 popuniTabeluAgencijama();
@@ -24,8 +26,17 @@ function ucitajIzBazeKorisnike() {
     zahtev.open('GET', url + '/korisnici/' + '.json');
     zahtev.send();
 }
+function obrisiTabelu() {
+    let tabela = document.getElementsByClassName("responsive-tabel")[0];
+    if(tabela!= undefined){
+        tabela.parentNode.removeChild(tabela);
+    }
+    
+}
 function popuniTabeluAgencijama(){
-    var div = document.getElementsByClassName("responsive-tabel")[0];
+    var main = document.getElementsByTagName("main")[0];
+    var div = document.createElement("div");
+    div.className = "responsive-tabel";
     var tabela = document.createElement("table");
     var red = document.createElement("tr");
     var ime = document.createElement("th");
@@ -78,8 +89,8 @@ function popuniTabeluAgencijama(){
         var rodjendan = document.createElement("td");
         rodjendan.innerHTML = sviKorisnici[id].datumRodjenja;
         var opcije = document.createElement("td");
-        var dugme1 = napraviDugmeZaIzmenu();
-        var dugme2 = napraviDugmeZaBrisanje();
+        var dugme1 = napraviDugmeZaIzmenu(korisniciId[id]);
+        var dugme2 = napraviDugmeZaBrisanje(korisniciId[id]);
         opcije.appendChild(dugme1);
         opcije.appendChild(dugme2);
         red.appendChild(ime);
@@ -95,8 +106,9 @@ function popuniTabeluAgencijama(){
     }
     tabela.appendChild(telo);
     div.appendChild(tabela);
+    main.appendChild(div);
 }
-function napraviDugmeZaIzmenu() {
+function napraviDugmeZaIzmenu(korisnikId) {
     let dugme = document.createElement("button");
     dugme.type = "button";
     dugme.className = "green";
@@ -107,7 +119,7 @@ function napraviDugmeZaIzmenu() {
     dugme.append(i);
     return dugme;
 }
-function napraviDugmeZaBrisanje() {
+function napraviDugmeZaBrisanje(korisnikId) {
     let dugme = document.createElement("button");
     dugme.type = "button";
     dugme.className = "red";
@@ -116,5 +128,69 @@ function napraviDugmeZaBrisanje() {
     let i = document.createElement("i");
     i.className = "bi bi-person-fill-x";
     dugme.append(i);
+    dugme.addEventListener("click",function(){
+        postaviParametar(korisnikId);
+    });
     return dugme;
+}
+
+function registrujKorisnika() {
+
+    let ime = document.getElementById("ime").value;
+    let prezime = document.getElementById("prezime").value;
+    let korisnickoIme = document.getElementById("korIme").value;
+    let sifra = document.getElementById("sifra").value;
+    let mejl = document.getElementById("mejl").value;
+    let adresa = document.getElementById("adresa").value;
+    let grad = document.getElementById("grad").value;
+    let brojTelefona = document.getElementById("telefon").value;
+    let rodjendan = document.getElementById("rodjendan").value;
+    console.log(grad)
+    let adresaStanovanja = adresa+","+grad.split(" ")[0]+","+grad.split(" ")[1];
+    var korisnik ={
+        adresa: adresaStanovanja,
+        datumRodjenja: rodjendan,
+        email: mejl,
+        ime: ime,
+        korisnickoIme: korisnickoIme,
+        lozinka: sifra,
+        prezime: prezime,
+        telefon: brojTelefona
+    }
+
+    let zahtev = new XMLHttpRequest();
+    zahtev.onreadystatechange = function (e) {
+        if (this.readyState == 4) {
+          if (this.status == 200) {
+            window.location.href = "../stranice_glavne/index.html";
+            console.log("Uspesno")
+          } else {
+            window.open("../stranice_glavne/greska.html", "_self");
+          }
+        }
+      };
+    zahtev.open("PUT", url + "/korisnici/" + ".json");
+    zahtev.send(JSON.stringify(korisnik));
+}
+function postaviParametar(korisnikId) {
+    let potvrda = document.getElementById("potvrdaBrisanje");
+    potvrda.addEventListener("click", function(){
+        obrisiKorisnika(korisnikId);
+    });
+}
+function obrisiKorisnika(id ) {
+    let zahtev = new XMLHttpRequest();
+
+    zahtev.onreadystatechange = function () {
+        if (this.readyState == 4) {
+        if (this.status == 200) {
+            window.open("../stranice_glavne/azuriranje_korisnici.html", "_self");
+        } else {
+            window.open("../stranice_glavne/greska.html", "_self");
+        }
+        }
+    };
+
+    zahtev.open("DELETE", url + "/korisnici/" + id + ".json");
+    zahtev.send();
 }

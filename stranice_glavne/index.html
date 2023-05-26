@@ -89,14 +89,19 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body boja_body text-center">
-              <form name="login" >
-                <label for="korisnicko_ime" >Korisnicko ime: </label>
-                <br/>
-                <input type="text" name="korisnicko_ime"  />
-                <br/>
-                <label for="lozinka" >Lozinka:</label>
-                <br/>
-                <input type="password" name="lozinka"  />
+              <form class="was-validated">
+                <div class="mb-3 mt-3">
+                  <label for="uname" class="form-label">Korisničko:</label>
+                  <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+                  <div class="valid-feedback">Validno korisničko ime</div>
+                  <div class="invalid-feedback">Niste dobro uneli korisničko ime</div>
+                </div>
+                <div class="mb-3">
+                  <label for="pwd" class="form-label">Lozinka:</label>
+                  <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                  <div class="valid-feedback">Validna lozinka</div>
+                  <div class="invalid-feedback">Niste dobro uneli lozinku</div>
+                </div>
               </form>
             </div>
             <div class="modal-footer boja_footer">
@@ -116,47 +121,66 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body boja_body text-center">
-              <form name="login" >
-                <label for="ime" >Ime: </label>
-                <br/>
-                <input type="text" name="ime"/>
-                <br/>
-                <label for="prezime" >Prezime: </label>
-                <br/>
-                <input type="text" name="prezime"/>
-                <br/>
-                <label for="korisnicko_ime" >Korisnicko ime: </label>
-                <br/>
-                <input type="text" name="korisnicko_ime"  />
-                <br/>
-                <label for="lozinka" >Lozinka:</label>
-                <br/>
-                <input type="password" name="lozinka"  />
-                <br/>
-                <label for="mejl" >Email:</label>
-                <br/>
-                <input type="email" name="mejl"  />
-                <br/>
-                <label for="adresa" >Adresa stanovanja:</label>
-                <br/>
-                <input type="text" name="adresa"  />
-                <br/>
-                <label for="grad" >Grad:</label>
-                <br/>
-                <input type="text" name="grad"  />
-                <br/>
-                <label for="telefon" >Broj telefona:</label>
-                <br/>
-                <input type="text" name="telefon"  />
-                <br/>
-                <label for="rodjendan" >Datum rodjenja:</label>
-                <br/>
-                <input type="date" name="rodjendan"  />
+              <form class="was-validated" id="formaRegistracija">
+                <div class="mb-3">
+                  <label for="ime" class="form-label">Ime:</label>
+                  <input type="text" class="form-control" id="ime" placeholder="Unesite ime" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="prezime" class="form-label">Prezime:</label>
+                  <input type="text" class="form-control" id="prezime" placeholder="Unesite prezime" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="korIme" class="form-label">Korisničko:</label>
+                  <input type="text" class="form-control" id="korIme" placeholder="Unesite korisničko ime" name="uname" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="pwd" class="form-label">Lozinka:</label>
+                  <input type="password" class="form-control" id="sifra" placeholder="Unesite lozinku" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="mejl" class="form-label">Email:</label>
+                  <input type="email" class="form-control" id="mejl" placeholder="Unesite email" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="adresa" class="form-label">Adresa stanovanja:</label>
+                  <input type="text" class="form-control" id="adresa" placeholder="Unesite adresu stanovanja" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="grad" class="form-label">Grad:</label>
+                  <input type="text" class="form-control" id="grad" placeholder="Unesite grad i broj" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="telefon" class="form-label">Broj telefona:</label>
+                  <input type="text" class="form-control" id="telefon" placeholder="xxx/xxx-xxxx" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="rodjendan" class="form-label">Datum rodjenja:</label>
+                  <input type="date" class="form-control" id="rodjendan" placeholder="Unesite email" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
               </form>
             </div>
             <div class="modal-footer boja_footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
-              <button type="button" class="btn btn-primary">Potvrdi</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Odbaci</button>
+              <button type="submit" class="btn btn-primary" onclick="registrujKorisnika()">Potvrdi</button>
             </div>
           </div>
         </div>
