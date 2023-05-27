@@ -117,6 +117,10 @@ function napraviDugmeZaIzmenu(korisnikId) {
     let i = document.createElement("i");
     i.className = "bi bi-person-fill-gear";
     dugme.append(i);
+    dugme.addEventListener("click",function(){
+        postaviParametarIzmena(korisnikId);
+        promeniNaziv("Ažurirajte podatke o korisniku");
+    });
     return dugme;
 }
 function napraviDugmeZaBrisanje(korisnikId) {
@@ -134,8 +138,62 @@ function napraviDugmeZaBrisanje(korisnikId) {
     return dugme;
 }
 
-function registrujKorisnika() {
 
+function postaviParametar(korisnikId) {
+    let potvrda = document.getElementById("potvrdaBrisanje");
+    potvrda.addEventListener("click", function(){
+        obrisiKorisnika(korisnikId);
+    });
+}
+function nadjiKorisnikovID(korisnikId) {
+    for(let index in sviKorisnici){
+        if(korisniciId[index] === korisnikId){
+            return index;
+        }
+    }
+}
+function postaviParametarIzmena(id){
+    let korisnikId = nadjiKorisnikovID(id);
+    
+    let ime = document.getElementById("ime");
+    ime.value = sviKorisnici[korisnikId].ime;
+    let prezime = document.getElementById("prezime");
+    prezime.value = sviKorisnici[korisnikId].prezime;
+    let korisnickoIme = document.getElementById("korIme");
+    korisnickoIme.value = sviKorisnici[korisnikId].korisnickoIme;
+    let sifra = document.getElementById("sifra");
+    sifra.value = sviKorisnici[korisnikId].lozinka;
+    let mejl = document.getElementById("mejl");
+    mejl.value = sviKorisnici[korisnikId].email;
+    let adresa = document.getElementById("adresa");
+    let grad = document.getElementById("grad");
+    grad.value = sviKorisnici[korisnikId].adresa.split(", ")[1] +" "+ sviKorisnici[korisnikId].adresa.split(", ")[2]
+    adresa.value = sviKorisnici[korisnikId].adresa.split(", ")[0];
+    let brojTelefona = document.getElementById("telefon");
+    brojTelefona.value = sviKorisnici[korisnikId].telefon;
+    let rodjendan = document.getElementById("rodjendan");
+    rodjendan.value = sviKorisnici[korisnikId].datumRodjenja;
+    napraviDugmeZaPotvrdu();
+    let potvrda = document.getElementById("potvrdaRegAzu");
+    potvrda.addEventListener("click", function(){
+        azurirajKorisnika(id);
+    });
+    console.log(potvrda)
+}
+function napraviDugmeZaPotvrdu() {
+    let potvrda = document.getElementById("potvrdaRegAzu");
+    potvrda.remove();
+
+    let dugme = document.createElement("button");
+    dugme.type = "submit";
+    dugme.className = "btn btn-primary";
+    dugme.id="potvrdaRegAzu";
+    dugme.innerHTML = "Potvrdi";
+    let main = document.getElementById("dugmiciOpcije");
+    main.appendChild(dugme);
+}
+function azurirajKorisnika(id) {
+    
     let ime = document.getElementById("ime").value;
     let prezime = document.getElementById("prezime").value;
     let korisnickoIme = document.getElementById("korIme").value;
@@ -145,8 +203,8 @@ function registrujKorisnika() {
     let grad = document.getElementById("grad").value;
     let brojTelefona = document.getElementById("telefon").value;
     let rodjendan = document.getElementById("rodjendan").value;
-    console.log(grad)
-    let adresaStanovanja = adresa+","+grad.split(" ")[0]+","+grad.split(" ")[1];
+    let adresaStanovanja = adresa+", "+grad.split(" ")[0]+", "+grad.split(" ")[1];
+    console.log(adresaStanovanja);
     var korisnik ={
         adresa: adresaStanovanja,
         datumRodjenja: rodjendan,
@@ -169,16 +227,10 @@ function registrujKorisnika() {
           }
         }
       };
-    zahtev.open("POST", url + "/korisnici/" + ".json");
+    zahtev.open("PUT", url + "/korisnici/"+id + ".json");
     zahtev.send(JSON.stringify(korisnik));
 }
-function postaviParametar(korisnikId) {
-    let potvrda = document.getElementById("potvrdaBrisanje");
-    potvrda.addEventListener("click", function(){
-        obrisiKorisnika(korisnikId);
-    });
-}
-function obrisiKorisnika(id ) {
+function obrisiKorisnika(id) {
     let zahtev = new XMLHttpRequest();
 
     zahtev.onreadystatechange = function () {
@@ -193,4 +245,8 @@ function obrisiKorisnika(id ) {
 
     zahtev.open("DELETE", url + "/korisnici/" + id + ".json");
     zahtev.send();
+}
+
+function izmeniKorisnika(id){
+
 }
