@@ -162,14 +162,14 @@ function registrujKorisnika() {
     zahtev.onreadystatechange = function (e) {
         if (this.readyState == 4) {
           if (this.status == 200) {
-            window.location.href = "../stranice_glavne/index.html";
+            window.location.href = "../stranice_glavne/azuriranje_korisnici.html";
             console.log("Uspesno")
           } else {
             window.open("../stranice_glavne/greska.html", "_self");
           }
         }
       };
-    zahtev.open("PUT", url + "/korisnici/" + ".json");
+    zahtev.open("POST", url + "/korisnici/" + ".json");
     zahtev.send(JSON.stringify(korisnik));
 }
 function postaviParametar(korisnikId) {
