@@ -65,9 +65,10 @@ function popuniTabeluDestinacijama(agencija_naziv,destinacijeAgencije, grupa,des
     main.appendChild(h2);
     var lab = document.createElement("label");
     lab.innerHTML = "Dodaj novu destinaciju"
-    var dugme_dodaj  = napraviDugmeZaDodavanje(naziv);
+    var dugme_dodaj  = napraviDugmeZaDodavanje(grupa);
     main.appendChild(lab);
     main.appendChild(dugme_dodaj);
+
 
 
     var tabela = document.createElement("table");
@@ -98,52 +99,55 @@ function popuniTabeluDestinacijama(agencija_naziv,destinacijeAgencije, grupa,des
     red.appendChild(opcije);
     tabela.appendChild(red);
 
-    var telo = document.createElement("tbody");
+    if(grupa!=[]){
+        var telo = document.createElement("tbody");
 
-    for(var id in destinacijeAgencije){
-        var red = document.createElement("tr");
-        var naziv = document.createElement("td");
-        naziv.innerHTML = destinacijeAgencije[id].naziv;
-        var tip = document.createElement("td");
-        tip.innerHTML = destinacijeAgencije[id].tip;
-        var prevoz = document.createElement("td");
-        prevoz.innerHTML = destinacijeAgencije[id].prevoz;
-        var cena = document.createElement("td");
-        cena.innerHTML = destinacijeAgencije[id].cena + " dinara";
-        var maxOsoba = document.createElement("td");
-        maxOsoba.innerHTML = destinacijeAgencije[id].maxOsoba;
-        var opis = document.createElement("td");
-        opis.innerHTML = destinacijeAgencije[id].opis;
-        var slike = document.createElement("td");
-        var lista = document.createElement("ol");
-        for(var indeks in destinacijeAgencije[id].slike){
-            var stavka = document.createElement("li");
-            stavka.innerHTML = destinacijeAgencije[id].slike[indeks];
-            lista.appendChild(stavka);
+        for(var id in destinacijeAgencije){
+            var red = document.createElement("tr");
+            var naziv = document.createElement("td");
+            naziv.innerHTML = destinacijeAgencije[id].naziv;
+            var tip = document.createElement("td");
+            tip.innerHTML = destinacijeAgencije[id].tip;
+            var prevoz = document.createElement("td");
+            prevoz.innerHTML = destinacijeAgencije[id].prevoz;
+            var cena = document.createElement("td");
+            cena.innerHTML = destinacijeAgencije[id].cena + " dinara";
+            var maxOsoba = document.createElement("td");
+            maxOsoba.innerHTML = destinacijeAgencije[id].maxOsoba;
+            var opis = document.createElement("td");
+            opis.innerHTML = destinacijeAgencije[id].opis;
+            var slike = document.createElement("td");
+            var lista = document.createElement("ol");
+            for(var indeks in destinacijeAgencije[id].slike){
+                var stavka = document.createElement("li");
+                stavka.innerHTML = destinacijeAgencije[id].slike[indeks];
+                lista.appendChild(stavka);
+            }
+            slike.appendChild(lista);
+            var opcije = document.createElement("td");
+            var dugme1 = napraviDugmeZaIzmenu(grupa+"/"+destinacijeAgencijeId[id]);
+            var dugme2 = napraviDugmeZaBrisanje(grupa+"/"+destinacijeAgencijeId[id]);
+            opcije.appendChild(dugme1);
+            opcije.appendChild(dugme2);
+            red.appendChild(naziv);
+            red.appendChild(tip);
+            red.appendChild(prevoz);
+            red.appendChild(cena);
+            red.appendChild(maxOsoba);
+            red.appendChild(opis);
+            red.appendChild(slike);
+            red.appendChild(opcije);
+            telo.appendChild(red);
+            
         }
-        slike.appendChild(lista);
-        var opcije = document.createElement("td");
-        var dugme1 = napraviDugmeZaIzmenu(grupa+"/"+destinacijeAgencijeId[id]);
-        var dugme2 = napraviDugmeZaBrisanje(grupa+"/"+destinacijeAgencijeId[id]);
-        opcije.appendChild(dugme1);
-        opcije.appendChild(dugme2);
-        red.appendChild(naziv);
-        red.appendChild(tip);
-        red.appendChild(prevoz);
-        red.appendChild(cena);
-        red.appendChild(maxOsoba);
-        red.appendChild(opis);
-        red.appendChild(slike);
-        red.appendChild(opcije);
-        telo.appendChild(red);
-        
+        tabela.appendChild(telo);
     }
-    tabela.appendChild(telo);
     div.appendChild(tabela);
     main.appendChild(div);
+
 }
 
-function napraviDugmeZaIzmenu(grupa) {
+function napraviDugmeZaIzmenu(id) {
     let dugme = document.createElement("button");
     dugme.type = "button";
     dugme.className = "green";
@@ -152,6 +156,10 @@ function napraviDugmeZaIzmenu(grupa) {
     let i = document.createElement("i");
     i.className = "bi bi-database-fill-gear";
     dugme.append(i);
+    dugme.addEventListener("click",function(){
+        ucitajIzBazeDestinaciju(id);
+        promeniNaziv("Ažurirajte podatke o destinaciji", "prikazi_destinacijuLabel");
+    });
     return dugme;
 }
 function napraviDugmeZaBrisanje(grupa) {
@@ -178,6 +186,9 @@ function napraviDugmeZaDodavanje(grupa) {
     let i = document.createElement("i");
     i.className = "bi bi-database-fill-add";
     dugme.append(i);
+    dugme.addEventListener("click", function(){
+        postaviParametarZaDodavanje(grupa);
+    });
     return dugme;
 }
 
@@ -209,4 +220,161 @@ function obrisiDestinaciju(id) {
 
     zahtev.open("DELETE", url + "/destinacije/" + id + ".json");
     zahtev.send();
+}
+function postaviParametarZaDodavanje(grupa) {
+    let potvrda = document.getElementById("potvrdaDestinacije");
+    potvrda.addEventListener("click", function(){
+        dodajDestinaciju(grupa);
+    });
+}  
+/*
+    Funkcija za dodavanje destinacije agenciji
+ */
+function dodajDestinaciju(grupaDestinacija) {
+    let naziv = document.getElementById("naziv").value;
+    let cena = document.getElementById("cena").value;
+    let prevoz = document.getElementById("prevoz").value;
+    let maxOsoba = document.getElementById("maxOsoba").value;
+    let opis = document.getElementById("opis").value;
+    let slika = document.getElementsByClassName("slika")[0].value;
+    let slikaLista = []
+    slikaLista.push(slika);
+    let tip = document.getElementById("tip").value;
+    var destinacija ={
+        cena:cena,
+        maxOsoba: maxOsoba,
+        naziv:naziv,
+        opis:opis,
+        prevoz:prevoz,
+        slike:slikaLista,
+        tip: tip
+    }
+
+    let zahtev = new XMLHttpRequest();
+    zahtev.onreadystatechange = function (e) {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+            window.location.reload();
+            console.log("Uspesno")
+            } else {
+            window.open("../stranice_glavne/greska.html", "_self");
+            }
+        }
+        };
+    let urlDestinacije = grupaDestinacija;
+    if(urlDestinacije === ""){
+        zahtev.open("POST", url + "/destinacije/" + ".json");
+        zahtev.send(JSON.stringify(destinacija));
+    }
+    else{
+        zahtev.open("POST", url + "/destinacije/"+ urlDestinacije + ".json");
+        zahtev.send(JSON.stringify(destinacija));
+    }
+    
+}
+let destinacija = {}
+function ucitajIzBazeDestinaciju(destinacijaId) {
+    var zahtev = new XMLHttpRequest();
+    
+    zahtev.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                destinacija = JSON.parse(zahtev.responseText);
+                postaviParametarIzmena(destinacijaId)
+                
+            } else {
+                window.open("../stranice_glavne/greska.html", "_self");
+            }
+        }
+    }
+
+    zahtev.open('GET', url + '/destinacije/'+destinacijaId+ '.json');
+    zahtev.send();
+}
+
+function postaviParametarIzmena(destinacijaId) {
+    var konkretnaDestinacija = destinacija;
+
+    let naziv = document.getElementById("naziv");
+    naziv.value = konkretnaDestinacija.naziv;
+    let cena = document.getElementById("cena");
+    cena.value = konkretnaDestinacija.cena;
+    let prevoz = document.getElementById("prevoz");
+    prevoz.value  =konkretnaDestinacija.prevoz;
+    let maxOsoba = document.getElementById("maxOsoba");
+    maxOsoba.value = konkretnaDestinacija.maxOsoba;
+    let opis = document.getElementById("opis");
+    opis.value = konkretnaDestinacija.opis
+    let zaBrisanje = document.getElementsByClassName("slika");
+    zaBrisanje[0].remove();
+    let slika = konkretnaDestinacija.slike
+    for(let index in slika){
+        let div = document.getElementById("slike");
+        let unos = document.createElement("input");
+        unos.type = "url";
+        unos.className = "form-control slika";
+        unos.placeholder = "Unesite url slike destinacije";
+        unos.value = slika[index];
+        unos.style.display="block"
+        div.appendChild(unos);
+    }
+    let tip = document.getElementById("tip");
+    tip.value = konkretnaDestinacija.tip;
+    napraviDugmeZaPotvrdu();
+    let potvrda = document.getElementById("potvrdaDestinacije");
+    potvrda.addEventListener("click", function(){
+        azurirajDestinaciju(destinacijaId);
+    });
+}
+function napraviDugmeZaPotvrdu() {
+    let potvrda = document.getElementById("potvrdaDestinacije");
+    potvrda.remove();
+
+    let dugme = document.createElement("button");
+    dugme.type = "button";
+    dugme.className = "btn btn-primary";
+    dugme.id="potvrdaDestinacije";
+    dugme.innerHTML = "Potvrdi";
+    let main = document.getElementById("dugmiciOpcije");
+    main.appendChild(dugme);
+}
+/*
+    Funkcija za ažuriranje agencije
+ */
+function azurirajDestinaciju(id) {
+
+    let naziv = document.getElementById("naziv").value;
+    let cena = document.getElementById("cena").value;
+    let prevoz = document.getElementById("prevoz").value;
+    let maxOsoba = document.getElementById("maxOsoba").value;
+    let opis = document.getElementById("opis").value;
+    let slika = document.getElementsByClassName("slika");
+    let slikaLista = []
+    for(let i in slika){
+        slikaLista.push(slika[i].value)
+    }
+    
+    let tip = document.getElementById("tip").value;
+    var destinacija ={
+        cena:cena,
+        maxOsoba: maxOsoba,
+        naziv:naziv,
+        opis:opis,
+        prevoz:prevoz,
+        slike:slikaLista,
+        tip: tip
+    }
+    let zahtev = new XMLHttpRequest();
+    zahtev.onreadystatechange = function (e) {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+            window.location.reload();
+            console.log("Uspesno")
+            } else {
+            window.open("../stranice_glavne/greska.html", "_self");
+            }
+        }
+        };
+    zahtev.open("PUT", url + "/destinacije/"+id + ".json");
+    zahtev.send(JSON.stringify(destinacija));
 }

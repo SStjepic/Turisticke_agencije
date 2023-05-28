@@ -215,7 +215,7 @@ function postaviParametarIzmena(agencijaId) {
     napraviDugmeZaPotvrdu();
     let potvrda = document.getElementById("potvrdaAgencije");
     potvrda.addEventListener("click", function(){
-        registrujAgenciju(sveAgencije[id].destinacije, agencijaId);
+        azurirajAgenciju(sveAgencije[id].destinacije, agencijaId);
     });
 }
 
@@ -235,7 +235,7 @@ function napraviDugmeZaPotvrdu() {
 /*
     Funkcija za ažuriranje agencije
  */
-function registrujAgenciju(destinacije, id) {
+function azurirajAgenciju(destinacije, id) {
 
     let naziv = document.getElementById("naziv").value;
     let mejl = document.getElementById("email").value;

@@ -65,43 +65,56 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header boja">
-              <h1 class="modal-title fs-5" id="prikazi_destinacijuLabel">Dodaj turisticku agenciju</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h1 class="modal-title fs-5" id="prikazi_destinacijuLabel">Dodaj turisticku destinaciju</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="isprazniFormu()"></button>
             </div>
             <div class="modal-body boja_body text-center">
               <form name="prikazi_destinaciju" >
-                <label for="naziv" >Naziv turističke destinacije: </label>
-                <br/>
-                <input type="text" name="naziv"  />
-                <br/>
-                <label for="tip" >Tip putovanja:</label>
-                <br/>
-                <input type="text" name="tip"  />
-                <br/>
-                <label for="prevoz" >Vrsta prevoza:</label>
-                <br/>
-                <input type="text" name="prevoz"  />
-                <br/>
-                <label for="cena" >Cena:</label>
-                <br/>
-                <input type="number" name="cena"  />
-                <br/>
-                <label for="maxOsoba" >Maksimalan broj osoba: </label>
-                <br/>
-                <input type="number" name="maxOsoba"/>
-                <br/>
-                <label for="opis" >Opis turističke destinacije:</label>
-                <br/>
-                <textarea name="opis" cols="50" rows="5"></textarea>
-                <br/>
-                <label for="slike" >Slike:</label>
-                <br/>
-                <input type="url" name="slike"  placeholder="url fotografije" onclick="dodajSliku()"/>
+                <div class="mb-3">
+                  <label for="naziv" class="form-label">Naziv turističke destinacije:</label>
+                  <input type="text" class="form-control" id="naziv" placeholder="Unesite naziv turističke destinacije" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="tip" class="form-label">Tip odmora:</label>
+                  <input type="text" class="form-control" id="tip" placeholder="Unesite tip odmora" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="cena" class="form-label">Cena:</label>
+                  <input type="number" class="form-control" id="cena" placeholder="Unesite cenu u dinarima" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="prevoz" class="form-label">Vrsta prevoza:</label>
+                  <input type="text" class="form-control" id="prevoz" placeholder="Unesite vrstu prevoza" name="uname" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="maxOsoba" class="form-label">Maksimalan broj osoba:</label>
+                  <input type="number" class="form-control" id="maxOsoba" placeholder="Unesite maksimalan broj osoba" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="opis" class="form-label">Opis:</label>
+                  <textarea id="opis" placeholder="Unesite opis destinacije" cols="55" rows="6"></textarea>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3" id="slike">
+                  <label for="slika" class="form-label">Slike:</label>
+                  <input type="url" class="form-control slika" placeholder="Unesite url slike destinacije">
+                </div>
               </form>
             </div>
-            <div class="modal-footer boja_footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
-              <button type="submit" class="btn btn-primary">Potvrdi</button>
+            <div class="modal-footer boja_footer" id="dugmiciOpcije">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="isprazniFormu()">Odbaci</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="potvrdaDestinacije">Potvrdi</button>
             </div>
           </div>
         </div>
