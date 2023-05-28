@@ -200,9 +200,10 @@ function proveriValidnostRegistracije() {
         let mejl = document.getElementById("mejl").value;
         let adresa = document.getElementById("adresa").value;
         let grad = document.getElementById("grad").value;
+        let gradUString = grad.replace(/(\d)/, ",$1");
         let brojTelefona = document.getElementById("telefon").value;
         let rodjendan = document.getElementById("rodjendan").value;
-        let adresaStanovanja = adresa+", "+grad.split(" ")[0]+", "+grad.split(" ")[1];
+        let adresaStanovanja = adresa+", "+gradUString;
         var korisnik ={
             adresa: adresaStanovanja,
             datumRodjenja: rodjendan,
