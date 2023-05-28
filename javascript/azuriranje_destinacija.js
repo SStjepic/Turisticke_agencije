@@ -349,9 +349,11 @@ function azurirajDestinaciju(id) {
         let maxOsoba = document.getElementById("maxOsoba").value;
         let opis = document.getElementById("opis").value;
         let slika = document.getElementsByClassName("slika");
-        let slikaLista = []
+        let slikaLista = [];
         for(let i in slika){
-            slikaLista.push(slika[i].value)
+            if(slika[i].value !== ""){
+                slikaLista.push(slika[i].value)
+            }
         }
         
         let tip = document.getElementById("tip").value;
