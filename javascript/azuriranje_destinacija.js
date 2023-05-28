@@ -189,7 +189,7 @@ function obrisiTabelu() {
 }
 
 function postaviParametar(destinacijaId) {
-    let potvrda = document.getElementById("potvrda");
+    let potvrda = document.getElementById("potvrdaBrisanje");
     potvrda.addEventListener("click", function(){
         obrisiDestinaciju(destinacijaId);
     });

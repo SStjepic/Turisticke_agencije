@@ -36,7 +36,7 @@
                       <li><a class="dropdown-item text-dark fw-bold" href="azuriranje_destinacija.html">AŽURIRAJ DESTINACIJE</a></li>
                     </ul>
                 </li>
-                <li><a href="#" data-bs-target="#registracija" data-bs-toggle="modal" onclick="promeniNaziv('Registruj se')">REGISTRUJ SE</a></li>    
+                <li><a href="#" data-bs-target="#registracija" data-bs-toggle="modal" onclick="promeniNaziv('Registruj se', 'registracijaLabel')">REGISTRUJ SE</a></li>    
                 <li><a href="#" data-bs-target="#login" data-bs-toggle="modal">PRIJAVI SE</a></li>
                 <li>
                   <a class="nav-link dropdown-toggle sakri" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,7 +54,7 @@
                 <li><a class="dropdown-item text-dark fw-bold" href="azuriraj_agencije.html">AŽURIRAJ AGENCIJE</a></li>
                 <li><a class="dropdown-item text-dark fw-bold" href="azuriranje_korisnici.html">AŽURIRAJ KORISNIKE</a></li>
                 <li><a class="dropdown-item text-dark fw-bold" href="azuriranje_destinacija.html">AŽURIRAJ DESTINACIJE</a></li>
-                <li><a class="dropdown-item text-dark fw-bold" href="#" data-bs-target="#registracija" data-bs-toggle="modal" onclick="promeniNaziv('Registruj se')">REGISTRUJ SE</a></li> 
+                <li><a class="dropdown-item text-dark fw-bold" href="#" data-bs-target="#registracija" data-bs-toggle="modal" onclick="promeniNaziv('Registruj se', 'registracijaLabel')">REGISTRUJ SE</a></li> 
                 <li><a class="dropdown-item text-dark fw-bold" href="#" data-bs-target="#login" data-bs-toggle="modal">PRIJAVI SE</a></li>
                 
             </ul>
@@ -128,7 +128,7 @@
             </form>
           </div>
           <div class="modal-footer boja_footer" id="dugmiciOpcije">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Odbaci</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="isprazniFormu()">Odbaci</button>
             <button type="submit" class="btn btn-primary" id="potvrdaRegAzu" onclick="registrujKorisnika()">Potvrdi</button>
           </div>
         </div>
@@ -147,7 +147,7 @@
               <p>Da li ste sigurni da želite da obrišete podatke o korisniku iz baze?</p>
             </div>
             <div class="modal-footer boja_footer">
-              <button type="button " class="btn btn-secondary" data-bs-dismiss="modal" >Ne</button>
+              <button type="button " class="btn btn-secondary" data-bs-dismiss="modal" onclick="isprazniFormu()">Ne</button>
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="potvrdaBrisanje">Da</button>
             </div>
           </div>
@@ -157,7 +157,7 @@
     <main>
         <h1>Ažuriranje podataka o korisnicima</h1>
         <label for="Dugme_dodaj">Dodaj novog korisnika</label>
-        <button class="dodaj" data-bs-target="#registracija" data-bs-toggle="modal" onclick="promeniNaziv('Registrujte korisnika')"><i class="bi bi-person-fill-add"></i></button>
+        <button class="dodaj" data-bs-target="#registracija" data-bs-toggle="modal" onclick="promeniNaziv('Registrujte korisnika', 'registracijaLabel')"><i class="bi bi-person-fill-add"></i></button>
         
     </main>
    <footer>

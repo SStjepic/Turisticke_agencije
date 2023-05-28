@@ -37,7 +37,7 @@ function registrujKorisnika() {
     zahtev.onreadystatechange = function (e) {
         if (this.readyState == 4) {
           if (this.status == 200) {
-            window.location.href = "../stranice_glavne/azuriranje_korisnici.html";
+            window.location.reload();
             console.log("Uspesno")
           } else {
             window.open("../stranice_glavne/greska.html", "_self");
@@ -48,7 +48,11 @@ function registrujKorisnika() {
     zahtev.send(JSON.stringify(korisnik));
 }
 
-function promeniNaziv(string) {
-    let naslov = document.getElementById("registracijaLabel");
+function promeniNaziv(string, id) {
+    let naslov = document.getElementById(id);
     naslov.innerText = string;
+}
+
+function isprazniFormu(){
+  window.location.reload()
 }

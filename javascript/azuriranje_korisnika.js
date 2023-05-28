@@ -119,7 +119,7 @@ function napraviDugmeZaIzmenu(korisnikId) {
     dugme.append(i);
     dugme.addEventListener("click",function(){
         postaviParametarIzmena(korisnikId);
-        promeniNaziv("Ažurirajte podatke o korisniku");
+        promeniNaziv("Ažurirajte podatke o korisniku", "registracijaLabel");
     });
     return dugme;
 }
@@ -178,7 +178,6 @@ function postaviParametarIzmena(id){
     potvrda.addEventListener("click", function(){
         azurirajKorisnika(id);
     });
-    console.log(potvrda)
 }
 function napraviDugmeZaPotvrdu() {
     let potvrda = document.getElementById("potvrdaRegAzu");

@@ -66,43 +66,58 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header boja">
-              <h1 class="modal-title fs-5" id="prikaz_agencijaLabel">Dodaj turističku agenciju</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h1 class="modal-title fs-5" id="prikazAgencijaLabel">Dodaj turističku agenciju</h1>
+              <button type="button" onclick="isprazniFormu()" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
             </div>
             <div class="modal-body boja_body text-center">
-              <form name="prikaz_agencija" >
-                <label for="naziv" >Naziv turističke agencije: </label>
-                <br/>
-                <input type="text" name="naziv"  />
-                <br/>
-                <label for="adresa" >Ulica i broj:</label>
-                <br/>
-                <input type="text" name="adresa"  />
-                <br/>
-                <label for="grad" >Grad i poštanski broj:</label>
-                <br/>
-                <input type="text" name="godina"  />
-                <br/>
-                <label for="godina" >Godina osnivanja:</label>
-                <br/>
-                <input type="text" name="godina"  />
-                <br/>
-                <label for="brojTelefona" >Broj telefona: </label>
-                <br/>
-                <input type="number" name="brojTelefona"  placeholder="xxx/xxx-xxxx"/>
-                <br/>
-                <label for="email" >Email adresa:</label>
-                <br/>
-                <input type="email" name="email"  />
-                <br/>
-                <label for="logo" >Logo:</label>
-                <br/>
-                <input type="url" name="logo"  placeholder="url fotografije"/>
+              <form id="formaDodajAgenciju" class="was-validated" >
+                <div class="mb-3">
+                  <label for="naziv" class="form-label">Naziv turističke agencije:</label>
+                  <input type="text" class="form-control" id="naziv" placeholder="Unesite naziv turističke agencije" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="ulica" class="form-label">Ulica i broj:</label>
+                  <input type="text" class="form-control" id="ulica" placeholder="Unesite adresu" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="grad" class="form-label">Grad i poštanski broj::</label>
+                  <input type="text" class="form-control" id="grad" placeholder="Unesite grad i broj" name="uname" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="osnivanje" class="form-label">Godina osnivanja:</label>
+                  <input type="number" class="form-control" id="osnivanje" placeholder="Unesite godinu osnivanja" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="telefonAgencije" class="form-label">Broj telefona:</label>
+                  <input type="text" class="form-control" id="telefonAgencije" placeholder="xxx/xxx-xxxx" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email adresa:</label>
+                  <input type="email" class="form-control" id="email" placeholder="Unesite email adresu" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
+                <div class="mb-3">
+                  <label for="logo" class="form-label">Logo:</label>
+                  <input type="url" class="form-control" id="logo" placeholder="Unesite url slike za logo" name="pswd" required>
+                  <div class="valid-feedback">Validno</div>
+                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                </div>
               </form>
             </div>
-            <div class="modal-footer boja_footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
-              <button type="button" class="btn btn-primary">Potvrdi</button>
+            <div class="modal-footer boja_footer" id="dugmiciOpcije">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="isprazniFormu()">Odbaci</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="registrujAgenciju()" id="potvrdaAgencije">Potvrdi</button>
             </div>
           </div>
         </div>
@@ -121,7 +136,7 @@
             </div>
             <div class="modal-footer boja_footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ne</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Da</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="potvrdaBrisanje">Da</button>
             </div>
           </div>
         </div>
@@ -217,5 +232,6 @@
     </footer>
     
     <script src="../javascript/azuriranje_agencija.js"></script>
+    <script src="../javascript/funkcije.js"></script>
 </body>
 </html>

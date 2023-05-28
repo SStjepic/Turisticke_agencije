@@ -14,8 +14,13 @@ function ucitajIzBazeAgenciju() {
         if (this.readyState == 4) {
             if (this.status == 200) {
                 trenutnaAgencija = JSON.parse(zahtev.responseText);
-                grupaDestinacija = trenutnaAgencija.destinacije;
-                ucitajIzBazeDestinaciju()
+                if(trenutnaAgencija.destinacije != ""){
+                    grupaDestinacija = trenutnaAgencija.destinacije;
+                    ucitajIzBazeDestinaciju()
+                }
+                else{
+                    prikaziDestinacije([]);
+                }
             } else {
                 window.open("../stranice_glavne/greska.html", "_self");
             }

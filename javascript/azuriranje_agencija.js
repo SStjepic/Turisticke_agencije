@@ -67,7 +67,7 @@ function popuniTabeluAgencijama(){
         var godina = document.createElement("td");
         godina.innerHTML = sveAgencije[id].godina;
         var opcije = document.createElement("td");
-        var dugme1 = napraviDugmeZaIzmenu();
+        var dugme1 = napraviDugmeZaIzmenu(agencijeId[id]);
         var dugme2 = napraviDugmeZaBrisanje(agencijeId[id]);
         opcije.appendChild(dugme1);
         opcije.appendChild(dugme2);
@@ -93,8 +93,14 @@ function napraviDugmeZaIzmenu(id) {
     let i = document.createElement("i");
     i.className = "bi bi-database-fill-gear";
     dugme.append(i);
+    dugme.addEventListener("click",function(){
+        postaviParametarIzmena(id);
+        promeniNaziv("Ažurirajte podatke o agenciji", "prikazAgencijaLabel");
+    });
     return dugme;
 }
+
+
 function napraviDugmeZaBrisanje(id) {
     let dugme = document.createElement("button");
     dugme.type = "button";
@@ -119,7 +125,7 @@ function obrisiTabelu() {
 
 function postaviParametar(agencijaId) {
     console.log(agencijaId);
-    let potvrda = document.getElementById("potvrda");
+    let potvrda = document.getElementById("potvrdaBrisanje");
     potvrda.addEventListener("click", function(){
         obrisiAgenciju(agencijaId);
     });
@@ -141,3 +147,125 @@ function obrisiAgenciju(id) {
     zahtev.send();
 }
 
+/*
+    Funkcija za registraciju agencije
+ */
+function registrujAgenciju() {
+
+    let naziv = document.getElementById("naziv").value;
+    let mejl = document.getElementById("email").value;
+    let adresa = document.getElementById("ulica").value;
+    let grad = document.getElementById("grad").value;
+    let godina = document.getElementById("osnivanje").value;
+    let brojTelefona = document.getElementById("telefonAgencije").value;
+    let adresaStanovanja = adresa+", "+grad.split(" ")[0]+", "+grad.split(" ")[1];
+    let logo = document.getElementById("logo").value;
+    var agencija ={
+        adresa: adresaStanovanja,
+        brojTelefona: brojTelefona,
+        destinacije: "",
+        email: mejl,
+        godina: godina,
+        logo: logo,
+        naziv: naziv
+    }
+
+    let zahtev = new XMLHttpRequest();
+    zahtev.onreadystatechange = function (e) {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+            window.location.reload();
+            console.log("Uspesno")
+            } else {
+            window.open("../stranice_glavne/greska.html", "_self");
+            }
+        }
+        };
+    zahtev.open("POST", url + "/agencije/" + ".json");
+    zahtev.send(JSON.stringify(agencija));
+}
+
+/*
+    Funkcija za ažuriranje podataka o agenciji
+ */
+function nadjiIdAgencije(agencijaId) {
+    for(let index in sveAgencije){
+        if(agencijeId[index] === agencijaId){
+            return index;
+        }
+    }
+}
+function postaviParametarIzmena(agencijaId) {
+    let id = nadjiIdAgencije(agencijaId);
+
+    let naziv = document.getElementById("naziv");
+    naziv.value = sveAgencije[id].naziv
+    let mejl = document.getElementById("email");
+    mejl.value = sveAgencije[id].email;
+    let adresa = document.getElementById("ulica");
+    adresa.value =sveAgencije[id].adresa.split(", ")[0];
+    let grad = document.getElementById("grad");
+    grad.value = sveAgencije[id].adresa.split(", ")[1] +" "+ sveAgencije[id].adresa.split(", ")[2];
+    let godina = document.getElementById("osnivanje");
+    godina.value = sveAgencije[id].godina;
+    let brojTelefona = document.getElementById("telefonAgencije");
+    brojTelefona.value = sveAgencije[id].brojTelefona;
+    let logo = document.getElementById("logo");
+    logo.value = sveAgencije[id].logo;
+    napraviDugmeZaPotvrdu();
+    let potvrda = document.getElementById("potvrdaAgencije");
+    potvrda.addEventListener("click", function(){
+        registrujAgenciju(sveAgencije[id].destinacije, agencijaId);
+    });
+}
+
+function napraviDugmeZaPotvrdu() {
+    let potvrda = document.getElementById("potvrdaAgencije");
+    potvrda.remove();
+
+    let dugme = document.createElement("button");
+    dugme.type = "button";
+    dugme.className = "btn btn-primary";
+    dugme.id="potvrdaAgencije";
+    dugme.innerHTML = "Potvrdi";
+    let main = document.getElementById("dugmiciOpcije");
+    main.appendChild(dugme);
+}
+
+/*
+    Funkcija za ažuriranje agencije
+ */
+function registrujAgenciju(destinacije, id) {
+
+    let naziv = document.getElementById("naziv").value;
+    let mejl = document.getElementById("email").value;
+    let adresa = document.getElementById("ulica").value;
+    let grad = document.getElementById("grad").value;
+    let godina = document.getElementById("osnivanje").value;
+    let brojTelefona = document.getElementById("telefonAgencije").value;
+    let adresaStanovanja = adresa+", "+grad.split(" ")[0]+", "+grad.split(" ")[1];
+    let logo = document.getElementById("logo").value;
+    var agencija ={
+        adresa: adresaStanovanja,
+        brojTelefona: brojTelefona,
+        destinacije: destinacije,
+        email: mejl,
+        godina: godina,
+        logo: logo,
+        naziv: naziv
+    }
+
+    let zahtev = new XMLHttpRequest();
+    zahtev.onreadystatechange = function (e) {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+            window.location.reload();
+            console.log("Uspesno")
+            } else {
+            window.open("../stranice_glavne/greska.html", "_self");
+            }
+        }
+        };
+    zahtev.open("PUT", url + "/agencije/"+id + ".json");
+    zahtev.send(JSON.stringify(agencija));
+}

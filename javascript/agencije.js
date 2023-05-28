@@ -161,6 +161,15 @@ function proveriPoklapanje(pretraga, agencijeIdDestinacije) {
 /*
     Funkcija koja nalazi agenciju po nazivu destinacije
  */
+
+  
+function nadjiIdAgencije(taAgencija) {
+    for(var id in sveAgencije){
+        if(sveAgencije[id] == taAgencija){
+            return sveAgencijeId[id];
+        }
+    }
+}
 function pretraziPoDestinacijama(id_inputa, sveAgencije, agencijeIdDestinacije) {
     let unos = document.getElementById(id_inputa);
     var string = unos.value.toUpperCase();
@@ -173,7 +182,6 @@ function pretraziPoDestinacijama(id_inputa, sveAgencije, agencijeIdDestinacije) 
   
       Promise.all(requests)
         .then(function () {
-          console.log(pretraga);
           proveriPoklapanje(pretraga,agencijeIdDestinacije)
         })
         .catch(function (error) {
@@ -182,14 +190,6 @@ function pretraziPoDestinacijama(id_inputa, sveAgencije, agencijeIdDestinacije) 
         });
     }
   }
-  
-function nadjiIdAgencije(taAgencija) {
-    for(var id in sveAgencije){
-        if(sveAgencije[id] == taAgencija){
-            return sveAgencijeId[id];
-        }
-    }
-}
 /*
     Funkcija koja ucitava destinacije agencije iz baze
  */
@@ -219,45 +219,4 @@ return new Promise(function (resolve, reject) {
         zahtev.send();
     });
 }
-
-
-function registrujKorisnika() {
-
-    let ime = document.getElementById("ime").value;
-    let prezime = document.getElementById("prezime").value;
-    let korisnickoIme = document.getElementById("korIme").value;
-    let sifra = document.getElementById("sifra").value;
-    let mejl = document.getElementById("mejl").value;
-    let adresa = document.getElementById("adresa").value;
-    let grad = document.getElementById("grad").value;
-    let brojTelefona = document.getElementById("telefon").value;
-    let rodjendan = document.getElementById("rodjendan").value;
-    console.log(grad)
-    let adresaStanovanja = adresa+","+grad.split(" ")[0]+","+grad.split(" ")[1];
-    var korisnik ={
-        adresa: adresaStanovanja,
-        datumRodjenja: rodjendan,
-        email: mejl,
-        ime: ime,
-        korisnickoIme: korisnickoIme,
-        lozinka: sifra,
-        prezime: prezime,
-        telefon: brojTelefona
-    }
-
-    let zahtev = new XMLHttpRequest();
-    zahtev.onreadystatechange = function (e) {
-        if (this.readyState == 4) {
-          if (this.status == 200) {
-            window.location.href = "../stranice_glavne/index.html";
-            console.log("Uspesno")
-          } else {
-            window.open("../stranice_glavne/greska.html", "_self");
-          }
-        }
-      };
-    zahtev.open("PUT", url + "/korisnici/" + ".json");
-    zahtev.send(JSON.stringify(korisnik));
-}
-
 
