@@ -70,70 +70,62 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body boja_body text-center">
-            <form class="was-validated" id="formaRegistracija">
+            <form id="formaRegistracija">
               <div class="mb-3">
                 <label for="ime" class="form-label">Ime:</label>
-                <input type="text" class="form-control" id="ime" placeholder="Unesite ime" name="pswd" required>
-                <div class="valid-feedback">Validno</div>
-                <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                <input type="text" class="form-control" id="ime" placeholder="Unesite ime">
+                <p id="registracijaIme"></p>
               </div>
               <div class="mb-3">
                 <label for="prezime" class="form-label">Prezime:</label>
-                <input type="text" class="form-control" id="prezime" placeholder="Unesite prezime" name="pswd" required>
-                <div class="valid-feedback">Validno</div>
-                <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                <input type="text" class="form-control" id="prezime" placeholder="Unesite prezime">
+                <p id="registracijaPrezime"></p>
               </div>
               <div class="mb-3">
                 <label for="korIme" class="form-label">Korisničko:</label>
-                <input type="text" class="form-control" id="korIme" placeholder="Unesite korisničko ime" name="uname" required>
-                <div class="valid-feedback">Validno</div>
-                <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                <input type="text" class="form-control" id="korIme" placeholder="Unesite korisničko ime" >
+                <p id="registracijaKorIme"></p>
               </div>
               <div class="mb-3">
-                <label for="pwd" class="form-label">Lozinka:</label>
-                <input type="password" class="form-control" id="sifra" placeholder="Unesite lozinku" name="pswd" required>
-                <div class="valid-feedback">Validno</div>
-                <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                <label for="sifra" class="form-label">Lozinka:</label>
+                <input type="password" class="form-control" id="sifra" placeholder="Unesite lozinku">
+                <p id="registracijaSifra"></p>
               </div>
               <div class="mb-3">
                 <label for="mejl" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="mejl" placeholder="Unesite email" name="pswd" required>
-                <div class="valid-feedback">Validno</div>
-                <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                <input type="email" class="form-control" id="mejl" placeholder="Unesite email">
+                <p id="registracijaMejl"></p>
               </div>
               <div class="mb-3">
                 <label for="adresa" class="form-label">Adresa stanovanja:</label>
-                <input type="text" class="form-control" id="adresa" placeholder="Unesite adresu stanovanja" name="pswd" required>
-                <div class="valid-feedback">Validno</div>
-                <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                <input type="text" class="form-control" id="adresa" placeholder="Unesite adresu stanovanja">
+                <p id="registracijaAdresa"></p>
               </div>
               <div class="mb-3">
                 <label for="grad" class="form-label">Grad:</label>
-                <input type="text" class="form-control" id="grad" placeholder="Unesite grad i broj" name="pswd" required>
-                <div class="valid-feedback">Validno</div>
-                <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                <input type="text" class="form-control" id="grad" placeholder="Unesite grad i broj">
+                <p id="registracijaGrad"></p>
               </div>
               <div class="mb-3">
                 <label for="telefon" class="form-label">Broj telefona:</label>
-                <input type="text" class="form-control" id="telefon" placeholder="xxx/xxx-xxxx" name="pswd" required>
-                <div class="valid-feedback">Validno</div>
-                <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                <input type="text" class="form-control" id="telefon" placeholder="06512345x">
+                <p id="registracijaTelefon"></p>
               </div>
               <div class="mb-3">
                 <label for="rodjendan" class="form-label">Datum rodjenja:</label>
-                <input type="date" class="form-control" id="rodjendan" placeholder="Unesite email" name="pswd" required>
-                <div class="valid-feedback">Validno</div>
-                <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                <input type="date" class="form-control" id="rodjendan" placeholder="Unesite email">
+                <p id="registracijaRodjendan"></p>
               </div>
             </form>
           </div>
           <div class="modal-footer boja_footer" id="dugmiciOpcije">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="isprazniFormu()">Odbaci</button>
-            <button type="submit" class="btn btn-primary" id="potvrdaRegAzu" onclick="registrujKorisnika()">Potvrdi</button>
+            <button type="submit" class="btn btn-primary" onclick="registrujKorisnika()"  id="potvrdaRegAzu">Potvrdi</button>
           </div>
         </div>
       </div>
   </div>
+
 
     <!-- Forma za potvrdu brisanja -->
     <div class="modal fade" id="potvrda" tabindex="-1" aria-labelledby="potvrdaLabel" aria-hidden="true">

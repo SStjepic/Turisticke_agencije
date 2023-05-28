@@ -192,60 +192,58 @@ function napraviDugmeZaPotvrdu() {
     main.appendChild(dugme);
 }
 function azurirajKorisnika(id) {
-    
-    let ime = document.getElementById("ime").value;
-    let prezime = document.getElementById("prezime").value;
-    let korisnickoIme = document.getElementById("korIme").value;
-    let sifra = document.getElementById("sifra").value;
-    let mejl = document.getElementById("mejl").value;
-    let adresa = document.getElementById("adresa").value;
-    let grad = document.getElementById("grad").value;
-    let brojTelefona = document.getElementById("telefon").value;
-    let rodjendan = document.getElementById("rodjendan").value;
-    let adresaStanovanja = adresa+", "+grad.split(" ")[0]+", "+grad.split(" ")[1];
-    console.log(adresaStanovanja);
-    var korisnik ={
-        adresa: adresaStanovanja,
-        datumRodjenja: rodjendan,
-        email: mejl,
-        ime: ime,
-        korisnickoIme: korisnickoIme,
-        lozinka: sifra,
-        prezime: prezime,
-        telefon: brojTelefona
-    }
-
-    let zahtev = new XMLHttpRequest();
-    zahtev.onreadystatechange = function (e) {
-        if (this.readyState == 4) {
-          if (this.status == 200) {
-            window.location.href = "../stranice_glavne/azuriranje_korisnici.html";
-            console.log("Uspesno")
-          } else {
-            window.open("../stranice_glavne/greska.html", "_self");
-          }
+    if(proveriValidnostRegistracije()){
+        let ime = document.getElementById("ime").value;
+        let prezime = document.getElementById("prezime").value;
+        let korisnickoIme = document.getElementById("korIme").value;
+        let sifra = document.getElementById("sifra").value;
+        let mejl = document.getElementById("mejl").value;
+        let adresa = document.getElementById("adresa").value;
+        let grad = document.getElementById("grad").value;
+        let brojTelefona = document.getElementById("telefon").value;
+        let rodjendan = document.getElementById("rodjendan").value;
+        let adresaStanovanja = adresa+", "+grad.split(" ")[0]+", "+grad.split(" ")[1];
+        console.log(adresaStanovanja);
+        var korisnik ={
+            adresa: adresaStanovanja,
+            datumRodjenja: rodjendan,
+            email: mejl,
+            ime: ime,
+            korisnickoIme: korisnickoIme,
+            lozinka: sifra,
+            prezime: prezime,
+            telefon: brojTelefona
         }
-      };
-    zahtev.open("PUT", url + "/korisnici/"+id + ".json");
-    zahtev.send(JSON.stringify(korisnik));
+
+        let zahtev = new XMLHttpRequest();
+        zahtev.onreadystatechange = function (e) {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                window.location.reload();
+                } else {
+                window.open("../stranice_glavne/greska.html", "_self");
+                }
+            }
+            };
+        zahtev.open("PUT", url + "/korisnici/"+id + ".json");
+        zahtev.send(JSON.stringify(korisnik));
+    }
 }
+
+
 function obrisiKorisnika(id) {
     let zahtev = new XMLHttpRequest();
 
     zahtev.onreadystatechange = function () {
         if (this.readyState == 4) {
         if (this.status == 200) {
-            window.open("../stranice_glavne/azuriranje_korisnici.html", "_self");
+            window.location.reload();
         } else {
             window.open("../stranice_glavne/greska.html", "_self");
         }
         }
-    };
+};
 
     zahtev.open("DELETE", url + "/korisnici/" + id + ".json");
     zahtev.send();
-}
-
-function izmeniKorisnika(id){
-
 }

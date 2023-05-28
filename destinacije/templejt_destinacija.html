@@ -52,6 +52,7 @@
               </li>
           </ul>
       </nav>
+      
       <div class="meni-icon dropdown">
           <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               &#9776;
@@ -96,58 +97,69 @@
 
   <!-- Forma za registraciju -->
   <div class="modal fade" id="registracija" tabindex="-1" aria-labelledby="registracijaLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header boja">
-            <h1 class="modal-title fs-5" id="registracijaLabel">Registruj se</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body boja_body text-center">
-            <form name="login" >
-              <label for="ime" >Ime: </label>
-              <br/>
-              <input type="text" name="ime"/>
-              <br/>
-              <label for="prezime" >Prezime: </label>
-              <br/>
-              <input type="text" name="prezime"/>
-              <br/>
-              <label for="korisnicko_ime" >Korisnicko ime: </label>
-              <br/>
-              <input type="text" name="korisnicko_ime"  />
-              <br/>
-              <label for="lozinka" >Lozinka:</label>
-              <br/>
-              <input type="password" name="lozinka"  />
-              <br/>
-              <label for="mejl" >Email:</label>
-              <br/>
-              <input type="email" name="mejl"  />
-              <br/>
-              <label for="adresa" >Adresa stanovanja:</label>
-              <br/>
-              <input type="text" name="adresa"  />
-              <br/>
-              <label for="grad" >Grad:</label>
-              <br/>
-              <input type="text" name="grad"  />
-              <br/>
-              <label for="telefon" >Broj telefona:</label>
-              <br/>
-              <input type="text" name="telefon"  />
-              <br/>
-              <label for="rodjendan" >Datum rodjenja:</label>
-              <br/>
-              <input type="date" name="rodjendan"  />
-            </form>
-          </div>
-          <div class="modal-footer boja_footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
-            <button type="button" class="btn btn-primary">Potvrdi</button>
-          </div>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header boja">
+          <h1 class="modal-title fs-5" id="registracijaLabel">Registruj se</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body boja_body text-center">
+          <form id="formaRegistracija">
+            <div class="mb-3">
+              <label for="ime" class="form-label">Ime:</label>
+              <input type="text" class="form-control" id="ime" placeholder="Unesite ime">
+              <p id="registracijaIme"></p>
+            </div>
+            <div class="mb-3">
+              <label for="prezime" class="form-label">Prezime:</label>
+              <input type="text" class="form-control" id="prezime" placeholder="Unesite prezime">
+              <p id="registracijaPrezime"></p>
+            </div>
+            <div class="mb-3">
+              <label for="korIme" class="form-label">Korisničko:</label>
+              <input type="text" class="form-control" id="korIme" placeholder="Unesite korisničko ime" >
+              <p id="registracijaKorIme"></p>
+            </div>
+            <div class="mb-3">
+              <label for="sifra" class="form-label">Lozinka:</label>
+              <input type="password" class="form-control" id="sifra" placeholder="Unesite lozinku">
+              <p id="registracijaSifra"></p>
+            </div>
+            <div class="mb-3">
+              <label for="mejl" class="form-label">Email:</label>
+              <input type="email" class="form-control" id="mejl" placeholder="Unesite email">
+              <p id="registracijaMejl"></p>
+            </div>
+            <div class="mb-3">
+              <label for="adresa" class="form-label">Adresa stanovanja:</label>
+              <input type="text" class="form-control" id="adresa" placeholder="Unesite adresu stanovanja">
+              <p id="registracijaAdresa"></p>
+            </div>
+            <div class="mb-3">
+              <label for="grad" class="form-label">Grad:</label>
+              <input type="text" class="form-control" id="grad" placeholder="Unesite grad i broj">
+              <p id="registracijaGrad"></p>
+            </div>
+            <div class="mb-3">
+              <label for="telefon" class="form-label">Broj telefona:</label>
+              <input type="text" class="form-control" id="telefon" placeholder="06512345x">
+              <p id="registracijaTelefon"></p>
+            </div>
+            <div class="mb-3">
+              <label for="rodjendan" class="form-label">Datum rodjenja:</label>
+              <input type="date" class="form-control" id="rodjendan" placeholder="Unesite email">
+              <p id="registracijaRodjendan"></p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer boja_footer" id="dugmiciOpcije">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="isprazniFormu()">Odbaci</button>
+          <button type="submit" class="btn btn-primary" onclick="registrujKorisnika()"  id="potvrdaRegAzu">Potvrdi</button>
         </div>
       </div>
-  </div>
+    </div>
+</div>
+
 
     <main>
     </main> 

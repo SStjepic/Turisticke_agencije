@@ -102,10 +102,9 @@ document.addEventListener("input", function () {
     agencijeIdDestinacije = [];
     let unos_a1 = document.getElementById("agencija_1");
     let unos_d1 = document.getElementById("destinacija_1");
-    if(unos_a1.value == "" && unos_d1.value == ""){
-        popuniStranicuAgencijama(sveAgencije, sveAgencijeId);
-    }
-    if(unos_a1.value != "" || unos_d1 != ""){
+    let unos_a2 = document.getElementById("agencija_2");
+    let unos_d2 = document.getElementById("destinacija_2");
+    if(unos_a1.value != "" || unos_d1 != "" &&(unos_a2.value == "" && unos_d2.value == "")){
         if(unos_a1.value != ""){
             
             pretraziPoAgenciji("agencija_1", agencijeId);
@@ -118,7 +117,23 @@ document.addEventListener("input", function () {
         }
         
     }
-
+    else{
+        if(unos_a2.value == "" && unos_d2.value == ""){
+            popuniStranicuAgencijama(sveAgencije, sveAgencijeId);
+        }
+        else if(unos_a2.value != "" || unos_d2 != ""){
+                if(unos_a2.value != ""){
+                    
+                    pretraziPoAgenciji("agencija_2", agencijeId);
+                    if(unos_d2.value == ""){
+                        popuniStranicuAgencijama(pretraga_agencije, agencijeId);
+                    }
+                }
+                else if(unos_d2.value != ""){
+                    pretraziPoDestinacijama("destinacija_2", sveAgencije, agencijeIdDestinacije);
+                }
+            }
+    }
 })
 /*
     Funkcija koja pretrazuje agencije po nazivu
