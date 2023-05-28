@@ -72,49 +72,46 @@
               <form name="prikazi_destinaciju" >
                 <div class="mb-3">
                   <label for="naziv" class="form-label">Naziv turističke destinacije:</label>
-                  <input type="text" class="form-control" id="naziv" placeholder="Unesite naziv turističke destinacije" name="pswd" required>
-                  <div class="valid-feedback">Validno</div>
-                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                  <input type="text" class="form-control" id="naziv" placeholder="Unesite naziv turističke destinacije">
+                  <p id="destinacijaNaziv"></p>
                 </div>
                 <div class="mb-3">
                   <label for="tip" class="form-label">Tip odmora:</label>
-                  <input type="text" class="form-control" id="tip" placeholder="Unesite tip odmora" name="pswd" required>
-                  <div class="valid-feedback">Validno</div>
-                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                  <input type="text" class="form-control" id="tip" placeholder="Unesite tip odmora">
+                  <p id="destinacijaTip"></p>
                 </div>
                 <div class="mb-3">
                   <label for="cena" class="form-label">Cena:</label>
-                  <input type="number" class="form-control" id="cena" placeholder="Unesite cenu u dinarima" name="pswd" required>
-                  <div class="valid-feedback">Validno</div>
-                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                  <input type="number" class="form-control" id="cena" placeholder="Unesite cenu u dinarima">
+                  <p id="destinacijaCena"></p>
                 </div>
                 <div class="mb-3">
                   <label for="prevoz" class="form-label">Vrsta prevoza:</label>
-                  <input type="text" class="form-control" id="prevoz" placeholder="Unesite vrstu prevoza" name="uname" required>
-                  <div class="valid-feedback">Validno</div>
-                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                  <input type="text" class="form-control" id="prevoz" placeholder="Unesite vrstu prevoza">
+                  <p id="destinacijaPrevoz"></p>
                 </div>
                 <div class="mb-3">
                   <label for="maxOsoba" class="form-label">Maksimalan broj osoba:</label>
-                  <input type="number" class="form-control" id="maxOsoba" placeholder="Unesite maksimalan broj osoba" name="pswd" required>
-                  <div class="valid-feedback">Validno</div>
-                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                  <input type="number" class="form-control" id="maxOsoba" placeholder="Unesite maksimalan broj osoba">
+                  <p id="destinacijaMaxOsoba"></p>
                 </div>
                 <div class="mb-3">
                   <label for="opis" class="form-label">Opis:</label>
                   <textarea id="opis" placeholder="Unesite opis destinacije" cols="55" rows="6"></textarea>
-                  <div class="valid-feedback">Validno</div>
-                  <div class="invalid-feedback">Niste dobro uneli podatak</div>
+                  <p id="destinacijaOpis"></p>
                 </div>
                 <div class="mb-3" id="slike">
-                  <label for="slika" class="form-label">Slike:</label>
-                  <input type="url" class="form-control slika" placeholder="Unesite url slike destinacije">
+                  <div class="mb-3" id="slike">
+                    <label for="slika" class="form-label">Slike:</label>
+                    <input type="url" class="form-control slika" placeholder="Unesite url slike destinacije">
+                    <p id="destinacijaSlike"></p>
+                  </div>
                 </div>
               </form>
             </div>
             <div class="modal-footer boja_footer" id="dugmiciOpcije">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="isprazniFormu()">Odbaci</button>
-              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="potvrdaDestinacije">Potvrdi</button>
+              <button type="submit" class="btn btn-primary" id="potvrdaDestinacije">Potvrdi</button>
             </div>
           </div>
         </div>
@@ -143,30 +140,33 @@
 
     <!-- Forma za login -->
     <div class="modal fade" id="login" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header boja">
-              <h1 class="modal-title fs-5" id="loginLabel">Prijavi se</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body boja_body text-center">
-              <form name="login" >
-                <label for="korisnicko_ime" >Korisnicko ime: </label>
-                <br/>
-                <input type="text" name="korisnicko_ime"  />
-                <br/>
-                <label for="lozinka" >Lozinka:</label>
-                <br/>
-                <input type="password" name="lozinka"  />
-              </form>
-            </div>
-            <div class="modal-footer boja_footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
-              <button type="button" class="btn btn-primary" >Potvrdi</button>
-            </div>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header boja">
+            <h1 class="modal-title fs-5" id="loginLabel">Prijavi se</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body boja_body text-center">
+            <form>
+              <div class="mb-3">
+                <label for="loginKorIme" class="form-label">Korisničko:</label>
+                <input type="text" class="form-control" id="loginKorIme" placeholder="Unesite korisničko ime" >
+                <p id="loginKorImeValidacija"></p>
+              </div>
+              <div class="mb-3">
+                <label for="loginSifra" class="form-label">Lozinka:</label>
+                <input type="password" class="form-control" id="loginSifra" placeholder="Unesite lozinku">
+                <p id="loginSifraValidacija"></p>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer boja_footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
+            <button type="button" class="btn btn-primary" id="potvrdaLogin" onclick="Login()">Potvrdi</button>
           </div>
         </div>
-    </div>
+      </div>
+  </div>
 
     <!-- Forma za registraciju -->
     <div class="modal fade" id="registracija" tabindex="-1" aria-labelledby="registracijaLabel" aria-hidden="true">
@@ -215,7 +215,7 @@
               </div>
               <div class="mb-3">
                 <label for="telefon" class="form-label">Broj telefona:</label>
-                <input type="text" class="form-control" id="telefon" placeholder="06512345x">
+                <input type="text" class="form-control" id="telefon" placeholder="xxx/xxx-xxxx">
                 <p id="registracijaTelefon"></p>
               </div>
               <div class="mb-3">
@@ -225,14 +225,14 @@
               </div>
             </form>
           </div>
-          <div class="modal-footer boja_footer" id="dugmiciOpcije">
+          <div class="modal-footer boja_footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="isprazniFormu()">Odbaci</button>
-            <button type="submit" class="btn btn-primary" onclick="registrujKorisnika()"  id="potvrdaRegAzu">Potvrdi</button>
+            <button type="submit" class="btn btn-primary" onclick="registrujKorisnika()" id="potvrdaRegAzu">Potvrdi</button>
           </div>
         </div>
       </div>
   </div>
-
+  
     <main>
         <h1>Ažuriranje podataka o pojedinačnim destinacijama agencija</h1>
         

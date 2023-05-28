@@ -90,24 +90,22 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body boja_body text-center">
-              <form class="was-validated">
-                <div class="mb-3 mt-3">
-                  <label for="uname" class="form-label">Korisničko:</label>
-                  <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
-                  <div class="valid-feedback">Validno korisničko ime</div>
-                  <div class="invalid-feedback">Niste dobro uneli korisničko ime</div>
+              <form>
+                <div class="mb-3">
+                  <label for="loginKorIme" class="form-label">Korisničko:</label>
+                  <input type="text" class="form-control" id="loginKorIme" placeholder="Unesite korisničko ime" >
+                  <p id="loginKorImeValidacija"></p>
                 </div>
                 <div class="mb-3">
-                  <label for="pwd" class="form-label">Lozinka:</label>
-                  <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
-                  <div class="valid-feedback">Validna lozinka</div>
-                  <div class="invalid-feedback">Niste dobro uneli lozinku</div>
+                  <label for="loginSifra" class="form-label">Lozinka:</label>
+                  <input type="password" class="form-control" id="loginSifra" placeholder="Unesite lozinku">
+                  <p id="loginSifraValidacija"></p>
                 </div>
               </form>
             </div>
             <div class="modal-footer boja_footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
-              <button type="button" class="btn btn-primary">Potvrdi</button>
+              <button type="button" class="btn btn-primary" id="potvrdaLogin" onclick="Login()">Potvrdi</button>
             </div>
           </div>
         </div>

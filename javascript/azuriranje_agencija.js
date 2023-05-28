@@ -151,38 +151,41 @@ function obrisiAgenciju(id) {
     Funkcija za registraciju agencije
  */
 function registrujAgenciju() {
-
-    let naziv = document.getElementById("naziv").value;
-    let mejl = document.getElementById("email").value;
-    let adresa = document.getElementById("ulica").value;
-    let grad = document.getElementById("grad").value;
-    let godina = document.getElementById("osnivanje").value;
-    let brojTelefona = document.getElementById("telefonAgencije").value;
-    let adresaStanovanja = adresa+", "+grad.split(" ")[0]+", "+grad.split(" ")[1];
-    let logo = document.getElementById("logo").value;
-    var agencija ={
-        adresa: adresaStanovanja,
-        brojTelefona: brojTelefona,
-        destinacije: "",
-        email: mejl,
-        godina: godina,
-        logo: logo,
-        naziv: naziv
-    }
-
-    let zahtev = new XMLHttpRequest();
-    zahtev.onreadystatechange = function (e) {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-            window.location.reload();
-            console.log("Uspesno")
-            } else {
-            window.open("../stranice_glavne/greska.html", "_self");
-            }
+    if(validacijaAgencije()){
+        console.log("radi")
+        let naziv = document.getElementById("naziv").value;
+        let mejl = document.getElementById("email").value;
+        let adresa = document.getElementById("ulica").value;
+        let grad = document.getElementById("gradAgencije").value;
+        let godina = document.getElementById("osnivanje").value;
+        let brojTelefona = document.getElementById("telefonAgencije").value;
+        let gradUString = grad.replace(/(\d)/, ",$1");
+        let adresaStanovanja = adresa+", " + gradUString;
+        let logo = document.getElementById("logo").value;
+        var agencija ={
+            adresa: adresaStanovanja,
+            brojTelefona: brojTelefona,
+            destinacije: "",
+            email: mejl,
+            godina: godina,
+            logo: logo,
+            naziv: naziv
         }
-        };
-    zahtev.open("POST", url + "/agencije/" + ".json");
-    zahtev.send(JSON.stringify(agencija));
+
+        let zahtev = new XMLHttpRequest();
+        zahtev.onreadystatechange = function (e) {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                window.location.reload();
+                } else {
+                window.open("../stranice_glavne/greska.html", "_self");
+                }
+            }
+            };
+        zahtev.open("POST", url + "/agencije/" + ".json");
+        zahtev.send(JSON.stringify(agencija));
+    }
+    
 }
 
 /*
@@ -204,8 +207,8 @@ function postaviParametarIzmena(agencijaId) {
     mejl.value = sveAgencije[id].email;
     let adresa = document.getElementById("ulica");
     adresa.value =sveAgencije[id].adresa.split(", ")[0];
-    let grad = document.getElementById("grad");
-    grad.value = sveAgencije[id].adresa.split(", ")[1] +" "+ sveAgencije[id].adresa.split(", ")[2];
+    let grad = document.getElementById("gradAgencije");
+    grad.value = sveAgencije[id].adresa.split(",")[1] +" "+ sveAgencije[id].adresa.split(",")[2];
     let godina = document.getElementById("osnivanje");
     godina.value = sveAgencije[id].godina;
     let brojTelefona = document.getElementById("telefonAgencije");
@@ -236,36 +239,185 @@ function napraviDugmeZaPotvrdu() {
     Funkcija za ažuriranje agencije
  */
 function azurirajAgenciju(destinacije, id) {
-
-    let naziv = document.getElementById("naziv").value;
-    let mejl = document.getElementById("email").value;
-    let adresa = document.getElementById("ulica").value;
-    let grad = document.getElementById("grad").value;
-    let godina = document.getElementById("osnivanje").value;
-    let brojTelefona = document.getElementById("telefonAgencije").value;
-    let adresaStanovanja = adresa+", "+grad.split(" ")[0]+", "+grad.split(" ")[1];
-    let logo = document.getElementById("logo").value;
-    var agencija ={
-        adresa: adresaStanovanja,
-        brojTelefona: brojTelefona,
-        destinacije: destinacije,
-        email: mejl,
-        godina: godina,
-        logo: logo,
-        naziv: naziv
-    }
-
-    let zahtev = new XMLHttpRequest();
-    zahtev.onreadystatechange = function (e) {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-            window.location.reload();
-            console.log("Uspesno")
-            } else {
-            window.open("../stranice_glavne/greska.html", "_self");
-            }
+    if(validacijaAgencije()){
+        let naziv = document.getElementById("naziv").value;
+        let mejl = document.getElementById("email").value;
+        let adresa = document.getElementById("ulica").value;
+        let grad = document.getElementById("gradAgencije").value;
+        let godina = document.getElementById("osnivanje").value;
+        let brojTelefona = document.getElementById("telefonAgencije").value;
+        let gradUString = grad.replace(/(\d)/, ",$1");
+        let adresaStanovanja = adresa+", " + gradUString;
+        let logo = document.getElementById("logo").value;
+        var agencija ={
+            adresa: adresaStanovanja,
+            brojTelefona: brojTelefona,
+            destinacije: destinacije,
+            email: mejl,
+            godina: godina,
+            logo: logo,
+            naziv: naziv
         }
-        };
-    zahtev.open("PUT", url + "/agencije/"+id + ".json");
-    zahtev.send(JSON.stringify(agencija));
+
+        let zahtev = new XMLHttpRequest();
+        zahtev.onreadystatechange = function (e) {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                window.location.reload();
+                } else {
+                window.open("../stranice_glavne/greska.html", "_self");
+                }
+            }
+            };
+        zahtev.open("PUT", url + "/agencije/"+id + ".json");
+        zahtev.send(JSON.stringify(agencija));
+    }
+}
+
+function validacijaAgencije() {
+    let ispravno = true;
+    let naziv = document.getElementById("naziv").value;
+    if(naziv === ""){
+        ispravno = false;
+        let postavi = document.getElementById("dodavanjeNaziv");
+        postavi.innerText = "Niste uneli validan podatak";
+        postavi.style.color = "red";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("naziv");
+        postavi.style.borderColor = "red";
+    }
+    else{
+        let postavi = document.getElementById("dodavanjeNaziv");
+        postavi.innerText = "Validan podatak";
+        postavi.style.color = "green";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("naziv");
+        postavi.style.borderColor = "green";
+    }
+    let mejl = document.getElementById("email").value;
+    if(mejl === ""){
+        ispravno = false;
+        let postavi = document.getElementById("dodavanjeEmail");
+        postavi.innerText = "Niste uneli validan podatak";
+        postavi.style.color = "red";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("email");
+        postavi.style.borderColor = "red";
+      }
+      else{
+        let proba = mejl.split("@");
+        let promenljiva = proba[1].split(".");
+        if(proba.length == 2 && promenljiva.length >= 2){
+          let postavi = document.getElementById("dodavanjeEmail");
+          postavi.innerText = "Validan podatak";
+          postavi.style.color = "green";
+          postavi.style.fontSize = "1.5vh";
+          postavi = document.getElementById("email");
+          postavi.style.borderColor = "green";
+        }
+        else{
+          ispravno = false;
+          let postavi = document.getElementById("dodavanjeEmail");
+          postavi.innerText = "Niste uneli validan podatak";
+          postavi.style.color = "red";
+          postavi.style.fontSize = "1.5vh";
+          postavi = document.getElementById("email");
+          postavi.style.borderColor = "red";
+        }
+      }
+    let adresa = document.getElementById("ulica").value;
+    let podeli = adresa.split(" ");
+    if(adresa === "" || podeli.length < 2 || !Number.isInteger(Number(podeli[podeli.length-1]))){
+      ispravno = false;
+      let postavi = document.getElementById("dodavanjeUlica");
+      postavi.innerText = "Niste uneli validan podatak";
+      postavi.style.color = "red";
+      postavi.style.fontSize = "1.5vh";
+      postavi = document.getElementById("ulica");
+      postavi.style.borderColor = "red";
+    }
+    else{
+      let postavi = document.getElementById("dodavanjeUlica");
+      postavi.innerText = "Validan podatak";
+      postavi.style.color = "green";
+      postavi.style.fontSize = "1.5vh";
+      postavi = document.getElementById("ulica");
+      postavi.style.borderColor = "green";
+    }
+    let grad = document.getElementById("gradAgencije").value;
+    let podeliGrad = grad.split(" ");
+    if(grad === "" || podeliGrad.length < 2 || !Number.isInteger(Number(podeliGrad[podeliGrad.length-1]))){
+      ispravno = false;
+      let postavi = document.getElementById("dodavanjeOsnivanje");
+      postavi.innerText = "Niste uneli validan podatak";
+      postavi.style.color = "red";
+      postavi.style.fontSize = "1.5vh";
+      postavi = document.getElementById("gradAgencije");
+      postavi.style.borderColor = "red";
+    }
+    else{
+      let postavi = document.getElementById("dodavanjeOsnivanje");
+      postavi.innerText = "Validan podatak";
+      postavi.style.color = "green";
+      postavi.style.fontSize = "1.5vh";
+      postavi = document.getElementById("gradAgencije");
+      postavi.style.borderColor = "green";
+    }
+    let godina = document.getElementById("osnivanje").value;
+    if(godina === "" || Number(godina)<=1900 || Number(godina)>=2023){
+        ispravno = false;
+        let postavi = document.getElementById("dodavanjeOsnivanje");
+        postavi.innerText = "Niste uneli validan podatak";
+        postavi.style.color = "red";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("osnivanje");
+        postavi.style.borderColor = "red";
+    }
+    else{
+        let postavi = document.getElementById("dodavanjeOsnivanje");
+        postavi.innerText = "Validan podatak";
+        postavi.style.color = "green";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("osnivanje");
+        postavi.style.borderColor = "green";
+    }
+    let brojTelefona = document.getElementById("telefonAgencije").value;
+    let formatBroja = /^\d{3}\/\d{4}-\d{4,7}$/;
+    if(brojTelefona === "" || !formatBroja.test(brojTelefona)){
+      ispravno = false;
+      let postavi = document.getElementById("dodavanjeTelefonAgencije");
+      postavi.innerText = "Niste uneli validan podatak";
+      postavi.style.color = "red";
+      postavi.style.fontSize = "1.5vh";
+      postavi = document.getElementById("telefonAgencije");
+      postavi.style.borderColor = "red";
+    }
+    else{
+      let postavi = document.getElementById("dodavanjeTelefonAgencije");
+      postavi.innerText = "Validan podatak";
+      postavi.style.color = "green";
+      postavi.style.fontSize = "1.5vh";
+      postavi = document.getElementById("telefonAgencije");
+      postavi.style.borderColor = "green";
+    }
+    let logo = document.getElementById("logo").value;
+    if(logo === ""){
+        ispravno = false;
+        let postavi = document.getElementById("dodavanjeLogo");
+        postavi.innerText = "Niste uneli validan podatak";
+        postavi.style.color = "red";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("logo");
+        postavi.style.borderColor = "red";
+      }
+      else{
+        let postavi = document.getElementById("dodavanjeLogo");
+        postavi.innerText = "Validan podatak";
+        postavi.style.color = "green";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("logo");
+        postavi.style.borderColor = "green";
+      }
+    
+    return ispravno;
 }

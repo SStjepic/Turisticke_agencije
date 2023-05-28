@@ -94,7 +94,7 @@ function proveriValidnostRegistracije() {
     else{
       let proba = mejl.split("@");
       let promenljiva = proba[1].split(".");
-      if(proba.length == 2 && promenljiva.length == 2){
+      if(proba.length == 2 && promenljiva.length >= 2){
         let postavi = document.getElementById("registracijaMejl");
         postavi.innerText = "Validan podatak";
         postavi.style.color = "green";
@@ -114,7 +114,7 @@ function proveriValidnostRegistracije() {
     }
     let adresa = document.getElementById("adresa").value;
     let podeli = adresa.split(" ");
-    if(adresa === "" || podeli.length != 2){
+    if(adresa === "" || podeli.length < 2 || !Number.isInteger(Number(podeli[podeli.length-1]))){
       ispravno = false;
       let postavi = document.getElementById("registracijaAdresa");
       postavi.innerText = "Niste uneli validan podatak";
@@ -133,7 +133,7 @@ function proveriValidnostRegistracije() {
     }
     let grad = document.getElementById("grad").value;
     let podeliGrad = grad.split(" ");
-    if(grad === "" || podeliGrad.length != 2 || Number.isInteger(podeliGrad[1])){
+    if(grad === "" || podeliGrad.length < 2 || !Number.isInteger(Number(podeliGrad[podeliGrad.length-1]))){
       ispravno = false;
       let postavi = document.getElementById("registracijaGrad");
       postavi.innerText = "Niste uneli validan podatak";
@@ -236,4 +236,52 @@ function promeniNaziv(string, id) {
 
 function isprazniFormu(){
   window.location.reload()
+}
+
+function validacijaLogin() {
+  let ispravno = true;
+  let korisnickoIme = document.getElementById("loginKorIme").value;
+    if(korisnickoIme === ""){
+      ispravno = false;
+      let postavi = document.getElementById("loginKorImeValidacija");
+      postavi.innerText = "Niste uneli validan podatak";
+      postavi.style.color = "red";
+      postavi.style.fontSize = "1.5vh";
+      postavi = document.getElementById("loginKorIme");
+      postavi.style.borderColor = "red";
+    }
+    else{
+      let postavi = document.getElementById("loginKorImeValidacija");
+      postavi.innerText = "Validan podatak";
+      postavi.style.color = "green";
+      postavi.style.fontSize = "1.5vh";
+      postavi = document.getElementById("loginKorIme");
+      postavi.style.borderColor = "green";
+    }
+    let sifra = document.getElementById("loginSifra").value;
+    if(sifra === ""){
+      ispravno = false;
+      let postavi = document.getElementById("loginSifraValidacija");
+      postavi.innerText = "Niste uneli validan podatak";
+      postavi.style.color = "red";
+      postavi.style.fontSize = "1.5vh";
+      postavi = document.getElementById("loginSifra");
+      postavi.style.borderColor = "red";
+    }
+    else{
+      let postavi = document.getElementById("loginSifraValidacija");
+      postavi.innerText = "Validan podatak";
+      postavi.style.color = "green";
+      postavi.style.fontSize = "1.5vh";
+      postavi = document.getElementById("loginSifra");
+      postavi.style.borderColor = "green";
+    }
+
+    return ispravno;
+}
+
+function Login() {
+  if(validacijaLogin()){
+    window.location.reload();
+  }
 }

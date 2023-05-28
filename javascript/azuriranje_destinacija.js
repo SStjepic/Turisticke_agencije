@@ -231,46 +231,46 @@ function postaviParametarZaDodavanje(grupa) {
     Funkcija za dodavanje destinacije agenciji
  */
 function dodajDestinaciju(grupaDestinacija) {
-    let naziv = document.getElementById("naziv").value;
-    let cena = document.getElementById("cena").value;
-    let prevoz = document.getElementById("prevoz").value;
-    let maxOsoba = document.getElementById("maxOsoba").value;
-    let opis = document.getElementById("opis").value;
-    let slika = document.getElementsByClassName("slika")[0].value;
-    let slikaLista = []
-    slikaLista.push(slika);
-    let tip = document.getElementById("tip").value;
-    var destinacija ={
-        cena:cena,
-        maxOsoba: maxOsoba,
-        naziv:naziv,
-        opis:opis,
-        prevoz:prevoz,
-        slike:slikaLista,
-        tip: tip
-    }
-
-    let zahtev = new XMLHttpRequest();
-    zahtev.onreadystatechange = function (e) {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-            window.location.reload();
-            console.log("Uspesno")
-            } else {
-            window.open("../stranice_glavne/greska.html", "_self");
-            }
+    if(validacijaDestinacija()){
+        let naziv = document.getElementById("naziv").value;
+        let cena = document.getElementById("cena").value;
+        let prevoz = document.getElementById("prevoz").value;
+        let maxOsoba = document.getElementById("maxOsoba").value;
+        let opis = document.getElementById("opis").value;
+        let slika = document.getElementsByClassName("slika")[0].value;
+        let slikaLista = []
+        slikaLista.push(slika);
+        let tip = document.getElementById("tip").value;
+        var destinacija ={
+            cena:cena,
+            maxOsoba: maxOsoba,
+            naziv:naziv,
+            opis:opis,
+            prevoz:prevoz,
+            slike:slikaLista,
+            tip: tip
         }
-        };
-    let urlDestinacije = grupaDestinacija;
-    if(urlDestinacije === ""){
-        zahtev.open("POST", url + "/destinacije/" + ".json");
-        zahtev.send(JSON.stringify(destinacija));
-    }
-    else{
-        zahtev.open("POST", url + "/destinacije/"+ urlDestinacije + ".json");
-        zahtev.send(JSON.stringify(destinacija));
-    }
     
+        let zahtev = new XMLHttpRequest();
+        zahtev.onreadystatechange = function (e) {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                window.location.reload();
+                } else {
+                window.open("../stranice_glavne/greska.html", "_self");
+                }
+            }
+            };
+        let urlDestinacije = grupaDestinacija;
+        if(urlDestinacije === ""){
+            zahtev.open("POST", url + "/destinacije/" + ".json");
+            zahtev.send(JSON.stringify(destinacija));
+        }
+        else{
+            zahtev.open("POST", url + "/destinacije/"+ urlDestinacije + ".json");
+            zahtev.send(JSON.stringify(destinacija));
+        }
+    }
 }
 let destinacija = {}
 function ucitajIzBazeDestinaciju(destinacijaId) {
@@ -342,39 +342,172 @@ function napraviDugmeZaPotvrdu() {
     Funkcija za ažuriranje agencije
  */
 function azurirajDestinaciju(id) {
-
-    let naziv = document.getElementById("naziv").value;
-    let cena = document.getElementById("cena").value;
-    let prevoz = document.getElementById("prevoz").value;
-    let maxOsoba = document.getElementById("maxOsoba").value;
-    let opis = document.getElementById("opis").value;
-    let slika = document.getElementsByClassName("slika");
-    let slikaLista = []
-    for(let i in slika){
-        slikaLista.push(slika[i].value)
+    if(validacijaDestinacija()){
+        let naziv = document.getElementById("naziv").value;
+        let cena = document.getElementById("cena").value;
+        let prevoz = document.getElementById("prevoz").value;
+        let maxOsoba = document.getElementById("maxOsoba").value;
+        let opis = document.getElementById("opis").value;
+        let slika = document.getElementsByClassName("slika");
+        let slikaLista = []
+        for(let i in slika){
+            slikaLista.push(slika[i].value)
+        }
+        
+        let tip = document.getElementById("tip").value;
+        var destinacija ={
+            cena:cena,
+            maxOsoba: maxOsoba,
+            naziv:naziv,
+            opis:opis,
+            prevoz:prevoz,
+            slike:slikaLista,
+            tip: tip
+        }
+        let zahtev = new XMLHttpRequest();
+        zahtev.onreadystatechange = function (e) {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                window.location.reload();
+                } else {
+                window.open("../stranice_glavne/greska.html", "_self");
+                }
+            }
+            };
+        zahtev.open("PUT", url + "/destinacije/"+id + ".json");
+        zahtev.send(JSON.stringify(destinacija));
     }
     
-    let tip = document.getElementById("tip").value;
-    var destinacija ={
-        cena:cena,
-        maxOsoba: maxOsoba,
-        naziv:naziv,
-        opis:opis,
-        prevoz:prevoz,
-        slike:slikaLista,
-        tip: tip
+}
+
+function validacijaDestinacija() {
+    let ispravno = true
+    let naziv = document.getElementById("naziv").value;
+    if(naziv === ""){
+        ispravno = false;
+        let postavi = document.getElementById("destinacijaNaziv");
+        postavi.innerText = "Niste uneli validan podatak";
+        postavi.style.color = "red";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("naziv");
+        postavi.style.borderColor = "red";
     }
-    let zahtev = new XMLHttpRequest();
-    zahtev.onreadystatechange = function (e) {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-            window.location.reload();
-            console.log("Uspesno")
-            } else {
-            window.open("../stranice_glavne/greska.html", "_self");
-            }
-        }
-        };
-    zahtev.open("PUT", url + "/destinacije/"+id + ".json");
-    zahtev.send(JSON.stringify(destinacija));
+    else{
+        let postavi = document.getElementById("destinacijaNaziv");
+        postavi.innerText = "Validan podatak";
+        postavi.style.color = "green";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("naziv");
+        postavi.style.borderColor = "green";
+    }
+    let cena = document.getElementById("cena").value;
+    if(cena === ""){
+        ispravno = false;
+        let postavi = document.getElementById("destinacijaCena");
+        postavi.innerText = "Niste uneli validan podatak";
+        postavi.style.color = "red";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("cena");
+        postavi.style.borderColor = "red";
+    }
+    else{
+        let postavi = document.getElementById("destinacijaCena");
+        postavi.innerText = "Validan podatak";
+        postavi.style.color = "green";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("cena");
+        postavi.style.borderColor = "green";
+    }
+    let prevoz = document.getElementById("prevoz").value;
+    if(prevoz === ""){
+        ispravno = false;
+        let postavi = document.getElementById("destinacijaPrevoz");
+        postavi.innerText = "Niste uneli validan podatak";
+        postavi.style.color = "red";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("prevoz");
+        postavi.style.borderColor = "red";
+    }
+    else{
+        let postavi = document.getElementById("destinacijaPrevoz");
+        postavi.innerText = "Validan podatak";
+        postavi.style.color = "green";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("prevoz");
+        postavi.style.borderColor = "green";
+    }
+    let maxOsoba = document.getElementById("maxOsoba").value;
+    if(maxOsoba === ""){
+        ispravno = false;
+        let postavi = document.getElementById("destinacijaMaxOsoba");
+        postavi.innerText = "Niste uneli validan podatak";
+        postavi.style.color = "red";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("maxOsoba");
+        postavi.style.borderColor = "red";
+    }
+    else{
+        let postavi = document.getElementById("destinacijaMaxOsoba");
+        postavi.innerText = "Validan podatak";
+        postavi.style.color = "green";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("maxOsoba");
+        postavi.style.borderColor = "green";
+    }
+    let opis = document.getElementById("opis").value;
+    if(opis === ""){
+        ispravno = false;
+        let postavi = document.getElementById("destinacijaOpis");
+        postavi.innerText = "Niste uneli validan podatak";
+        postavi.style.color = "red";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("opis");
+        postavi.style.borderColor = "red";
+    }
+    else{
+        let postavi = document.getElementById("destinacijaOpis");
+        postavi.innerText = "Validan podatak";
+        postavi.style.color = "green";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("opis");
+        postavi.style.borderColor = "green";
+    }
+    let slika = document.getElementsByClassName("slika");
+    if(slika[0].value === ""){
+        ispravno = false;
+        let postavi = document.getElementById("destinacijaSlike");
+        postavi.innerText = "Niste uneli validan podatak";
+        postavi.style.color = "red";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementsByClassName("slika")[0];
+        postavi.style.borderColor = "red";
+    }
+    else{
+        let postavi = document.getElementById("destinacijaSlike");
+        postavi.innerText = "Validan podatak";
+        postavi.style.color = "green";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementsByClassName("slika")[0];
+        postavi.style.borderColor = "green";
+    }
+    let tip = document.getElementById("tip").value;
+    if(tip === ""){
+        ispravno = false;
+        let postavi = document.getElementById("destinacijaTip");
+        postavi.innerText = "Niste uneli validan podatak";
+        postavi.style.color = "red";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("tip");
+        postavi.style.borderColor = "red";
+    }
+    else{
+        let postavi = document.getElementById("destinacijaTip");
+        postavi.innerText = "Validan podatak";
+        postavi.style.color = "green";
+        postavi.style.fontSize = "1.5vh";
+        postavi = document.getElementById("tip");
+        postavi.style.borderColor = "green";
+    }
+
+    return ispravno
 }

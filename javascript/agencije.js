@@ -104,9 +104,8 @@ document.addEventListener("input", function () {
     let unos_d1 = document.getElementById("destinacija_1");
     let unos_a2 = document.getElementById("agencija_2");
     let unos_d2 = document.getElementById("destinacija_2");
-    if(unos_a1.value != "" || unos_d1 != "" &&(unos_a2.value == "" && unos_d2.value == "")){
+    if(unos_a1.value != "" || unos_d1.value != ""){
         if(unos_a1.value != ""){
-            
             pretraziPoAgenciji("agencija_1", agencijeId);
             if(unos_d1.value == ""){
                 popuniStranicuAgencijama(pretraga_agencije, agencijeId);
@@ -123,7 +122,6 @@ document.addEventListener("input", function () {
         }
         else if(unos_a2.value != "" || unos_d2 != ""){
                 if(unos_a2.value != ""){
-                    
                     pretraziPoAgenciji("agencija_2", agencijeId);
                     if(unos_d2.value == ""){
                         popuniStranicuAgencijama(pretraga_agencije, agencijeId);

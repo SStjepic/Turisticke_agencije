@@ -109,7 +109,7 @@ function prikaziDestinacije(sveDestinacije) {
         var div_tekst = document.createElement("div");
         div_tekst.className = "tekst";
         p_tag = document.createElement("p");
-        p_tag.innerHTML ="Tip: ".bold() + sveDestinacije[id].prevoz;
+        p_tag.innerHTML ="Tip: ".bold() + sveDestinacije[id].tip;
         div_tekst.appendChild(p_tag);
         var p_tag_2 = document.createElement("p");
         p_tag_2.innerHTML = "Cena: ".bold()+sveDestinacije[id].cena + " dinara";

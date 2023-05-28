@@ -88,30 +88,33 @@
 
     <!-- Forma za login -->
     <div class="modal fade" id="login" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header boja">
-              <h1 class="modal-title fs-5" id="loginLabel">Prijavi se</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body boja_body text-center">
-              <form name="login" >
-                <label for="korisnicko_ime" >Korisnicko ime: </label>
-                <br/>
-                <input type="text" name="korisnicko_ime"/>
-                <br/>
-                <label for="lozinka" >Lozinka:</label>
-                <br/>
-                <input type="password" name="lozinka"  />
-              </form>
-            </div>
-            <div class="modal-footer boja_footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
-              <button type="button" class="btn btn-primary">Potvrdi</button>
-            </div>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header boja">
+            <h1 class="modal-title fs-5" id="loginLabel">Prijavi se</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body boja_body text-center">
+            <form>
+              <div class="mb-3">
+                <label for="loginKorIme" class="form-label">Korisničko:</label>
+                <input type="text" class="form-control" id="loginKorIme" placeholder="Unesite korisničko ime" >
+                <p id="loginKorImeValidacija"></p>
+              </div>
+              <div class="mb-3">
+                <label for="loginSifra" class="form-label">Lozinka:</label>
+                <input type="password" class="form-control" id="loginSifra" placeholder="Unesite lozinku">
+                <p id="loginSifraValidacija"></p>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer boja_footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
+            <button type="button" class="btn btn-primary" id="potvrdaLogin" onclick="Login()">Potvrdi</button>
           </div>
         </div>
-    </div>
+      </div>
+  </div>
 
     <!-- Forma za registraciju -->
     <div class="modal fade" id="registracija" tabindex="-1" aria-labelledby="registracijaLabel" aria-hidden="true">
@@ -160,7 +163,7 @@
               </div>
               <div class="mb-3">
                 <label for="telefon" class="form-label">Broj telefona:</label>
-                <input type="text" class="form-control" id="telefon" placeholder="06512345x">
+                <input type="text" class="form-control" id="telefon" placeholder="xxx/xxx-xxxx">
                 <p id="registracijaTelefon"></p>
               </div>
               <div class="mb-3">
@@ -170,9 +173,9 @@
               </div>
             </form>
           </div>
-          <div class="modal-footer boja_footer" id="dugmiciOpcije">
+          <div class="modal-footer boja_footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="isprazniFormu()">Odbaci</button>
-            <button type="submit" class="btn btn-primary" onclick="registrujKorisnika()"  id="potvrdaRegAzu">Potvrdi</button>
+            <button type="submit" class="btn btn-primary" onclick="registrujKorisnika()" id="potvrdaRegAzu">Potvrdi</button>
           </div>
         </div>
       </div>
