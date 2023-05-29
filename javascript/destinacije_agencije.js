@@ -86,7 +86,7 @@ function prikaziDestinacije(sveDestinacije) {
     p_tag_2.innerHTML = "Email adresa: ".bold() + trenutnaAgencija.email;
     div_tekst.appendChild(p_tag_2);
     let p_tag_3 = document.createElement("p");
-    p_tag_3.innerHTML = "Osnovano: ".bold() + trenutnaAgencija.godina;
+    p_tag_3.innerHTML = "Osnovano: ".bold() + trenutnaAgencija.godina + ". godine";
     div_tekst.appendChild(p_tag_3);
     div.appendChild(div_tekst)
     main.appendChild(div);
@@ -111,6 +111,9 @@ function prikaziDestinacije(sveDestinacije) {
         p_tag = document.createElement("p");
         p_tag.innerHTML ="Tip: ".bold() + sveDestinacije[id].tip;
         div_tekst.appendChild(p_tag);
+        let p_tag_3 = document.createElement("p");
+        p_tag_3.innerHTML = "Prevoz: ".bold()+sveDestinacije[id].prevoz;
+        div_tekst.appendChild(p_tag_3);
         var p_tag_2 = document.createElement("p");
         p_tag_2.innerHTML = "Cena: ".bold()+sveDestinacije[id].cena + " dinara";
         div_tekst.appendChild(p_tag_2);
@@ -156,6 +159,7 @@ document.addEventListener("input", function(){
             }
         }
         prikaziDestinacije(pretraga);
+        markirajTekstDestinacija(unos_naziv,unos_tip,unos_prevoz)
     }   
     else{
         if(unos_naziv_2 =="" && unos_tip_2 =="" && unos_prevoz_2==""){
@@ -168,6 +172,30 @@ document.addEventListener("input", function(){
                 }
             }
             prikaziDestinacije(pretraga);
+            markirajTekstDestinacija(unos_naziv_2,unos_tip_2,unos_prevoz_2)
         }
     }
 })
+
+function markirajTekstDestinacija(naziv, tip, preovoz) {
+    let kontejner = document.getElementsByClassName("kontejner")[0];
+    let lista = kontejner.childNodes;
+    
+    for(let i = 0;i<lista.length;i++){
+        let a = lista[i].childNodes[0];
+        
+        if(naziv !== ""){
+            let h2 = a.childNodes[0];
+            h2.innerHTML = "<mark style='background-color:#E39D45'>" + h2.textContent+ "</mark>"
+        }
+        if(tip!== ""){
+            let div = a.childNodes[2].childNodes[0];
+            div.innerHTML ="<b>"+ div.textContent.split(" ")[0]+ "</b>" + "<mark style='background-color:#E39D45'>" + div.textContent.split(" ")[1]+ "</mark>"
+        }
+        if(preovoz!==""){
+            let div = a.childNodes[2].childNodes[1];
+            div.innerHTML ="<b>"+ div.textContent.split(" ")[0]+ "</b>" + "<mark style='background-color:#E39D45'>" + div.textContent.split(" ")[1]+ "</mark>"
+        }
+        
+    }
+}

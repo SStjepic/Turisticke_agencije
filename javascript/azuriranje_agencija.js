@@ -346,7 +346,7 @@ function validacijaAgencije() {
     }
     let grad = document.getElementById("gradAgencije").value;
     let podeliGrad = grad.split(" ");
-    if(grad === "" || podeliGrad.length < 2 || !Number.isInteger(Number(podeliGrad[podeliGrad.length-1]))){
+    if(grad === "" || podeliGrad.length < 2 || !Number.isInteger(Number(podeliGrad[podeliGrad.length-1])) || podeliGrad[podeliGrad.length-1] === ""){
       ispravno = false;
       let postavi = document.getElementById("dodavanjeOsnivanje");
       postavi.innerText = "Niste uneli validan podatak";

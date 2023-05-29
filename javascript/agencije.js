@@ -109,6 +109,7 @@ document.addEventListener("input", function () {
             pretraziPoAgenciji("agencija_1", agencijeId);
             if(unos_d1.value == ""){
                 popuniStranicuAgencijama(pretraga_agencije, agencijeId);
+                markirajTekstAgencija()
             }
         }
         if(unos_d1.value != ""){
@@ -125,6 +126,7 @@ document.addEventListener("input", function () {
                     pretraziPoAgenciji("agencija_2", agencijeId);
                     if(unos_d2.value == ""){
                         popuniStranicuAgencijama(pretraga_agencije, agencijeId);
+                        markirajTekstAgencija()
                     }
                 }
                 else if(unos_d2.value != ""){
@@ -153,8 +155,6 @@ function pretraziPoAgenciji(id_inputa, agencijeId) {
     Funkcija koja vraca presek dve pretrage
  */
 function proveriPoklapanje(pretraga, agencijeIdDestinacije) {
-    console.log(pretraga.length);
-    console.log(pretraga_agencije.length);
     if(pretraga.length != 0 && pretraga_agencije.length != 0){
         var konacna = [];
         var konacniId = [];
@@ -165,10 +165,12 @@ function proveriPoklapanje(pretraga, agencijeIdDestinacije) {
                 konacniId.push(nadjiIdAgencije(pretraga[i]))
             }
             popuniStranicuAgencijama(konacna, konacniId);
+            markirajTekstAgencija();
         }
     }
     else if(pretraga.length != 0){
         popuniStranicuAgencijama(pretraga, agencijeIdDestinacije);
+        markirajTekstAgencija();
     }
 }
 /*
@@ -216,7 +218,6 @@ return new Promise(function (resolve, reject) {
         for (var id in destinacijeTrenutne) {
             var destinacija = destinacijeTrenutne[id];
             if (destinacija.naziv.toUpperCase().includes(string)) {
-            console.log(destinacija.naziv.toUpperCase());
             agencijeIdDestinacije.push(nadjiIdAgencije(taAgencija));
             pretraga.push(taAgencija);
             break;
@@ -231,5 +232,15 @@ return new Promise(function (resolve, reject) {
         zahtev.open('GET', url + '/destinacije/' + grupaDestinacija + '.json');
         zahtev.send();
     });
+}
+
+function markirajTekstAgencija() {
+    let kontejner = document.getElementsByClassName("kontejner")[0];
+    let lista = kontejner.childNodes;
+    for(let i = 0;i<lista.length;i++){
+        let a = lista[i].childNodes;
+        let h2 = a[0].childNodes[0];
+        h2.innerHTML = "<mark style='background-color:#E39D45'>" + h2.textContent+ "</mark>"
+    }
 }
 

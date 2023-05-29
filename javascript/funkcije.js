@@ -133,7 +133,7 @@ function proveriValidnostRegistracije() {
     }
     let grad = document.getElementById("grad").value;
     let podeliGrad = grad.split(" ");
-    if(grad === "" || podeliGrad.length < 2 || !Number.isInteger(Number(podeliGrad[podeliGrad.length-1]))){
+    if(grad === "" || podeliGrad.length < 2 || !Number.isInteger(Number(podeliGrad[podeliGrad.length-1])) || podeliGrad[podeliGrad.length-1] === ""){
       ispravno = false;
       let postavi = document.getElementById("registracijaGrad");
       postavi.innerText = "Niste uneli validan podatak";

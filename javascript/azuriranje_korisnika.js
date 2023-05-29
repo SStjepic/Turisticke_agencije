@@ -167,7 +167,7 @@ function postaviParametarIzmena(id){
     mejl.value = sviKorisnici[korisnikId].email;
     let adresa = document.getElementById("adresa");
     let grad = document.getElementById("grad");
-    grad.value = sviKorisnici[korisnikId].adresa.split(", ")[1] +" "+ sviKorisnici[korisnikId].adresa.split(", ")[2]
+    grad.value = sviKorisnici[korisnikId].adresa.split(",")[1] +" "+ sviKorisnici[korisnikId].adresa.split(",")[2]
     adresa.value = sviKorisnici[korisnikId].adresa.split(", ")[0];
     let brojTelefona = document.getElementById("telefon");
     brojTelefona.value = sviKorisnici[korisnikId].telefon;
