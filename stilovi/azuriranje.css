@@ -61,3 +61,6 @@ h2{
     margin-top: 2vh;
     text-align: center;
 }
+textarea{
+    width: 96%;
+}

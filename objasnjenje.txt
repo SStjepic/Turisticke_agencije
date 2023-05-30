@@ -1,0 +1,2 @@
+Ažuriranje podataka o agenciji je podeljeno u dve celine, ažuriranje osnovnih informacija u sekciji "AŽURIRAJ AGENCIJE" i
+ažuriranje informacija o destinacijama agencije u sekciji "AŽURIRAJ DESTINACIJE". 

@@ -67,7 +67,7 @@
         <div class="modal-content">
           <div class="modal-header boja">
             <h1 class="modal-title fs-5" id="registracijaLabel">Registruj se</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="isprazniFormu()"></button>
           </div>
           <div class="modal-body boja_body text-center">
             <form id="formaRegistracija">
@@ -133,13 +133,13 @@
           <div class="modal-content">
             <div class="modal-header boja">
               <h1 class="modal-title fs-5" id="potvrdaLabel">Obriši podatke o korisniku</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="isprazniFormu()"></button>
             </div>
             <div class="modal-body boja_body text-center">
               <p>Da li ste sigurni da želite da obrišete podatke o korisniku iz baze?</p>
             </div>
             <div class="modal-footer boja_footer">
-              <button type="button " class="btn btn-secondary" data-bs-dismiss="modal" onclick="isprazniFormu()">Ne</button>
+              <button type="button " class="btn btn-secondary" data-bs-dismiss="modal">Ne</button>
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="potvrdaBrisanje">Da</button>
             </div>
           </div>
@@ -151,7 +151,7 @@
         <div class="modal-content">
           <div class="modal-header boja">
             <h1 class="modal-title fs-5" id="loginLabel">Prijavi se</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="isprazniFormu()"></button>
           </div>
           <div class="modal-body boja_body text-center">
             <form>
@@ -168,7 +168,7 @@
             </form>
           </div>
           <div class="modal-footer boja_footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="isprazniFormu()">Odbaci</button>
             <button type="button" class="btn btn-primary" id="potvrdaLogin" onclick="Login()">Potvrdi</button>
           </div>
         </div>

@@ -140,7 +140,7 @@
         <div class="modal-content">
           <div class="modal-header boja">
             <h1 class="modal-title fs-5" id="loginLabel">Prijavi se</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="isprazniFormu()"></button>
           </div>
           <div class="modal-body boja_body text-center">
             <form>
@@ -157,7 +157,7 @@
             </form>
           </div>
           <div class="modal-footer boja_footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Odbaci</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="isprazniFormu()">Odbaci</button>
             <button type="button" class="btn btn-primary" id="potvrdaLogin" onclick="Login()">Potvrdi</button>
           </div>
         </div>
@@ -170,7 +170,7 @@
         <div class="modal-content">
           <div class="modal-header boja">
             <h1 class="modal-title fs-5" id="registracijaLabel">Registruj se</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="isprazniFormu()"></button>
           </div>
           <div class="modal-body boja_body text-center">
             <form id="formaRegistracija">

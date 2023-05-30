@@ -136,7 +136,7 @@ function obrisiAgenciju(id) {
     zahtev.onreadystatechange = function () {
         if (this.readyState == 4) {
         if (this.status == 200) {
-            window.open("../stranice_glavne/azuriraj_agencije.html", "_self");
+            window.location.reload();
         } else {
             window.open("../stranice_glavne/greska.html", "_self");
         }
