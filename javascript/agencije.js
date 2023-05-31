@@ -170,7 +170,6 @@ function proveriPoklapanje(pretraga, agencijeIdDestinacije) {
     }
     else if(pretraga.length != 0){
         popuniStranicuAgencijama(pretraga, agencijeIdDestinacije);
-        markirajTekstAgencija();
     }
 }
 /*

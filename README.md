@@ -6,7 +6,7 @@ Maestro Travel
 
 # Opis
 
-Projektni zadatak iz predmeta Web dizajn. 
+Projektni zadatak iz predmeta Web dizajn, smer Softversko inženjerstvo i informacione tehnologije 
 Veb stranica koja simulira rad stranice za prikaz turističkih agencija. 
 Stranica omogućuje pregled turističkih agencija, pregled turističkih destinacija
 svake agencije kao i osnovne informacije o njima. Stranica sadrži sekciju "administrator" koja omogućuje ažuriranje osnovnih 

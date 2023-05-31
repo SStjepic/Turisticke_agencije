@@ -1,0 +1,12 @@
+###Osnovno###
+Projekat se pokreće otvaranjem index.html fajla
+
+###Ažuriranje###
+Ažuriranje podataka o agenciji je podeljeno u dve celine, ažuriranje osnovnih informacija u sekciji "AŽURIRAJ AGENCIJE" i
+ažuriranje informacija o destinacijama agencije u sekciji "AŽURIRAJ DESTINACIJE". 
+
+###Pretraga###
+Prilikom pretrage tekst naziva turističkih agencija će se markirati samo ukoliko je zadovoljen kriterijum pretrage zadat u polju za unos
+naziva agencije
+Prilikom pretrage agencija po njihovim destinacijama, tekst se ne markira već na stranici avih turističkih agencija ostaju kartice samo onih
+agencija koje zadovoljavaju kriterijum koji je zadat u polju za unos naziva destinacija

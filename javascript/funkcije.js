@@ -1,3 +1,5 @@
+
+
 function dodajSliku() {
     let polje = document.createElement("input");
     polje.type = "url";
@@ -169,7 +171,11 @@ function proveriValidnostRegistracije() {
       postavi.style.borderColor = "green";
     }
     let rodjendan = document.getElementById("rodjendan").value;
-    if(rodjendan === ""){
+    let datum = new Date(rodjendan);
+    let danas = new Date(new Date().toLocaleDateString())
+
+
+    if(rodjendan === "" || danas<datum){
       ispravno = false;
       let postavi = document.getElementById("registracijaRodjendan");
       postavi.innerText = "Niste uneli validan podatak";
@@ -219,6 +225,7 @@ function proveriValidnostRegistracije() {
         zahtev.onreadystatechange = function (e) {
             if (this.readyState == 4) {
               if (this.status == 200) {
+                
                 window.location.reload();
               } else {
                 window.open("../stranice_glavne/greska.html", "_self");
@@ -284,5 +291,4 @@ function validacijaLogin() {
 function Login() {
   if(validacijaLogin()){
     window.location.reload();
-  }
-}
+}}
