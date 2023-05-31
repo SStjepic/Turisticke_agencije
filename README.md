@@ -18,7 +18,7 @@ pojedinačne turističke agencije postoji pretraga po jednom ili više kriteriju
 1. HTML
 2. CSS
 3. JavaScript
-4. Bootstrap
+4. Bootstrap 5.3.0
 
 # Uradio
 
