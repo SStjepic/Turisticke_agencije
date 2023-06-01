@@ -124,7 +124,6 @@ function obrisiTabelu() {
 }
 
 function postaviParametar(agencijaId) {
-    console.log(agencijaId);
     let potvrda = document.getElementById("potvrdaBrisanje");
     potvrda.addEventListener("click", function(){
         obrisiAgenciju(agencijaId);
@@ -152,7 +151,6 @@ function obrisiAgenciju(id) {
  */
 function registrujAgenciju() {
     if(validacijaAgencije()){
-        console.log("radi")
         let naziv = document.getElementById("naziv").value;
         let mejl = document.getElementById("email").value;
         let adresa = document.getElementById("ulica").value;

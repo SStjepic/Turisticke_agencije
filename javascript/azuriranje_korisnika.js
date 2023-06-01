@@ -204,7 +204,6 @@ function azurirajKorisnika(id) {
         let rodjendan = document.getElementById("rodjendan").value;
         let gradUString = grad.replace(/(\d)/, ",$1");
         let adresaStanovanja = adresa+", "+gradUString;
-        console.log(adresaStanovanja);
         var korisnik ={
             adresa: adresaStanovanja,
             datumRodjenja: rodjendan,

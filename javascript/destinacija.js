@@ -11,7 +11,6 @@ function ucitajIzBazeDestinaciju() {
         if (this.readyState == 4) {
             if (this.status == 200) {
                 trenutnaDestinacija = JSON.parse(zahtev.responseText);
-                console.log(trenutnaDestinacija)
                 prikaziDestinaciju()
             } else {
                 window.open("../stranice_glavne/greska.html", "_self");

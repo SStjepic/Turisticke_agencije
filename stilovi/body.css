@@ -85,7 +85,7 @@ footer>p{
     
     }
 }
-@media(max-width: 570px){
+@media(max-width: 622px){
     main .kontejner{
         grid-template-columns: auto;
     }
