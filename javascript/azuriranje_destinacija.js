@@ -388,7 +388,7 @@ function validacijaDestinacija() {
     if(naziv === ""){
         ispravno = false;
         let postavi = document.getElementById("destinacijaNaziv");
-        postavi.innerText = "Niste uneli validan podatak";
+        postavi.innerText = "Polje 'Naziv turističke destinacije' ne sme biti prazno";
         postavi.style.color = "red";
         postavi.style.fontSize = "1.5vh";
         postavi = document.getElementById("naziv");
@@ -406,7 +406,7 @@ function validacijaDestinacija() {
     if(cena === ""){
         ispravno = false;
         let postavi = document.getElementById("destinacijaCena");
-        postavi.innerText = "Niste uneli validan podatak";
+        postavi.innerText = "Polje 'Cena' ne sme biti prazno";
         postavi.style.color = "red";
         postavi.style.fontSize = "1.5vh";
         postavi = document.getElementById("cena");
@@ -424,7 +424,7 @@ function validacijaDestinacija() {
     if(prevoz === ""){
         ispravno = false;
         let postavi = document.getElementById("destinacijaPrevoz");
-        postavi.innerText = "Niste uneli validan podatak";
+        postavi.innerText = "Polje 'Vrsta prevoza' ne sme biti prazno";
         postavi.style.color = "red";
         postavi.style.fontSize = "1.5vh";
         postavi = document.getElementById("prevoz");
@@ -442,7 +442,7 @@ function validacijaDestinacija() {
     if(maxOsoba === ""){
         ispravno = false;
         let postavi = document.getElementById("destinacijaMaxOsoba");
-        postavi.innerText = "Niste uneli validan podatak";
+        postavi.innerText = "Polje 'Maksimalan broj osoba' ne sme biti prazno";
         postavi.style.color = "red";
         postavi.style.fontSize = "1.5vh";
         postavi = document.getElementById("maxOsoba");
@@ -460,7 +460,7 @@ function validacijaDestinacija() {
     if(opis === ""){
         ispravno = false;
         let postavi = document.getElementById("destinacijaOpis");
-        postavi.innerText = "Niste uneli validan podatak";
+        postavi.innerText = "Polje 'Opis' ne sme biti prazno";
         postavi.style.color = "red";
         postavi.style.fontSize = "1.5vh";
         postavi = document.getElementById("opis");
@@ -478,7 +478,7 @@ function validacijaDestinacija() {
     if(slika[0].value === ""){
         ispravno = false;
         let postavi = document.getElementById("destinacijaSlike");
-        postavi.innerText = "Niste uneli validan podatak";
+        postavi.innerText = "Polje 'Slike' ne sme biti prazno";
         postavi.style.color = "red";
         postavi.style.fontSize = "1.5vh";
         postavi = document.getElementsByClassName("slika")[0];
@@ -496,7 +496,7 @@ function validacijaDestinacija() {
     if(tip === ""){
         ispravno = false;
         let postavi = document.getElementById("destinacijaTip");
-        postavi.innerText = "Niste uneli validan podatak";
+        postavi.innerText = "Polje 'Tip odmora' ne sme biti prazno";
         postavi.style.color = "red";
         postavi.style.fontSize = "1.5vh";
         postavi = document.getElementById("tip");

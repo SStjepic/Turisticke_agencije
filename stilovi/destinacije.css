@@ -19,11 +19,12 @@ main>h1{
     margin: 4vmin;
     justify-content: left;
     align-items: flex-start;
-    margin-left: 4vmin;
-    margin-right: 4vmin;
+    margin-left: 15vmin;
+    margin-right: 15vmin;
     padding: 4vmin 4vmin 4vmin 10vw;
     background-color: white;
     position: static;
+
 }
 .opis p{
     text-align: left;
@@ -59,5 +60,9 @@ main>h1{
 @media(max-width: 700px){
     .tekst>p{
         text-align: center;
+    }
+    .opis{
+        margin-left: 10vmin;
+        margin-right: 10vmin;
     }
 }

@@ -278,7 +278,7 @@ function validacijaAgencije() {
     if(naziv === ""){
         ispravno = false;
         let postavi = document.getElementById("dodavanjeNaziv");
-        postavi.innerText = "Niste uneli validan podatak";
+        postavi.innerText = "Polje 'Naziv turističke agencije' ne sme biti prazno";
         postavi.style.color = "red";
         postavi.style.fontSize = "1.5vh";
         postavi = document.getElementById("naziv");
@@ -296,7 +296,7 @@ function validacijaAgencije() {
     if(mejl === ""){
         ispravno = false;
         let postavi = document.getElementById("dodavanjeEmail");
-        postavi.innerText = "Niste uneli validan podatak";
+        postavi.innerText = "Email mora biti u zadatom formatu";
         postavi.style.color = "red";
         postavi.style.fontSize = "1.5vh";
         postavi = document.getElementById("email");
@@ -316,7 +316,7 @@ function validacijaAgencije() {
         else{
           ispravno = false;
           let postavi = document.getElementById("dodavanjeEmail");
-          postavi.innerText = "Niste uneli validan podatak";
+          postavi.innerText = "Email mora biti u zadatom formatu";
           postavi.style.color = "red";
           postavi.style.fontSize = "1.5vh";
           postavi = document.getElementById("email");
@@ -328,7 +328,7 @@ function validacijaAgencije() {
     if(adresa === "" || podeli.length < 2 || !Number.isInteger(Number(podeli[podeli.length-1]))){
       ispravno = false;
       let postavi = document.getElementById("dodavanjeUlica");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Adresa stanovanja mora biti u formatu 'Ulica broj'";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("ulica");
@@ -346,8 +346,8 @@ function validacijaAgencije() {
     let podeliGrad = grad.split(" ");
     if(grad === "" || podeliGrad.length < 2 || !Number.isInteger(Number(podeliGrad[podeliGrad.length-1])) || podeliGrad[podeliGrad.length-1] === ""){
       ispravno = false;
-      let postavi = document.getElementById("dodavanjeOsnivanje");
-      postavi.innerText = "Niste uneli validan podatak";
+      let postavi = document.getElementById("dodavanjeGrad");
+      postavi.innerText = "Podatak mora biti u formatu 'Grad poštanski broj'";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("gradAgencije");
@@ -365,7 +365,7 @@ function validacijaAgencije() {
     if(godina === "" || Number(godina)<=1900 || Number(godina)>=2023){
         ispravno = false;
         let postavi = document.getElementById("dodavanjeOsnivanje");
-        postavi.innerText = "Niste uneli validan podatak";
+        postavi.innerText = "Godina osnivanja mora biti između 1900. i 2023. godine";
         postavi.style.color = "red";
         postavi.style.fontSize = "1.5vh";
         postavi = document.getElementById("osnivanje");
@@ -384,7 +384,7 @@ function validacijaAgencije() {
     if(brojTelefona === "" || !formatBroja.test(brojTelefona)){
       ispravno = false;
       let postavi = document.getElementById("dodavanjeTelefonAgencije");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Broj telefona mora biti u zadatom formatu";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("telefonAgencije");
@@ -402,7 +402,7 @@ function validacijaAgencije() {
     if(logo === ""){
         ispravno = false;
         let postavi = document.getElementById("dodavanjeLogo");
-        postavi.innerText = "Niste uneli validan podatak";
+        postavi.innerText = "Neophodno je proslediti URL logoa";
         postavi.style.color = "red";
         postavi.style.fontSize = "1.5vh";
         postavi = document.getElementById("logo");

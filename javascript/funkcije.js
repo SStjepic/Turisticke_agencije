@@ -15,7 +15,7 @@ function proveriValidnostRegistracije() {
     if(ime === ""){
       ispravno = false;
       let postavi = document.getElementById("registracijaIme");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Polje 'Ime' ne sme biti prazno";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("ime");
@@ -33,7 +33,7 @@ function proveriValidnostRegistracije() {
     if(prezime === ""){
       ispravno = false;
       let postavi = document.getElementById("registracijaPrezime");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Polje 'Prezime' ne sme biti prazno";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("prezime");
@@ -51,7 +51,7 @@ function proveriValidnostRegistracije() {
     if(korisnickoIme === ""){
       ispravno = false;
       let postavi = document.getElementById("registracijaKorIme");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Polje 'Korisničko ime' ne sme biti prazno";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("korIme");
@@ -69,7 +69,7 @@ function proveriValidnostRegistracije() {
     if(sifra === ""){
       ispravno = false;
       let postavi = document.getElementById("registracijaSifra");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Polje 'Šifra' ne sme biti prazno";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("sifra");
@@ -87,7 +87,7 @@ function proveriValidnostRegistracije() {
     if(mejl === ""){
       ispravno = false;
       let postavi = document.getElementById("registracijaMejl");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Polje 'Email' ne sme biti prazno";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("mejl");
@@ -107,7 +107,7 @@ function proveriValidnostRegistracije() {
       else{
         ispravno = false;
         let postavi = document.getElementById("registracijaMejl");
-        postavi.innerText = "Niste uneli validan podatak";
+        postavi.innerText = "Email mora biti u zadatom formatu";
         postavi.style.color = "red";
         postavi.style.fontSize = "1.5vh";
         postavi = document.getElementById("mejl");
@@ -119,7 +119,7 @@ function proveriValidnostRegistracije() {
     if(adresa === "" || podeli.length < 2 || !Number.isInteger(Number(podeli[podeli.length-1]))){
       ispravno = false;
       let postavi = document.getElementById("registracijaAdresa");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Adresa mora biti u formatu 'Ulica broj'";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("adresa");
@@ -138,7 +138,7 @@ function proveriValidnostRegistracije() {
     if(grad === "" || podeliGrad.length < 2 || !Number.isInteger(Number(podeliGrad[podeliGrad.length-1])) || podeliGrad[podeliGrad.length-1] === ""){
       ispravno = false;
       let postavi = document.getElementById("registracijaGrad");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Podatak mora biti u formatu 'Grad poštanski broj'";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("grad");
@@ -153,10 +153,10 @@ function proveriValidnostRegistracije() {
       postavi.style.borderColor = "green";
     }
     let brojTelefona = document.getElementById("telefon").value;
-    if(brojTelefona === "" || !Number.isInteger(Number(brojTelefona)) || brojTelefona.length<8){
+    if(brojTelefona === "" || !Number.isInteger(Number(brojTelefona)) || brojTelefona.length<8 || brojTelefona>10){
       ispravno = false;
       let postavi = document.getElementById("registracijaTelefon");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Broj telefona mora biti u zadatom formatu";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("telefon");
@@ -178,7 +178,7 @@ function proveriValidnostRegistracije() {
     if(rodjendan === "" || danas<datum){
       ispravno = false;
       let postavi = document.getElementById("registracijaRodjendan");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Datum rođenja nije izabran ili je odabran dan u budućnosti";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("rodjendan");
@@ -252,7 +252,7 @@ function validacijaLogin() {
     if(korisnickoIme === ""){
       ispravno = false;
       let postavi = document.getElementById("loginKorImeValidacija");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Polje 'Korisničko ime' ne sme biti prazno";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("loginKorIme");
@@ -270,7 +270,7 @@ function validacijaLogin() {
     if(sifra === ""){
       ispravno = false;
       let postavi = document.getElementById("loginSifraValidacija");
-      postavi.innerText = "Niste uneli validan podatak";
+      postavi.innerText = "Polje 'Lozinka' ne sme biti prazno";
       postavi.style.color = "red";
       postavi.style.fontSize = "1.5vh";
       postavi = document.getElementById("loginSifra");

@@ -16,8 +16,9 @@ form{
     margin-right: 1vw;
 }
 main{
-    min-height: 93vh;
+    min-height: 95vh;
     margin-bottom: 2vh;
+
 }
 .kontejner, .opis{
     flex-wrap: wrap;
