@@ -153,7 +153,7 @@ function proveriValidnostRegistracije() {
       postavi.style.borderColor = "green";
     }
     let brojTelefona = document.getElementById("telefon").value;
-    if(brojTelefona === "" || !Number.isInteger(Number(brojTelefona)) || brojTelefona.length<8 || brojTelefona>10){
+    if(brojTelefona === "" || !Number.isInteger(Number(brojTelefona)) || brojTelefona.length<8 || brojTelefona.length>10){
       ispravno = false;
       let postavi = document.getElementById("registracijaTelefon");
       postavi.innerText = "Broj telefona mora biti u zadatom formatu";
