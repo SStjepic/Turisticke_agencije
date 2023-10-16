@@ -1,12 +1,8 @@
-# WD-SV-40-2022
-
-# Naslov
-
 Maestro Travel
 
 # Opis
 
-Projektni zadatak iz predmeta Web dizajn, smer Softversko inženjerstvo i informacione tehnologije 
+Projektni zadatak iz predmeta Web dizajn,2. semestar, smer Softversko inženjerstvo i informacione tehnologije.
 Veb stranica koja simulira rad stranice za prikaz turističkih agencija. 
 Stranica omogućuje pregled turističkih agencija, pregled turističkih destinacija
 svake agencije kao i osnovne informacije o njima. Stranica sadrži sekciju "administrator" koja omogućuje ažuriranje osnovnih 
@@ -19,7 +15,3 @@ pojedinačne turističke agencije postoji pretraga po jednom ili više kriteriju
 2. CSS
 3. JavaScript
 4. Bootstrap 5.3.0
-
-# Uradio
-
-Stefan Stjepić SV40/2022
