@@ -1,4 +1,4 @@
-var url = "https://web-dizajn-d1716-default-rtdb.europe-west1.firebasedatabase.app";
+var url = "https://sajtovi-28002-default-rtdb.europe-west1.firebasedatabase.app";
 document.addEventListener("DOMContentLoaded", ucitajIzBazeDestinaciju);
 var trenutnaDestinacija = {}
 var nazivAgencije = "";
